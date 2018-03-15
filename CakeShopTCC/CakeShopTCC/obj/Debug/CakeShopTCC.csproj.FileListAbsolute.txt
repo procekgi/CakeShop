@@ -1,0 +1,106 @@
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\ApplicationInsights.config
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\roslyn\csc.exe
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\roslyn\Microsoft.CodeAnalysis.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\roslyn\Microsoft.CSharp.Core.targets
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\roslyn\System.Collections.Immutable.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\roslyn\System.Reflection.Metadata.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\roslyn\vbc.exe
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\roslyn\VBCSCompiler.exe
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\roslyn\VBCSCompiler.exe.config
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\CakeShopTCC.dll.config
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\CakeShopTCC.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\CakeShopTCC.pdb
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\Antlr3.Runtime.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\Microsoft.AI.Agent.Intercept.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\Microsoft.AI.DependencyCollector.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\Microsoft.AI.PerfCounterCollector.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\Microsoft.AI.ServerTelemetryChannel.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\Microsoft.AI.Web.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\Microsoft.AI.WindowsServer.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\Microsoft.ApplicationInsights.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\Microsoft.Web.Infrastructure.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\Newtonsoft.Json.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\System.Web.Helpers.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\System.Web.Mvc.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\System.Web.Optimization.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\System.Web.Razor.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\System.Web.WebPages.Deployment.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\System.Web.WebPages.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\System.Web.WebPages.Razor.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\WebGrease.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\Microsoft.AI.DependencyCollector.xml
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\Microsoft.AI.ServerTelemetryChannel.xml
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\Microsoft.AI.Web.xml
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\Microsoft.AI.WindowsServer.xml
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\Microsoft.ApplicationInsights.xml
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\System.Web.Helpers.xml
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\System.Web.Mvc.xml
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\System.Web.Optimization.xml
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\System.Web.Razor.xml
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\System.Web.WebPages.xml
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\System.Web.WebPages.Deployment.xml
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\System.Web.WebPages.Razor.xml
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\Antlr3.Runtime.pdb
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\bin\Newtonsoft.Json.xml
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\obj\Debug\CakeShopTCC.csprojResolveAssemblyReference.cache
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\obj\Debug\CakeShopTCC.dll
+c:\users\aluno\documents\visual studio 2015\Projects\CakeShopTCC\CakeShopTCC\obj\Debug\CakeShopTCC.pdb
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\ApplicationInsights.config
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\roslyn\csc.exe
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\roslyn\System.Collections.Immutable.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\roslyn\System.Reflection.Metadata.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\roslyn\vbc.exe
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\roslyn\VBCSCompiler.exe
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\roslyn\VBCSCompiler.exe.config
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\CakeShopTCC.dll.config
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\CakeShopTCC.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\CakeShopTCC.pdb
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\Antlr3.Runtime.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\Microsoft.AI.Agent.Intercept.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\Microsoft.AI.DependencyCollector.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\Microsoft.AI.Web.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\Microsoft.AI.WindowsServer.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\Microsoft.ApplicationInsights.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\Microsoft.Web.Infrastructure.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\Newtonsoft.Json.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\System.Web.Helpers.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\System.Web.Mvc.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\System.Web.Optimization.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\System.Web.Razor.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\System.Web.WebPages.Deployment.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\System.Web.WebPages.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\System.Web.WebPages.Razor.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\WebGrease.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\Microsoft.AI.DependencyCollector.xml
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\Microsoft.AI.Web.xml
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\Microsoft.AI.WindowsServer.xml
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\Microsoft.ApplicationInsights.xml
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\System.Web.Helpers.xml
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\System.Web.Mvc.xml
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\System.Web.Optimization.xml
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\System.Web.Razor.xml
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\System.Web.WebPages.xml
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\System.Web.WebPages.Deployment.xml
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\System.Web.WebPages.Razor.xml
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\Antlr3.Runtime.pdb
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\bin\Newtonsoft.Json.xml
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\obj\Debug\CakeShopTCC.dll
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\obj\Debug\CakeShopTCC.pdb
+E:\3º modulo - t.i\CakeShopTCC\CakeShopTCC\obj\Debug\CakeShopTCC.csprojResolveAssemblyReference.cache

@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CakeShopTCC", "CakeShopTCC\CakeShopTCC.csproj", "{0734606F-9DA0-405E-B0C1-7529EE5450B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CakeShop.Models", "Models\CakeShop.Models.csproj", "{E4A96481-E593-4CBF-8015-ED2FA638A05B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CakeShop.DataAccess", "CakeShop.DataAccess\CakeShop.DataAccess.csproj", "{A7B93537-DC0D-442C-A9F0-1F25BAD68507}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0734606F-9DA0-405E-B0C1-7529EE5450B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0734606F-9DA0-405E-B0C1-7529EE5450B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0734606F-9DA0-405E-B0C1-7529EE5450B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0734606F-9DA0-405E-B0C1-7529EE5450B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4A96481-E593-4CBF-8015-ED2FA638A05B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4A96481-E593-4CBF-8015-ED2FA638A05B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4A96481-E593-4CBF-8015-ED2FA638A05B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4A96481-E593-4CBF-8015-ED2FA638A05B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7B93537-DC0D-442C-A9F0-1F25BAD68507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7B93537-DC0D-442C-A9F0-1F25BAD68507}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7B93537-DC0D-442C-A9F0-1F25BAD68507}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7B93537-DC0D-442C-A9F0-1F25BAD68507}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

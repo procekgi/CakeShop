@@ -1,0 +1,5 @@
+E:\3º modulo - t.i\CakeShopTCC\Models\obj\Debug\CakeShop.Models.csprojResolveAssemblyReference.cache
+E:\3º modulo - t.i\CakeShopTCC\Models\bin\Debug\CakeShop.Models.dll
+E:\3º modulo - t.i\CakeShopTCC\Models\bin\Debug\CakeShop.Models.pdb
+E:\3º modulo - t.i\CakeShopTCC\Models\obj\Debug\CakeShop.Models.dll
+E:\3º modulo - t.i\CakeShopTCC\Models\obj\Debug\CakeShop.Models.pdb
