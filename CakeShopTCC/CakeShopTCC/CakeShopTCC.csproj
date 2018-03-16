@@ -150,6 +150,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PedidoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -196,6 +197,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Pedido\Index.cshtml" />
     <Content Include="Views\Cliente\Cadastro.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -207,6 +209,16 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CakeShop.DataAccess\CakeShop.DataAccess.csproj">
+      <Project>{a7b93537-dc0d-442c-a9f0-1f25bad68507}</Project>
+      <Name>CakeShop.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\CakeShop.Models.csproj">
+      <Project>{e4a96481-e593-4cbf-8015-ed2fa638a05b}</Project>
+      <Name>CakeShop.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

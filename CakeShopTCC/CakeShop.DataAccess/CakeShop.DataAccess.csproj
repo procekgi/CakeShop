@@ -45,10 +45,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CakeShopTCC\CakeShopTCC.csproj">
-      <Project>{0734606f-9da0-405e-b0c1-7529ee5450b6}</Project>
-      <Name>CakeShopTCC</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Models\CakeShop.Models.csproj">
       <Project>{e4a96481-e593-4cbf-8015-ed2fa638a05b}</Project>
       <Name>CakeShop.Models</Name>

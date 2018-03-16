@@ -6,9 +6,10 @@ using System.Web.Mvc;
 
 namespace CakeShopTCC.Controllers
 {
-    public class ClienteController : Controller
+    public class LoginController : Controller
     {
-        public ActionResult Cadastro()
+        // GET: Login
+        public ActionResult Index()
         {
             return View();
         }
