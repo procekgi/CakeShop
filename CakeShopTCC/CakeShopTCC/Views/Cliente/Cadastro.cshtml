@@ -6,78 +6,84 @@
            <hr />
         </div>
     </div>
-<div class="row">
-    <div class="col-lg-6">
-        <form action="@Url.Action("Entrar", "Cliente")" class="form-horizontal">
-            <div class="form-group">
-                <div class="col-lg-6">
-                    @Html.LabelFor(m => m.Login_usuario, "Usuário", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Login_usuario, new { @class = "form-control" })
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <form action="@Url.Action("Entrar", "Cliente")" class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-lg-6">
+                        @Html.LabelFor(m => m.Login_usuario, "Usuário", new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.Login_usuario, new { @class = "form-control" })
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-lg-6">
-                    @Html.LabelFor(m => m.Senha, "Senha", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Senha, new { @class = "form-control" })
+                <div class="form-group">
+                    <div class="col-lg-6">
+                        @Html.LabelFor(m => m.Senha, "Senha", new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.Senha, new { @class = "form-control" })
 
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-lg-6 text-left">
-                    <button type="submit" class="btn" style="background-color:firebrick;">Entrar</button>
-                    <button type="button" class="btn btn-default">Cancelar</button>
+                <div class="form-group">
+                    <div class="col-lg-6 text-left">
+                        <button type="submit" class="btn" style="background-color:firebrick;">Entrar</button>
+                        <button type="button" class="btn btn-default">Cancelar</button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-
-<div class="row">
+    i
     <div class="col-lg-6">
         <h2>Faça seu cadastro</h2>
         <hr />>
     </div>
 </div>
-<div class="col-lg-6">
-    <form action="@Url.Action("Cadastrar", "Cliente")" class="form-horizontal">
-        <div class="form-group">
-            <div class="col-lg-6">
-                @Html.LabelFor(m => m.Nome_Cliente, "Nome", new { @class = "control-label" })
-                @Html.TextBoxFor(m => m.Nome_Cliente, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-lg-6">
-                @Html.LabelFor(m => m.Email, "Email", new { @class = "control-label" })
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-lg-3>
-                @Html.LabelFor(m => m.Telefone, "Telefone", new { @class = "control-label" })
-                @Html.TextBoxFor(m => m.Telefone, new { @class = "form-control" })
-            </div>
-            <div class="col-lg-3">
-                @Html.LabelFor(m => m.Login_usuario, "Nome de Usuário", new { @class = "control-label" })
-                @Html.TextBoxFor(m => m.Login_usuario, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-lg-3">
-                @Html.LabelFor(m => m.Senha, "Senha", new { @class = "control-label" })
-                @Html.TextBoxFor(m => m.Senha, new { @class = "form-control" })
-            </div>
-            <div class="col-lg-3">
-                @Html.LabelFor(m => m.Senha, "Confirmar senha", new { @class = "control-label" })
-                @Html.TextBoxFor(m => m.Senha, new { @class = "form-control" })
-            </div>
-        </div>
+<div class="container">
 
-        <div class="form-group">
-            <div class="col-lg-6 text-right">
-                <button type="submit" class="btn" style="background-color:firebrick;">Cadastrar</button>
-                <button type="button" class="btn btn-default" style="background-color:firebrick;">cancelar</button>
+
+    <div class="col-lg-6">
+        <form action="@Url.Action("Cadastrar", "Cliente")" class="form-horizontal">
+            <div class="form-group">
+                <div class="col-lg-6">
+                    @Html.LabelFor(m => m.Nome_Cliente, "Nome", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Nome_Cliente, new { @class = "form-control" })
+                </div>
             </div>
-        </div>
-    </form>
+            <div class="form-group">
+                <div class="col-lg-6">
+                    @Html.LabelFor(m => m.Email, "Email", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-3>
+                    @Html.LabelFor(m => m.Telefone, "Telefone", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Telefone, new { @class = "form-control" })
+                </div>
+                <div class="col-lg-3">
+                    @Html.LabelFor(m => m.Login_usuario, "Nome de Usuário", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Login_usuario, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-3">
+                    @Html.LabelFor(m => m.Senha, "Senha", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Senha, new { @class = "form-control" })
+                </div>
+                <div class="col-lg-3">
+                    @Html.LabelFor(m => m.Senha, "Confirmar senha", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Senha, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-6 text-right">
+                    <button type="submit" class="btn" style="background-color:firebrick;">Cadastrar</button>
+                    <button type="button" class="btn btn-default" style="background-color:#b74747;">cancelar</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
 </div>
+

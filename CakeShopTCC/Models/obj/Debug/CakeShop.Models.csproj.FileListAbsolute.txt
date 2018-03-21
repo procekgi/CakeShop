@@ -3,3 +3,8 @@ E:\3º modulo - t.i\CakeShopTCC\Models\bin\Debug\CakeShop.Models.dll
 E:\3º modulo - t.i\CakeShopTCC\Models\bin\Debug\CakeShop.Models.pdb
 E:\3º modulo - t.i\CakeShopTCC\Models\obj\Debug\CakeShop.Models.dll
 E:\3º modulo - t.i\CakeShopTCC\Models\obj\Debug\CakeShop.Models.pdb
+C:\Users\Aluno\Documents\GitHub\CakeShop\CakeShopTCC\Models\bin\Debug\CakeShop.Models.dll
+C:\Users\Aluno\Documents\GitHub\CakeShop\CakeShopTCC\Models\bin\Debug\CakeShop.Models.pdb
+C:\Users\Aluno\Documents\GitHub\CakeShop\CakeShopTCC\Models\obj\Debug\CakeShop.Models.csprojResolveAssemblyReference.cache
+C:\Users\Aluno\Documents\GitHub\CakeShop\CakeShopTCC\Models\obj\Debug\CakeShop.Models.dll
+C:\Users\Aluno\Documents\GitHub\CakeShop\CakeShopTCC\Models\obj\Debug\CakeShop.Models.pdb
