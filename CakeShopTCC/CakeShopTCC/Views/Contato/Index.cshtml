@@ -1,0 +1,43 @@
+﻿@using CakeShop.Models
+@model Contato
+<div class="row">
+    <div class="col-md-12">
+        <h1>Contato</h1>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <h2>Deixe sua mensagem</h2>
+    <div class="container" id="Contato">
+        <img src="@Url.Content("~/Images/cake-13.jpg")" />
+        <div class="col-md-12">
+            <form action="@Url.Action("Enviar", "Contato")" class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.LabelFor(m => m.Nome, "Nome", new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.LabelFor(m => m.Email, "Email", new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.LabelFor(m => m.Mensagem, "Mensagem", new { @class = "control-label" })
+                        @Html.TextAreaFor(m => m.Mensagem, new { @class = "form-control", @rows = 10 })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12 text-right">
+                        <button type="button" class="btn btn-primary">Enviar</button>
+                        <button type="button" class="btn btn-primary" style="border:#e17373">Cancelar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

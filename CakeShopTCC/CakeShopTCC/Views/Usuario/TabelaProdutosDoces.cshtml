@@ -1,0 +1,28 @@
+﻿@using CakeShop.Models
+@model Produto
+    
+    <div class="row>">
+        <div class="col-md-12">
+          <h1>Doces</h1>
+              <div class="table-responsive">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Produto</th>
+                            <th>Categoria</th>
+                            <th>UDM</th>
+                            <th>Preço</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                </table>
+                  
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="@Url.Action("CadastroProduto","TabelaProdutosDoces")" class="btn btn-danger">Incluir Doce</a>
+                </div>
+            </div>
+        </div>
+    </div>

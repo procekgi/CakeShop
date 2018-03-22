@@ -6,14 +6,12 @@ using System.Web.Mvc;
 
 namespace CakeShopTCC.Controllers
 {
-    public class ContatoController : Controller
+    public class ProdutoController : Controller
     {
-        // GET: Contato
-        public ActionResult Index()
+        // GET: Produto
+        public ActionResult CadastroProduto()
         {
             return View();
         }
-
-        
     }
 }
