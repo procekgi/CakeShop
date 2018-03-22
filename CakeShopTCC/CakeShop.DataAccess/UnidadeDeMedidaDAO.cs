@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CakeShop.DataAccess
 {
-    public class Class1
+    class UnidadeDeMedidaDAO
     {
     }
 }
