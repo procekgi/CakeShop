@@ -1,74 +1,78 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>CakeShop</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/full-slider.css" rel="stylesheet" />
+    <link href="//fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900,300italic,400italic|Raleway:100,200,300,400,500,600,700,800,900,300italic,400italic|Lato:100,200,300,400,500,600,700,800,900,300italic,400italic&amp;subset=latin,latin-ext" rel="stylesheet" />
+    <style type="text/css">
+        body {
+            font-family: 'Raleway',sans-serif !important;
+        }
+
+        h2.meuTexto {
+            color: #303030 !important;
+            font-family: 'Raleway',sans-serif !important;
+            font-size: 32px !important;
+            line-height: 40px !important;
+            font-style: normal !important;
+            font-weight: 700 !important;
+            letter-spacing: 3px !important;
+            text-transform: uppercase !important;
+        }
+
+        h3.meuTexto {
+            color: #303030 !important;
+            font-family: 'Raleway',sans-serif !important;
+            font-size: 20px !important;
+            line-height: 34px !important;
+            font-style: normal !important;
+            font-weight: 300 !important;
+            letter-spacing: 0px !important;
+            text-transform: none !important;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Project name</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="@Url.Action("Cadastro", "Cliente")">Cliente</a></li>
-                    <li><a href="@Url.Action("Index", "Contato")">Contato</a></li>
-                   
-
-
-                   
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Produtos <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("Doces", "Produto")">Doces</a></li>
-                            <li><a href="@Url.Action("Salgados", "Produto")">Salgados</a></li>
-                            <li><a href="@Url.Action("Bolos", "Produto")">Bolos</a></li>
-
-                        </ul>
+            <a class="navbar-brand" href="#">CakeShop</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">
+                            Início
+                            <span class="sr-only">(current)</span>
+                        </a>
                     </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuário<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("Index", "Login")">Login Confeiteira</a></li>
-                            <li><a href="@Url.Action("Index", "Pedido")">Lista de pedidos</a></li>
-                            <li><a href="@Url.Action("CadastroProduto", "Produto")">Cadastrar Produtos</a></li>
-                            <li><a href="@Url.Action("TabelaClientes", "Usuario")">Lista de clientes</a></li>
-                            <li><a href="@Url.Action("TabelaProdutosDoces", "Usuario")">Lista Doces</a></li>
-                            <li><a href="@Url.Action("TabelaPRodutosSalgados", "Usuario")">Lista Salgados</a></li>
-                            <li><a href="@Url.Action("TabelaPRodutosBolos", "Usuario")">Lista Bolos</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sobre</a>
                     </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="../navbar/">Default</a></li>
-                    <li><a href="../navbar-static-top/">Static top</a></li>
-                    <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contato</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
-    @*<img src="@Url.Content("~/Images/bolo-cakeShop.jpg")" />*@
-    <div class="container">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    @RenderBody()
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright © CakeShop @DateTime.Now.Year</p>
+        </div>
+    </footer>
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    <script src="~/Scripts/js/bootstrap.bundle.min.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
