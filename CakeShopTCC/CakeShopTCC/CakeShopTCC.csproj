@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LowercaseRoutesMVC, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LowercaseRoutesMVC.1.0.3\lib\LowercaseRoutesMVC.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -179,6 +183,8 @@
     <Content Include="Images\DH22869.jpg" />
     <Content Include="Images\DH27674.jpg" />
     <Content Include="Images\DH27675.jpg" />
+    <Content Include="Images\DH27676.jpg" />
+    <Content Include="Images\DH27677.jpg" />
     <Content Include="Images\Salgados\barquete de rúcula com tomate seco e mussarela de bufala.jpg" />
     <Content Include="Images\Doces\Bombom gelado.jpg" />
     <Content Include="Images\Doces\brigadeiro de cappuccino.jpg" />
