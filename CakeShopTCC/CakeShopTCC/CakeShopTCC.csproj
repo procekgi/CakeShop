@@ -167,9 +167,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\Bombom gelado.jpg" />
-    <Content Include="Images\brigadeiro de cappuccino.jpg" />
-    <Content Include="Images\Brownie.jpg" />
+    <Content Include="Images\Bolos\Bolo com macarrons.jpg" />
+    <Content Include="Images\Bolos\Bolo de chocolate.jpg" />
+    <Content Include="Images\Bolos\Bolo glace recheio morango om flores.jpg" />
+    <Content Include="Images\Bolos\drip cake%28chocolate com morango%29.jpg" />
+    <Content Include="Images\Bolos\make up cake.jpg" />
+    <Content Include="Images\Bolos\mickey mouse cake.jpg" />
+    <Content Include="Images\Bolos\paris cake.jpg" />
+    <Content Include="Images\Bolos\pig cake.jpg" />
+    <Content Include="Images\Bolos\roses cake.jpg" />
+    <Content Include="Images\Salgados\barquete de rúcula com tomate seco e mussarela de bufala.jpg" />
+    <Content Include="Images\Doces\Bombom gelado.jpg" />
+    <Content Include="Images\Doces\brigadeiro de cappuccino.jpg" />
+    <Content Include="Images\Doces\Brownie.jpg" />
+    <Content Include="Images\Salgados\Empanadas de aspargows.jpg" />
+    <Content Include="Images\Salgados\esfiha de queijo.jpg" />
+    <Content Include="Images\Salgados\mini quiche de cebola.jpg" />
+    <Content Include="Images\Salgados\Mini sanduiche.jpg" />
+    <Content Include="Images\Salgados\Petisco de queijo e salame.jpg" />
+    <Content Include="Images\Salgados\Salpicao de frango.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -187,8 +203,8 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Images\cake-13.jpg" />
-    <Content Include="Images\bolo-cakeShop.jpg" />
+    <Content Include="Images\Bolos\cake-13.jpg" />
+    <Content Include="Images\Bolos\bolo-cakeShop.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -212,6 +228,9 @@
     <Content Include="Views\Usuario\TabelaProdutosBolos.cshtml" />
     <Content Include="Views\Usuario\TabelaClientes.cshtml" />
     <Content Include="Views\Produto\CadastroProduto.cshtml" />
+    <Content Include="Views\Produto\Doces.cshtml" />
+    <Content Include="Views\Produto\Salgados.cshtml" />
+    <Content Include="Views\Produto\Bolos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

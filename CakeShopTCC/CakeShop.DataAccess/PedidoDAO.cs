@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CakeShop.DataAccess
 {
-    class PedidoDAO
+    public class PedidoDAO
     {
     }
 }

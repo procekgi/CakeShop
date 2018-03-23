@@ -13,5 +13,18 @@ namespace CakeShopTCC.Controllers
         {
             return View();
         }
+
+        public ActionResult Doces()
+        {
+            return View();
+        }
+        public ActionResult Salgados()
+        {
+            return View();
+        }
+        public ActionResult Bolos()
+        {
+            return View();
+        }
     }
 }
