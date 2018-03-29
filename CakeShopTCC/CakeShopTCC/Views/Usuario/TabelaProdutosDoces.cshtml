@@ -16,6 +16,17 @@
                             <th>Descrição</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        @foreach (Produto item in Model)
+                        {
+                            <tr>@item.Id_Produto</tr>
+                            <tr>@item.Nome_Produto</tr>
+                            <tr>@item.Id_Categoria</tr>
+                            <tr>@item.Id_UnidadeDeMedida</tr>
+                            <tr>@item.Preco</tr>
+                            <tr>@item.Descricao</tr>
+                        }
+                    </tbody>
                 </table>
                   
             </div>

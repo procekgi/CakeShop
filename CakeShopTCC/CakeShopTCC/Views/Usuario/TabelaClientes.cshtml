@@ -1,11 +1,6 @@
 ﻿
 @using CakeShop.Models
-@model Cliente
-<div class="row">
-    <div class="col-md-12">
-        <a href="@Url.Action("Cliente")"
-    </div>
-</div>
+@model List<Cliente>
 <div class="row>">
     <div class="col-md-12">
         <h1>Clientes</h1>
@@ -17,10 +12,22 @@
                         <th>Cliente</th>
                         <th>Email</th>
                         <th>Telefone</th>
-                        
-                        
+                        <th>Nome de usuário</th>
+
                     </tr>
                 </thead>
+                <tbody>
+                    @foreach (Cliente item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id_Cliente</td>
+                            <td>@item.Nome_Cliente</td>
+                            <td>@item.Email</td>
+                            <td>@item.Telefone</td>
+                            <td>@item.Login_usuario</td>
+                        </tr>
+                    }
+                </tbody>
             </table>
         </div>
     </div>

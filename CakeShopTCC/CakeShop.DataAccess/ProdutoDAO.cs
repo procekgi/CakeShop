@@ -38,7 +38,7 @@ namespace CakeShop.DataAccess
             }
         }
 
-     /*  public List<Produto> BuscarTodos()
+        public List<Produto> BuscarTodos()
         {
             var lst = new List<Produto>();
             using (SqlConnection conn =
@@ -53,6 +53,7 @@ namespace CakeShop.DataAccess
                 using (SqlCommand cmd = new SqlCommand(strSQL))
                 {
                     conn.Open();
+                    cmd.Connection = conn;
                     cmd.CommandText = strSQL;
                     var dataReader = cmd.ExecuteReader();
                     var dt = new DataTable();
@@ -63,11 +64,82 @@ namespace CakeShop.DataAccess
                     {
                         var produto = new Produto()
                         {
-                            Id_Produto = Convert.ToInt32(row["id"])
+                            Id_Produto = Convert.ToInt32(row["id"]),
+                             Nome_Produto = row["Nome_produto"].ToString(),
+                            Preco = Convert.ToDecimal(row["Preco"]),
+                            Id_UnidadeDeMedida = new UnidadeDeMedida
+                            {
+                                Id_UnidadeDeMedida = Convert.ToInt32(row["Id"]),
+                                Nome = row["nome"].ToString()
+
+                            },
+                            Id_Categoria = new Categoria
+                            {
+                                Id_Categoria = Convert.ToInt32(row["id_categoria"]),
+                                Nome_Categoria = row["nome"].ToString()
+                            },
+                            Descricao = row["descricao"].ToString()
                         };
+
+                        lst.Add(produto);
                     }
                 }
             }
-        }*/
+
+            return lst;
+        }
+
+        public List<Produto> BuscarPorCategoria(int categoriaId)
+        {
+            var lst = new List<Produto>();
+            using (SqlConnection conn =
+                new SqlConnection(@"Initial Catalog=CakeShop;
+                            Data Source=localhost;
+                            Integrated Security=SSPI;"))
+            {
+                string strSQL = @"select u.Nome, c.Nome, p.Nome_Produto, p.Preco, p.Descricao from Produto p
+                                inner join in UnidadeDeMedida u on (p.Id_UnidadeDeMedida = u.Id)
+                                inner join in Categoria c on (p.Id_Categoria = c.Id)
+                                where p.Id_Categoria = @Id_Categoria;";
+
+                using (SqlCommand cmd = new SqlCommand(strSQL))
+                {
+                    conn.Open();
+                    cmd.CommandText = strSQL;
+                    cmd.Parameters.Add("@Id_Categoria", SqlDbType.Int).Value = categoriaId;
+                    var dataReader = cmd.ExecuteReader();
+                    var dt = new DataTable();
+                    dt.Load(dataReader);
+                    conn.Close();
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        var produto = new Produto()
+                        {
+                            Id_Produto = Convert.ToInt32(row["id"]),
+                            Nome_Produto = row["Nome_produto"].ToString(),
+                            Preco = Convert.ToDecimal(row["Preco"]),
+                            Id_UnidadeDeMedida = new UnidadeDeMedida
+                            {
+                                Id_UnidadeDeMedida = Convert.ToInt32(row["Id"]),
+                                Nome = row["nome"].ToString()
+
+                            },
+                            Id_Categoria = new Categoria
+                            {
+                                Id_Categoria = Convert.ToInt32(row["id_categoria"]),
+                                Nome_Categoria = row["nome"].ToString()
+                            },
+                            Descricao = row["descricao"].ToString()
+
+                        };
+
+                        lst.Add(produto);
+                    }
+                }
+            }
+
+            return lst;
+        }
     }
 }

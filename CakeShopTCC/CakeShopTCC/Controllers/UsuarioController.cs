@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CakeShop.DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,7 +9,6 @@ namespace CakeShopTCC.Controllers
 {
     public class UsuarioController : Controller
     {
-        // GET: Usuario
         public ActionResult Index()
         {
             return View();
@@ -29,9 +29,8 @@ namespace CakeShopTCC.Controllers
         }
         public ActionResult TabelaClientes()
         {
-            return View();
+            var lstClientes = new ClienteDAO().BuscarTodos();
+            return View(lstClientes);
         }
-
-
     }
 }
