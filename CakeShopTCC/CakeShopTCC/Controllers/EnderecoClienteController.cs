@@ -6,15 +6,15 @@ using System.Web.Mvc;
 
 namespace CakeShopTCC.Controllers
 {
-    public class PedidoController : Controller
+    public class EnderecoClienteController : Controller
     {
-        // GET: Pedido
+        // GET: EnderecoCliente
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult CadastroPedido()
+        public ActionResult CadastroEndereco()
         {
             return View();
         }

@@ -155,10 +155,12 @@
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\ContatoController.cs" />
+    <Compile Include="Controllers\EnderecoClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PedidoController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
+    <Compile Include="Controllers\SobreNosController.cs" />
     <Compile Include="Controllers\UnidadeDeMedidaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -170,15 +172,19 @@
     <Content Include="Content\full-slider.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\baked-goods-1867459_640.jpg" />
     <Content Include="Images\Bolos\Bolo com macarrons.jpg" />
     <Content Include="Images\Bolos\Bolo de chocolate.jpg" />
     <Content Include="Images\Bolos\Bolo glace recheio morango om flores.jpg" />
+    <Content Include="Images\Bolos\cheesecake-1149481_1280.jpg" />
     <Content Include="Images\Bolos\drip cake%28chocolate com morango%29.jpg" />
     <Content Include="Images\Bolos\make up cake.jpg" />
     <Content Include="Images\Bolos\mickey mouse cake.jpg" />
     <Content Include="Images\Bolos\paris cake.jpg" />
     <Content Include="Images\Bolos\pig cake.jpg" />
     <Content Include="Images\Bolos\roses cake.jpg" />
+    <Content Include="Images\cake-pops-693645_640.jpg" />
+    <Content Include="Images\churros-2188871_1920.jpg" />
     <Content Include="Images\DH22866.jpg" />
     <Content Include="Images\DH22867.jpg" />
     <Content Include="Images\DH22868.jpg" />
@@ -187,6 +193,7 @@
     <Content Include="Images\DH27675.jpg" />
     <Content Include="Images\DH27676.jpg" />
     <Content Include="Images\DH27677.jpg" />
+    <Content Include="Images\food-3021165_1920.jpg" />
     <Content Include="Images\Salgados\barquete de rúcula com tomate seco e mussarela de bufala.jpg" />
     <Content Include="Images\Doces\Bombom gelado.jpg" />
     <Content Include="Images\Doces\brigadeiro de cappuccino.jpg" />
@@ -197,6 +204,7 @@
     <Content Include="Images\Salgados\Mini sanduiche.jpg" />
     <Content Include="Images\Salgados\Petisco de queijo e salame.jpg" />
     <Content Include="Images\Salgados\Salpicao de frango.jpg" />
+    <Content Include="Images\wood-3242864_1920.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -246,6 +254,11 @@
     <Content Include="Views\Produto\Salgados.cshtml" />
     <Content Include="Views\Produto\Bolos.cshtml" />
     <Content Include="Views\UnidadeDeMedida\CadastroUnidadeDeMedida.cshtml" />
+    <Content Include="Views\Usuario\ListaUDM.cshtml" />
+    <Content Include="Views\Produto\ListaTodosOsProdutos.cshtml" />
+    <Content Include="Views\EnderecoCliente\CadastroEndereco.cshtml" />
+    <Content Include="Views\Pedido\CadastroPedido.cshtml" />
+    <Content Include="Views\SobreNos\Sobre.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
