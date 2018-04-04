@@ -1,4 +1,5 @@
 ﻿using CakeShop.DataAccess;
+using CakeShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace CakeShopTCC.Controllers
         // GET: Produto
         public ActionResult CadastroProduto()
         {
+            ViewBag.Unidades = new UnidadeDeMedidaDAO().BuscarTodos();
+            ViewBag.Categorias = new CategoriaDAO().BuscarTodos();
             return View();
         }
 
@@ -31,6 +34,12 @@ namespace CakeShopTCC.Controllers
         {
             var lst = new ProdutoDAO().BuscarTodos();
             return View(lst);
+        }
+
+        public ActionResult Salvar(Produto obj)
+        {
+            new ProdutoDAO().Inserir(obj);
+            return RedirectToAction("ListaTodosOsProdutos", "Produto");
         }
 
 

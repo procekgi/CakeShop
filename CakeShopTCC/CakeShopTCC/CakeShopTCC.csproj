@@ -259,6 +259,7 @@
     <Content Include="Views\EnderecoCliente\CadastroEndereco.cshtml" />
     <Content Include="Views\Pedido\CadastroPedido.cshtml" />
     <Content Include="Views\SobreNos\Sobre.cshtml" />
+    <Content Include="Views\UnidadeDeMedida\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

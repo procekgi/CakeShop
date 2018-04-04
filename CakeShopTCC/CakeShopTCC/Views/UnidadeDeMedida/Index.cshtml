@@ -1,0 +1,32 @@
+﻿
+
+@using CakeShop.Models
+@model List<UnidadeDeMedida>
+<div class="row>">
+    <div class="col-md-12">
+        <h1>Unidades de Medida</h1>
+        <div class="table-responsive">
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Unidade</th>
+                        <th>Sigla</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (UnidadeDeMedida item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id_UnidadeDeMedida</td>
+                            <td>@item.Nome</td>
+                            <td>@item.Sigla</td>
+                            
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

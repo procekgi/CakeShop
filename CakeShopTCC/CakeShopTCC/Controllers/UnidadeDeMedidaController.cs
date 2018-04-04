@@ -13,13 +13,19 @@ namespace CakeShopTCC.Controllers
         // GET: UnidadeDeMedida
         public ActionResult Index()
         {
-            return View();
+            var lst = new UnidadeDeMedidaDAO().BuscarTodos();
+            return View(lst);
         }
 
         public ActionResult Salvar(UnidadeDeMedida obj)
         {
             new UnidadeDeMedidaDAO().Inserir(obj);
-            return RedirectToAction("Index","Pedido");
+            return RedirectToAction("Index","UnidadeDeMedida");
+        }
+
+        public ActionResult CadastroUnidadeDeMedida()
+        {
+            return View();
         }
     }
 }

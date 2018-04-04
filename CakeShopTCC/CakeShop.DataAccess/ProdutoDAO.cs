@@ -47,8 +47,8 @@ namespace CakeShop.DataAccess
                             Integrated Security=SSPI;"))
             {
                 string strSQL = @"select u.Nome, c.Nome, p.Nome_Produto, p.Preco, p.Descricao from Produto p
-                                inner join in UnidadeDeMedida u on (p.Id_UnidadeDeMedida = u.Id)
-                                inner join in Categoria c on (p.Id_Categoria = c.Id);";
+                                inner join UnidadeDeMedida u on (p.Id_UnidadeDeMedida = u.Id)
+                                inner join Categoria c on (p.Id_Categoria = c.Id);";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
                 {

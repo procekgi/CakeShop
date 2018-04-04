@@ -34,5 +34,42 @@ namespace CakeShop.DataAccess
                 }
             }
         }
+
+        public List<Categoria> BuscarTodos()
+        {
+            var lst = new List<Categoria>();
+            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=CakeShop;
+                                                            Data Source=localhost;
+                                                            Integrated Security=SSPI;"))
+            {
+                string strSQL = @"select * from Categoria;";
+                using (SqlCommand cmd = new SqlCommand(strSQL))
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                    cmd.CommandText = strSQL;
+                    var dataReader = cmd.ExecuteReader();
+                    var dt = new DataTable();
+                    dt.Load(dataReader);
+                    conn.Close();
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        var categoria = new Categoria()
+                        {
+
+                            Nome_Categoria = row["Nome"].ToString(),
+                        };
+
+                        lst.Add(categoria);
+                    }
+                }
+            }
+
+            return lst;
+        }
     }
+
+   
+
 }
