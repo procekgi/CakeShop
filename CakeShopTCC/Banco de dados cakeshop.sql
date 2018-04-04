@@ -1,4 +1,9 @@
+use master
+go
+
 create database CakeShop
+go
+
 use CakeShop
 go
 
@@ -13,44 +18,47 @@ create table cliente(
 	Numero int,
 	CEP int,
 	Cidade varchar(50),
-	Estado char(3))
+	Estado char(3)
+);
 
-create table pedido(
+create table pedido (
 	id_pedido int primary key identity(1,1),
 	Id_cliente int references cliente(Id_cliente),
 	QTD_Item_pedido int,
-	DataEntrega datetime)
+	DataEntrega datetime
+);
 
+create table UnidadeDeMedida (
+	Id int primary key identity(1,1),
+	Nome varchar(20),
+	Sigla char(3)
+) 
 
-create table produto(
+create table Categoria (
+	Id int primary key identity(1,1),
+	Nome varchar(10)
+);
+
+create table produto (
 	Id_Produto int primary key identity(1,1),
 	Nome_Produto varchar(200),
 	Preco Decimal (10,2),
 	Id_UnidadeDeMedida int references UnidadeDeMedida(Id),
 	Id_Categoria int references Categoria(ID),
 	Descricao varchar(max)
-	)
+);
 
-	create table UnidadeDeMedida(
-	Id int primary key identity(1,1),
-	Nome varchar(20),
-	Sigla char(3)
-	) 
-
-	create table Categoria(
-		Id int primary key identity(1,1),
-		Nome varchar(10))
-
-create table Item_pedido(
+create table Item_pedido (
 	Id_pedido int references pedido(Id_pedido),
 	Item_produto varchar(100),
 	Id_produto int references produto(Id_produto),
-	QTD_Item_produto int)
+	QTD_Item_produto int
+);
 
-
-	create table usuario(
-		id int primary key,
-		Nome varchar(100),
-		LoginUsuario varchar(20),
-		Senha varchar(10), 
-		Email varchar(200))
+create table usuario (
+	id int primary key,
+	Nome varchar(100),
+	LoginUsuario varchar(20),
+	Senha varchar(10), 
+	Email varchar(200)
+);
