@@ -8,13 +8,7 @@ namespace CakeShopTCC.Controllers
 {
     public class SobreNosController : Controller
     {
-        // GET: SobreNos
         public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult Sobre()
         {
             return View();
         }

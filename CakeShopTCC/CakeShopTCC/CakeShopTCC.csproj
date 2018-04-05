@@ -185,6 +185,7 @@
     <Content Include="Images\Bolos\roses cake.jpg" />
     <Content Include="Images\cake-pops-693645_640.jpg" />
     <Content Include="Images\churros-2188871_1920.jpg" />
+    <Content Include="Images\Contato.jpg" />
     <Content Include="Images\DH22866.jpg" />
     <Content Include="Images\DH22867.jpg" />
     <Content Include="Images\DH22868.jpg" />
@@ -204,6 +205,7 @@
     <Content Include="Images\Salgados\Mini sanduiche.jpg" />
     <Content Include="Images\Salgados\Petisco de queijo e salame.jpg" />
     <Content Include="Images\Salgados\Salpicao de frango.jpg" />
+    <Content Include="Images\sobreNos.jpg" />
     <Content Include="Images\wood-3242864_1920.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -238,8 +240,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Pedido\Index.cshtml" />
     <Content Include="Views\Cliente\Cadastro.cshtml" />
@@ -258,7 +258,7 @@
     <Content Include="Views\Produto\ListaTodosOsProdutos.cshtml" />
     <Content Include="Views\EnderecoCliente\CadastroEndereco.cshtml" />
     <Content Include="Views\Pedido\CadastroPedido.cshtml" />
-    <Content Include="Views\SobreNos\Sobre.cshtml" />
+    <Content Include="Views\SobreNos\Index.cshtml" />
     <Content Include="Views\UnidadeDeMedida\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />

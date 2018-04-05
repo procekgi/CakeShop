@@ -1,43 +1,54 @@
 ﻿@using CakeShop.Models
 @model Contato
-<div class="row">
-    <div class="col-md-12">
-        <h1>Contato</h1>
-        <hr />
-    </div>
-</div>
-<div class="row">
-    <h2>Deixe sua mensagem</h2>
-    <div class="container" id="Contato">
-        <img src="@Url.Content("~/Images/cake-13.jpg")" />
-        <div class="col-md-12">
-            <form action="@Url.Action("Enviar", "Contato")" class="form-horizontal">
-                <div class="form-group">
-                    <div class="col-md-12">
-                        @Html.LabelFor(m => m.Nome, "Nome", new { @class = "control-label" })
-                        @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-12">
-                        @Html.LabelFor(m => m.Email, "Email", new { @class = "control-label" })
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-12">
-                        @Html.LabelFor(m => m.Mensagem, "Mensagem", new { @class = "control-label" })
-                        @Html.TextAreaFor(m => m.Mensagem, new { @class = "form-control", @rows = 10 })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-12 text-right">
-                        <button type="button" class="btn btn-danger">Enviar</button>
-                        <button type="button" class="btn btn-danger" >Cancelar</button>
-                    </div>
-                </div>
-            </form>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12" style="padding: 0px !important;">
+            <img class="img-fluid" src="@Url.Content("~/Images/sobreNos.jpg")" />
         </div>
     </div>
 </div>
+<section class="py-5">
+    <div class="container text-center">
+        <h2 class="meuTexto">VENHA NOS VISITAR</h2>
+        <h3 class="meuTexto">
+            Um ambiente agradável, repleto de experiências especiais.
+        </h3>
+    </div>
+</section>
+<section class="py-5" style="padding-top: 0px !important;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <form action="@Url.Action("Enviar", "Contato")" class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.Nome, "Nome:", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.Email, "E-mail:", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.Mensagem, "Mensagem:", new { @class = "control-label" })
+                            @Html.TextAreaFor(m => m.Mensagem, new { @class = "form-control", @rows = 10 })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 text-right">
+                            <button type="button" class="btn btn-danger">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <br />
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3602.0842302967776!2d-49.30184958538111!3d-25.468862740665138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce3721cabd4bb%3A0x8f3ff96168aa61a5!2sSistema+Fiep+-+Sesi%2FSenai%2FIEL+-+Port%C3%A3o%2C+Curitiba!5e0!3m2!1spt-BR!2sbr!4v1522959879162" style="width: 100%; height: 430px; border: 1px solid black; margin-top: 10px;"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
