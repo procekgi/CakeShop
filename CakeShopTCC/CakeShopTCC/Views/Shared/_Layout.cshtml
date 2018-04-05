@@ -39,6 +39,10 @@
         .bg-dark {
             background-color: transparent !important;
         }
+
+        .dropdown-menu {
+            background-color: transparent !important;
+        }
     </style>
 </head>
 <body>
@@ -56,14 +60,19 @@
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Sobre", "SobreNos")">Sobre</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Produtos</a>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Produtos <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="nav-link" href="#">Bolos</a></li>
+                            <li><a class="nav-link" href="#">Doces</a></li>
+                            <li><a class="nav-link" href="#">Salgados</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("Index", "Contato")">Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Sobre", "SobreNos")">Sobre</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("Index", "Login")">Login</a>
@@ -73,13 +82,39 @@
         </div>
     </nav>
     @RenderBody()
-    <footer class="py-5 bg-dark">
+    <footer class="py-5 bg-dark" style="background-color: #252525 !important;">
         <div class="container">
+            <p class="m-0 text-center text-white">
+                CakeShop
+            </p>
+            <p class="m-0 text-center text-white">
+                Endereço: Rua Padre Leonardo Nunes, 180 - Portão
+            </p>
+            <p class="m-0 text-center text-white">
+                Curitiba/PR - CEP 80330-320
+            </p>
+            <br />
             <p class="m-0 text-center text-white">Copyright © CakeShop @DateTime.Now.Year</p>
         </div>
     </footer>
     <script src="~/Scripts/js/jquery.min.js"></script>
     <script src="~/Scripts/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var scroll_pos = 0;
+            $(document).scroll(function () {
+                scroll_pos = $(this).scrollTop();
+                if (scroll_pos > 657) {
+                    $("nav.navbar").attr('style', 'background-color: #252525 !important');
+                    $("ul.dropdown-menu").attr('style', 'background-color: #252525 !important');
+                } else {
+                    $("nav.navbar").attr('style', 'background-color: transparent !important');
+                    $("ul.dropdown-menu").attr('style', 'background-color: transparent !important');
+                }
+            });
+            $('html, body').animate({ scrollTop: 0 }, 0);
+        });
+    </script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

@@ -1,10 +1,14 @@
-﻿
-@using CakeShop.Models
+﻿@using CakeShop.Models
 @model List<Produto>
-
 <div class="row>">
     <div class="col-md-12">
         <h1>Bolos</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <a href="@Url.Action("CadastroProduto")" class="btn btn-danger">Incluir Novo Produto</a>
+            </div>
+        </div>
+        <br />
         <div class="table-responsive">
             <table class="table table-condensed">
                 <thead>
@@ -20,20 +24,17 @@
                 <tbody>
                     @foreach (Produto item in Model)
                     {
-                        <tr>@item.Id_Produto</tr>
-                        <tr>@item.Nome_Produto</tr>
-                        <tr>@item.Id_Categoria</tr>
-                        <tr>@item.Id_UnidadeDeMedida</tr>
-                        <tr>@item.Preco</tr>
-                        <tr>@item.Descricao</tr>
+                        <tr>
+                            <td>@item.Id_Produto</td>
+                            <td>@item.Nome_Produto</td>
+                            <td>@item.Categoria.Nome_Categoria</td>
+                            <td>@item.UnidadeDeMedida.Nome</td>
+                            <td>@item.Preco</td>
+                            <td>@item.Descricao</td>
+                        </tr>
                     }
                 </tbody>
             </table>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <a href="@Url.Action("CadastroProduto")" class="btn btn-danger">Incluir Novo Produto</a>
-            </div>
         </div>
     </div>
 </div>

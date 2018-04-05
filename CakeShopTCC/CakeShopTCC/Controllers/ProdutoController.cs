@@ -10,7 +10,6 @@ namespace CakeShopTCC.Controllers
 {
     public class ProdutoController : Controller
     {
-        // GET: Produto
         public ActionResult CadastroProduto()
         {
             ViewBag.Unidades = new UnidadeDeMedidaDAO().BuscarTodos();
@@ -22,27 +21,27 @@ namespace CakeShopTCC.Controllers
         {
             return View();
         }
+
         public ActionResult Salgados()
         {
             return View();
         }
+
         public ActionResult Bolos()
         {
             return View();
         }
+
         public ActionResult ListaTodosOsProdutos()
         {
             var lst = new ProdutoDAO().BuscarTodos();
             return View(lst);
         }
 
-        public ActionResult Salvar(Produto obj)
+        public ActionResult SalvarProduto(Produto obj)
         {
             new ProdutoDAO().Inserir(obj);
             return RedirectToAction("ListaTodosOsProdutos", "Produto");
         }
-
-
-
     }
 }
