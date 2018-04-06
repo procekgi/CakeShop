@@ -8,10 +8,8 @@ namespace CakeShop.Models
     public class Pedido
     {
         public int Id_Pedido { get; set; }
-        public Cliente Id_cliente { get; set; }
-        public int QTD_Item_pedido { get; set; }
-        public  string DataEntrega { get; set; }
-
-
+        public Cliente Cliente { get; set; }
+        public DateTime DataPedido { get; set; }
+        public DateTime? DataEntrega { get; set; }
     }
 }
