@@ -39,6 +39,14 @@ create table Categoria (
 	Nome varchar(10)
 );
 
+
+insert into Categoria(Nome) 
+values 
+('Doces'),
+( 'Salgados'),
+( 'Bolos')
+
+
 create table produto (
 	Id_Produto int primary key identity(1,1),
 	Nome_Produto varchar(200),
@@ -62,3 +70,7 @@ create table usuario (
 	Senha varchar(10), 
 	Email varchar(200)
 );
+
+
+select*from produto
+

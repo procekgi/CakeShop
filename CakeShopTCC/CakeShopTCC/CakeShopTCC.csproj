@@ -260,6 +260,7 @@
     <Content Include="Views\Pedido\CadastroPedido.cshtml" />
     <Content Include="Views\SobreNos\Index.cshtml" />
     <Content Include="Views\UnidadeDeMedida\Index.cshtml" />
+    <Content Include="Views\Cliente\MinhaConta.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

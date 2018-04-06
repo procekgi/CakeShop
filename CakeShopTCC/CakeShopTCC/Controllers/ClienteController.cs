@@ -26,5 +26,10 @@ namespace CakeShopTCC.Controllers
             new ClienteDAO().Inserir(obj);
             return RedirectToAction("TabelaClientes", "Usuario");
         }
+
+        public ActionResult MinhaConta()
+        {
+            return View();
+        }
     }
 }

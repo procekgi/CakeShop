@@ -1,0 +1,64 @@
+﻿@using CakeShop.Models
+@model Cliente
+<div class="row">
+    <div class="col-lg-12">
+        <h2>Minha Conta</h2>
+        <h2>Meus pedidos</h2>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <form action="@Url.Action("MinhaConta","Cliente")" class="form-horizontal">
+            <div class="form-group">
+                <div class="col-lg-12">
+                    @Html.LabelFor(m => m.Nome_Cliente, "Nome", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Nome_Cliente, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-6">
+                    @Html.LabelFor(m => m.Telefone, "Telefone", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Telefone, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12">
+                    @Html.LabelFor(m => m.Email, "Email", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-10">
+                    @Html.LabelFor(m => m.Endereco, "Endereço", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Endereco, new { @class = "form-control" })
+                </div>
+                <div class="col-lg-2">
+                    @Html.LabelFor(m => m.Numero, "N°", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Numero, new { @class = "form-control" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-lg-6">
+                    @Html.LabelFor(m => m.Cidade, "Cidade", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Cidade, new { @class = "form-control" })
+                </div>
+                <div class="col-lg-6">
+                    @Html.LabelFor(m => m.Estado, "Estado", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Estado, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-12 text-right">
+                    <button type="submit" class="btn btn-danger">Editar</button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
