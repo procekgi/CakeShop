@@ -12,7 +12,7 @@ namespace CakeShop.Models
 	    public string Nome_Cliente { get; set; }
         public string Telefone { get; set; }
         public string Email { get; set; }
-        public string Login_usuario { get; set; }
+        public string Login_Usuario { get; set; }
         public string Senha { get; set; }
         public string Endereco { get; set; }
         public string Numero { get; set; }

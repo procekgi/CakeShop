@@ -1,11 +1,9 @@
-﻿using System;
+﻿using CakeShop.Models;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using CakeShop.Models;
 
 namespace CakeShop.DataAccess
 {
@@ -13,14 +11,14 @@ namespace CakeShop.DataAccess
     {
         public void Inserir(Categoria obj)
         {
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=CakeShop; Data Source=localhost; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
-                string strSQL = @"insert into categoria (Nome) values (@Nome);";
+                string strSQL = @"INSERT INTO CATEGORIA (NOME) VALUES (@NOME);";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
                 {
                     cmd.Connection = conn;
-                    cmd.Parameters.Add("@nome", SqlDbType.VarChar).Value = obj.Nome_Categoria;
+                    cmd.Parameters.Add("@NOME", SqlDbType.VarChar).Value = obj.Nome_Categoria;
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -32,9 +30,9 @@ namespace CakeShop.DataAccess
         public List<Categoria> BuscarTodos()
         {
             var lst = new List<Categoria>();
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=CakeShop; Data Source=localhost; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
-                string strSQL = @"select * from Categoria;";
+                string strSQL = @"SELECT * FROM CATEGORIA;";
                 using (SqlCommand cmd = new SqlCommand(strSQL))
                 {
                     conn.Open();
@@ -49,8 +47,8 @@ namespace CakeShop.DataAccess
                     {
                         var categoria = new Categoria()
                         {
-                            Id_Categoria = Convert.ToInt32(row["Id"]),
-                            Nome_Categoria = row["Nome"].ToString(),
+                            Id_Categoria = Convert.ToInt32(row["ID"]),
+                            Nome_Categoria = row["NOME"].ToString(),
                         };
 
                         lst.Add(categoria);

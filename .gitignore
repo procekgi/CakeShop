@@ -99,3 +99,4 @@ CakeShopTCC/CakeShopTCC.Models/bin/Debug/CakeShopTCC.Models.dll
 *.dll
 *.pdb
 *.cache
+*.pubxml

@@ -1,9 +1,7 @@
 ﻿using CakeShop.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -13,36 +11,30 @@ namespace CakeShop.DataAccess
     {
         public void Inserir(UnidadeDeMedida obj)
         {
-            using (SqlConnection conn = new SqlConnection
-                (@"Initial Catalog=CakeShop;
-                    Data Source=localhost;
-                    Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
-                string strSQL = @"Insert into UnidadeDeMedida(Nome, Sigla)
-                                        values (@Nome, @Sigla);";
+                string strSQL = @"INSERT INTO UNIDADEDEMEDIDA (NOME, SIGLA) VALUES (@NOME, @SIGLA);";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
                 {
                     cmd.Connection = conn;
-                    cmd.Parameters.Add("@Nome", SqlDbType.VarChar).Value = obj.Nome;
-                    cmd.Parameters.Add("@Sigla", SqlDbType.VarChar).Value = obj.Sigla;
+                    cmd.Parameters.Add("@NOME", SqlDbType.VarChar).Value = obj.Nome;
+                    cmd.Parameters.Add("@SIGLA", SqlDbType.VarChar).Value = obj.Sigla;
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();
                 }
-                
+
             }
         }
 
         public List<UnidadeDeMedida> BuscarTodos()
         {
             var lst = new List<UnidadeDeMedida>();
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=CakeShop;
-                                                            Data Source=localhost;
-                                                            Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
-                string strSQL = @"select * from UnidadeDeMedida;";
+                string strSQL = @"SELECT * FROM UNIDADEDEMEDIDA;";
                 using (SqlCommand cmd = new SqlCommand(strSQL))
                 {
                     conn.Open();
@@ -57,9 +49,9 @@ namespace CakeShop.DataAccess
                     {
                         var unidadeMedida = new UnidadeDeMedida()
                         {
-                            Id_UnidadeDeMedida = Convert.ToInt32(row["Id"]),
-                            Nome = row["Nome"].ToString(),
-                            Sigla = row["Sigla"].ToString()
+                            Id_UnidadeDeMedida = Convert.ToInt32(row["ID"]),
+                            Nome = row["NOME"].ToString(),
+                            Sigla = row["SIGLA"].ToString()
                         };
 
                         lst.Add(unidadeMedida);

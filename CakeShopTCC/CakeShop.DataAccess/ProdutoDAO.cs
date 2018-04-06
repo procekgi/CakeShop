@@ -1,9 +1,7 @@
 ﻿using CakeShop.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -13,19 +11,19 @@ namespace CakeShop.DataAccess
     {
         public void Inserir(Produto obj)
         {
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=CakeShop; Data Source=localhost; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
-                string strSQL = @"insert into produto (Nome_Produto, Preco, Id_UnidadeDeMedida, Id_Categoria, Descricao)
-                                  values (@Nome_Produto, @Preco, @Id_UnidadeDeMedida, @Id_Categoria, @Descricao);";
+                string strSQL = @"INSERT INTO PRODUTO (NOME_PRODUTO, PRECO, ID_UNIDADEDEMEDIDA, ID_CATEGORIA, DESCRICAO)
+                                  VALUES (@NOME_PRODUTO, @PRECO, @ID_UNIDADEDEMEDIDA, @ID_CATEGORIA, @DESCRICAO);";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
                 {
                     cmd.Connection = conn;
-                    cmd.Parameters.Add("@Nome_Produto", SqlDbType.VarChar).Value = obj.Nome_Produto;
-                    cmd.Parameters.Add("@Preco", SqlDbType.Decimal).Value = obj.Preco;
-                    cmd.Parameters.Add("@Id_UnidadeDeMedida", SqlDbType.Int).Value = obj.UnidadeDeMedida.Id_UnidadeDeMedida;
-                    cmd.Parameters.Add("@Id_Categoria", SqlDbType.Int).Value = obj.Categoria.Id_Categoria;
-                    cmd.Parameters.Add("@Descricao", SqlDbType.VarChar).Value = obj.Descricao;
+                    cmd.Parameters.Add("@NOME_PRODUTO", SqlDbType.VarChar).Value = obj.Nome_Produto;
+                    cmd.Parameters.Add("@PRECO", SqlDbType.Decimal).Value = obj.Preco;
+                    cmd.Parameters.Add("@ID_UNIDADEDEMEDIDA", SqlDbType.Int).Value = obj.UnidadeDeMedida.Id_UnidadeDeMedida;
+                    cmd.Parameters.Add("@ID_CATEGORIA", SqlDbType.Int).Value = obj.Categoria.Id_Categoria;
+                    cmd.Parameters.Add("@DESCRICAO", SqlDbType.VarChar).Value = obj.Descricao;
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -37,20 +35,20 @@ namespace CakeShop.DataAccess
         public List<Produto> BuscarTodos()
         {
             var lst = new List<Produto>();
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=CakeShop; Data Source=localhost; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
-                string strSQL = @"select 
-                                    u.Id as Id_UnidadeDeMedida,
-                                    u.Nome as Nome_Unidade, 
-                                    c.Id as Id_Categoria, 
-                                    c.Nome as Nome_Categoria, 
-                                    p.Id_Produto,
-                                    p.Nome_Produto, 
-                                    p.Preco, 
-                                    p.Descricao 
-                                from Produto p
-                                inner join UnidadeDeMedida u on (p.Id_UnidadeDeMedida = u.Id)
-                                inner join Categoria c on (p.Id_Categoria = c.Id);";
+                string strSQL = @"SELECT 
+                                    U.ID AS ID_UNIDADEDEMEDIDA,
+                                    U.NOME AS NOME_UNIDADE, 
+                                    C.ID AS ID_CATEGORIA, 
+                                    C.NOME AS NOME_CATEGORIA, 
+                                    P.ID_PRODUTO,
+                                    P.NOME_PRODUTO, 
+                                    P.PRECO, 
+                                    P.DESCRICAO 
+                                FROM PRODUTO P
+                                INNER JOIN UNIDADEDEMEDIDA U ON (P.ID_UNIDADEDEMEDIDA = U.ID)
+                                INNER JOIN CATEGORIA C ON (P.ID_CATEGORIA = C.ID);";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
                 {
@@ -66,20 +64,20 @@ namespace CakeShop.DataAccess
                     {
                         var produto = new Produto()
                         {
-                            Id_Produto = Convert.ToInt32(row["Id_Produto"]),
-                            Nome_Produto = row["Nome_Produto"].ToString(),
-                            Preco = Convert.ToDecimal(row["Preco"]),
+                            Id_Produto = Convert.ToInt32(row["ID_PRODUTO"]),
+                            Nome_Produto = row["NOME_PRODUTO"].ToString(),
+                            Preco = Convert.ToDecimal(row["PRECO"]),
                             UnidadeDeMedida = new UnidadeDeMedida
                             {
-                                Id_UnidadeDeMedida = Convert.ToInt32(row["Id_UnidadeDeMedida"]),
-                                Nome = row["Nome_Unidade"].ToString()
+                                Id_UnidadeDeMedida = Convert.ToInt32(row["ID_UNIDADEDEMEDIDA"]),
+                                Nome = row["NOME_UNIDADE"].ToString()
                             },
                             Categoria = new Categoria
                             {
-                                Id_Categoria = Convert.ToInt32(row["Id_Categoria"]),
-                                Nome_Categoria = row["Nome_Categoria"].ToString()
+                                Id_Categoria = Convert.ToInt32(row["ID_CATEGORIA"]),
+                                Nome_Categoria = row["NOME_CATEGORIA"].ToString()
                             },
-                            Descricao = row["descricao"].ToString()
+                            Descricao = row["DESCRICAO"].ToString()
                         };
 
                         lst.Add(produto);
@@ -93,21 +91,27 @@ namespace CakeShop.DataAccess
         public List<Produto> BuscarPorCategoria(int categoriaId)
         {
             var lst = new List<Produto>();
-            using (SqlConnection conn =
-                new SqlConnection(@"Initial Catalog=CakeShop;
-                            Data Source=localhost;
-                            Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
-                string strSQL = @"select u.Nome, c.Nome, p.Nome_Produto, p.Preco, p.Descricao from Produto p
-                                inner join in UnidadeDeMedida u on (p.Id_UnidadeDeMedida = u.Id)
-                                inner join in Categoria c on (p.Id_Categoria = c.Id)
-                                where p.Id_Categoria = @Id_Categoria;";
+                string strSQL = @"SELECT 
+                                    U.ID AS ID_UNIDADEDEMEDIDA,
+                                    U.NOME AS NOME_UNIDADE, 
+                                    C.ID AS ID_CATEGORIA, 
+                                    C.NOME AS NOME_CATEGORIA, 
+                                    P.ID_PRODUTO,
+                                    P.NOME_PRODUTO, 
+                                    P.PRECO, 
+                                    P.DESCRICAO 
+                                  FROM PRODUTO P
+                                  INNER JOIN IN UNIDADEDEMEDIDA U ON (P.ID_UNIDADEDEMEDIDA = U.ID)
+                                  INNER JOIN IN CATEGORIA C ON (P.ID_CATEGORIA = C.ID)
+                                  WHERE P.ID_CATEGORIA = @ID_CATEGORIA;";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
                 {
                     conn.Open();
                     cmd.CommandText = strSQL;
-                    cmd.Parameters.Add("@Id_Categoria", SqlDbType.Int).Value = categoriaId;
+                    cmd.Parameters.Add("@ID_CATEGORIA", SqlDbType.Int).Value = categoriaId;
                     var dataReader = cmd.ExecuteReader();
                     var dt = new DataTable();
                     dt.Load(dataReader);
@@ -117,22 +121,20 @@ namespace CakeShop.DataAccess
                     {
                         var produto = new Produto()
                         {
-                            Id_Produto = Convert.ToInt32(row["id"]),
-                            Nome_Produto = row["Nome_produto"].ToString(),
-                            Preco = Convert.ToDecimal(row["Preco"]),
+                            Id_Produto = Convert.ToInt32(row["ID_PRODUTO"]),
+                            Nome_Produto = row["NOME_PRODUTO"].ToString(),
+                            Preco = Convert.ToDecimal(row["PRECO"]),
                             UnidadeDeMedida = new UnidadeDeMedida
                             {
-                                Id_UnidadeDeMedida = Convert.ToInt32(row["Id"]),
-                                Nome = row["nome"].ToString()
-
+                                Id_UnidadeDeMedida = Convert.ToInt32(row["ID_UNIDADEDEMEDIDA"]),
+                                Nome = row["NOME_UNIDADE"].ToString()
                             },
                             Categoria = new Categoria
                             {
-                                Id_Categoria = Convert.ToInt32(row["id_categoria"]),
-                                Nome_Categoria = row["nome"].ToString()
+                                Id_Categoria = Convert.ToInt32(row["ID_CATEGORIA"]),
+                                Nome_Categoria = row["NOME_CATEGORIA"].ToString()
                             },
-                            Descricao = row["descricao"].ToString()
-
+                            Descricao = row["DESCRICAO"].ToString()
                         };
 
                         lst.Add(produto);

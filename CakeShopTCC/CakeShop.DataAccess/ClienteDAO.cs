@@ -1,6 +1,7 @@
 ﻿using CakeShop.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -10,24 +11,24 @@ namespace CakeShop.DataAccess
     {
         public void Inserir(Cliente obj)
         {
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=CakeShop; Data Source=localhost; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
-                string strSQL = @"Insert into Cliente (Nome_Cliente, Telefone, Email, Login_usuario, Senha, Endereco, Numero, CEP, Cidade, Estado)
-                                  values (@Nome_Cliente, @Telefone, @Email, @Login_usuario, @Senha, @Endereco, @Numero, @CEP, @Cidade, @Estado);";
+                string strSQL = @"INSERT INTO CLIENTE (NOME_CLIENTE, TELEFONE, EMAIL, LOGIN_USUARIO, SENHA, ENDERECO, NUMERO, CEP, CIDADE, ESTADO)
+                                  VALUES (@NOME_CLIENTE, @TELEFONE, @EMAIL, @LOGIN_USUARIO, @SENHA, @ENDERECO, @NUMERO, @CEP, @CIDADE, @ESTADO);";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
                 {
                     cmd.Connection = conn;
-                    cmd.Parameters.Add("@Nome_Cliente", SqlDbType.VarChar).Value = obj.Nome_Cliente;
-                    cmd.Parameters.Add("@Telefone", SqlDbType.VarChar).Value = obj.Telefone;
-                    cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = obj.Email;
-                    cmd.Parameters.Add("@Login_usuario", SqlDbType.VarChar).Value = obj.Login_usuario;
-                    cmd.Parameters.Add("@Senha", SqlDbType.VarChar).Value = obj.Senha;
-                    cmd.Parameters.Add("@Endereco", SqlDbType.VarChar).Value = obj.Endereco ?? string.Empty;
-                    cmd.Parameters.Add("@Numero", SqlDbType.VarChar).Value = obj.Numero ?? string.Empty;
+                    cmd.Parameters.Add("@NOME_CLIENTE", SqlDbType.VarChar).Value = obj.Nome_Cliente;
+                    cmd.Parameters.Add("@TELEFONE", SqlDbType.VarChar).Value = obj.Telefone;
+                    cmd.Parameters.Add("@EMAIL", SqlDbType.VarChar).Value = obj.Email;
+                    cmd.Parameters.Add("@LOGIN_USUARIO", SqlDbType.VarChar).Value = obj.Login_Usuario;
+                    cmd.Parameters.Add("@SENHA", SqlDbType.VarChar).Value = obj.Senha;
+                    cmd.Parameters.Add("@ENDERECO", SqlDbType.VarChar).Value = obj.Endereco ?? string.Empty;
+                    cmd.Parameters.Add("@NUMERO", SqlDbType.VarChar).Value = obj.Numero ?? string.Empty;
                     cmd.Parameters.Add("@CEP", SqlDbType.VarChar).Value = obj.CEP ?? string.Empty;
-                    cmd.Parameters.Add("@Cidade", SqlDbType.VarChar).Value = obj.Cidade ?? string.Empty;
-                    cmd.Parameters.Add("@Estado", SqlDbType.VarChar).Value = obj.Estado ?? string.Empty;
+                    cmd.Parameters.Add("@CIDADE", SqlDbType.VarChar).Value = obj.Cidade ?? string.Empty;
+                    cmd.Parameters.Add("@ESTADO", SqlDbType.VarChar).Value = obj.Estado ?? string.Empty;
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -39,9 +40,9 @@ namespace CakeShop.DataAccess
         public List<Cliente> BuscarTodos()
         {
             var lst = new List<Cliente>();
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=CakeShop; Data Source=localhost; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
-                string strSQL = @"select * from cliente";
+                string strSQL = @"SELECT * FROM CLIENTE;";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
                 {
@@ -57,17 +58,17 @@ namespace CakeShop.DataAccess
                     {
                         var cliente = new Cliente()
                         {
-                            Id_Cliente = Convert.ToInt32(row["Id_Cliente"]),
-                            Nome_Cliente = row["Nome_Cliente"].ToString(),
-                            Telefone = row["Telefone"].ToString(),
-                            Email = row["Email"].ToString(),
-                            Login_usuario = row["Login_usuario"].ToString(),
-                            Senha = row["Senha"].ToString(),
-                            Endereco = row["Endereco"].ToString(),
-                            Numero = row["Numero"].ToString(),
+                            Id_Cliente = Convert.ToInt32(row["ID_CLIENTE"]),
+                            Nome_Cliente = row["NOME_CLIENTE"].ToString(),
+                            Telefone = row["TELEFONE"].ToString(),
+                            Email = row["EMAIL"].ToString(),
+                            Login_Usuario = row["LOGIN_USUARIO"].ToString(),
+                            Senha = row["SENHA"].ToString(),
+                            Endereco = row["ENDERECO"].ToString(),
+                            Numero = row["NUMERO"].ToString(),
                             CEP = row["CEP"].ToString(),
-                            Cidade = row["Cidade"].ToString(),
-                            Estado = row["Estado"].ToString()
+                            Cidade = row["CIDADE"].ToString(),
+                            Estado = row["ESTADO"].ToString()
                         };
 
                         lst.Add(cliente);
