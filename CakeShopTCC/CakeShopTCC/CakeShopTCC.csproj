@@ -251,9 +251,9 @@
     <Content Include="Views\Usuario\TabelaProdutosBolos.cshtml" />
     <Content Include="Views\Usuario\TabelaClientes.cshtml" />
     <Content Include="Views\Produto\CadastroProduto.cshtml" />
-    <Content Include="Views\Produto\Doces.cshtml" />
-    <Content Include="Views\Produto\Salgados.cshtml" />
-    <Content Include="Views\Produto\Bolos.cshtml" />
+    <Content Include="Views\Produto\PaginaDoces.cshtml" />
+    <Content Include="Views\Produto\PaginaSalgados.cshtml" />
+    <Content Include="Views\Produto\PaginaBolos.cshtml" />
     <Content Include="Views\UnidadeDeMedida\CadastroUnidadeDeMedida.cshtml" />
     <Content Include="Views\Usuario\ListaUDM.cshtml" />
     <Content Include="Views\Produto\ListaTodosOsProdutos.cshtml" />

@@ -74,3 +74,4 @@ create table usuario (
 
 select*from produto
 
+

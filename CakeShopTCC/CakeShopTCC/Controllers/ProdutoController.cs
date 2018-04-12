@@ -17,17 +17,17 @@ namespace CakeShopTCC.Controllers
             return View();
         }
 
-        public ActionResult Doces()
+        public ActionResult PaginaDoces()
         {
             return View();
         }
 
-        public ActionResult Salgados()
+        public ActionResult PaginaSalgados()
         {
             return View();
         }
 
-        public ActionResult Bolos()
+        public ActionResult PaginaBolos()
         {
             return View();
         }
