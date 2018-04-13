@@ -9,6 +9,7 @@ namespace CakeShop.Models
     public class Cliente
     {
         public int Id_Cliente { get; set; } 
+        
 	    public string Nome_Cliente { get; set; }
         public string Telefone { get; set; }
         public string Email { get; set; }
