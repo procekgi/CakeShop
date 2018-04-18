@@ -21,6 +21,18 @@ create table cliente(
 	Estado char(3)
 );
 
+alter table cliente 
+add Login_Cliente Varchar(50);
+
+
+create table Contato(
+	Id int primary key identity(1,1),
+	NomeCliente varchar (100),
+	emailCliente varchar(200),
+	Mensagem varchar(max))
+
+select*from Contato
+
 create table pedido (
 	id_pedido int primary key identity(1,1),
 	Id_cliente int references cliente(Id_cliente),
@@ -33,6 +45,12 @@ create table UnidadeDeMedida (
 	Nome varchar(20),
 	Sigla char(3)
 ) 
+
+insert into UnidadeDeMedida (Nome, Sigla)
+values
+('Quilograma', 'kg'),
+('Grama', 'g'),
+('Unitário', 'un')
 
 create table Categoria (
 	Id int primary key identity(1,1),
@@ -72,6 +90,6 @@ create table usuario (
 );
 
 
-select*from produto
+select*from contato
 
 
