@@ -11,5 +11,6 @@ namespace CakeShop.Models
         public Cliente Cliente { get; set; }
         public DateTime DataPedido { get; set; }
         public DateTime? DataEntrega { get; set; }
+        public TimeSpan HorarioEntrega { get; set; }
     }
 }

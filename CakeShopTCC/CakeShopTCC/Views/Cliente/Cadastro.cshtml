@@ -7,14 +7,14 @@
         <form action="@Url.Action("Entrar", "Cliente")" class="form-horizontal">
             <div class="form-group">
                 <div class="col-lg-12">
-                    @Html.LabelFor(m => m.Login_Usuario, "Usuário", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Login_Usuario, new { @class = "form-control" })
+                    @Html.LabelFor(m => m.Login_Cliente, "Usuário", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Login_Cliente, new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-lg-12">
                     @Html.LabelFor(m => m.Senha, "Senha", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Senha, new { @class = "form-control" })
+                    @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-group">
@@ -47,8 +47,8 @@
                     @Html.TextBoxFor(m => m.Telefone, new { @class = "form-control" })
                 </div>
                 <div class="col-lg-6">
-                    @Html.LabelFor(m => m.Login_Usuario, "Nome de Usuário", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Login_Usuario, new { @class = "form-control" })
+                    @Html.LabelFor(m => m.Login_Cliente, "Nome de Usuário", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Login_Cliente, new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-group">

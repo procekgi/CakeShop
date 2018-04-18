@@ -22,7 +22,7 @@ namespace CakeShop.DataAccess
                     cmd.Parameters.Add("@NOME_CLIENTE", SqlDbType.VarChar).Value = obj.Nome_Cliente;
                     cmd.Parameters.Add("@TELEFONE", SqlDbType.VarChar).Value = obj.Telefone;
                     cmd.Parameters.Add("@EMAIL", SqlDbType.VarChar).Value = obj.Email;
-                    cmd.Parameters.Add("@LOGIN_USUARIO", SqlDbType.VarChar).Value = obj.Login_Usuario;
+                    cmd.Parameters.Add("@LOGIN_CLIENTE", SqlDbType.VarChar).Value = obj.Login_Cliente;
                     cmd.Parameters.Add("@SENHA", SqlDbType.VarChar).Value = obj.Senha;
                     cmd.Parameters.Add("@ENDERECO", SqlDbType.VarChar).Value = obj.Endereco ?? string.Empty;
                     cmd.Parameters.Add("@NUMERO", SqlDbType.VarChar).Value = obj.Numero ?? string.Empty;
@@ -62,7 +62,7 @@ namespace CakeShop.DataAccess
                             Nome_Cliente = row["NOME_CLIENTE"].ToString(),
                             Telefone = row["TELEFONE"].ToString(),
                             Email = row["EMAIL"].ToString(),
-                            Login_Usuario = row["LOGIN_USUARIO"].ToString(),
+                            Login_Cliente = row["LOGIN_USUARIO"].ToString(),
                             Senha = row["SENHA"].ToString(),
                             Endereco = row["ENDERECO"].ToString(),
                             Numero = row["NUMERO"].ToString(),

@@ -13,5 +13,9 @@ namespace CakeShopTCC.Controllers
         {
             return View();
         }
+        public ActionResult Entrar()
+        {
+            return RedirectToAction("Index", "Pedido");
+        }
     }
 }

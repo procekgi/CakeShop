@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CakeShop.DataAccess;
+using CakeShop.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,12 +10,17 @@ namespace CakeShopTCC.Controllers
 {
     public class ContatoController : Controller
     {
-        // GET: Contato
         public ActionResult Index()
         {
+
             return View();
         }
 
-        
+        public ActionResult Enviar(Contato obj)
+        {
+            new ContatoDAO().Inserir(obj);
+            return RedirectToAction("Index", "Contato");
+        }
+
     }
 }

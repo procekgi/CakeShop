@@ -1,8 +1,8 @@
 ﻿@using CakeShop.Models
-@model Usuario
+@model Login
 <div class="row">
-    <div class="col-md-4 col-md-offset-4">
-        <form action="@Url.Action("Entrar", "Usuario")" class="form-horizontal">
+    <div class="col-md-4">
+        <form action="@Url.Action("Index", "Pedido")" class="form-horizontal">
             <div class="form-group">
                 <div class="col-md-12 text-center">
                     <h2>Login</h2>
@@ -10,14 +10,19 @@
             </div>
             <div class="form-group">
                 <div class="col-md-12">
-                    @Html.LabelFor(m => m.Nome, "Usuário", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+                    @Html.LabelFor(m => m.LoginUsuario, "Usuário", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.LoginUsuario, new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-12">
                     @Html.LabelFor(m => m.Senha, "Senha", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Senha, new { @class = "form-control" })
+                    @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.ActionLink("É Administrador?", "Index", "Login")
                 </div>
             </div>
             <div class="form-group">
