@@ -13,6 +13,7 @@ namespace CakeShopTCC.Controllers
         {
             return View();
         }
+
         public ActionResult TabelaProdutosDoces()
         {
             return View();
@@ -27,6 +28,7 @@ namespace CakeShopTCC.Controllers
         {
             return View();
         }
+
         public ActionResult TabelaClientes()
         {
             var lstClientes = new ClienteDAO().BuscarTodos();

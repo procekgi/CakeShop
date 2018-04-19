@@ -6,15 +6,10 @@ using System.Threading.Tasks;
 
 namespace CakeShop.Models
 {
-    public class Cliente
+    public class Cliente : Usuario
     {
-        public int Id_Cliente { get; set; } 
-        
-	    public string Nome_Cliente { get; set; }
         public string Telefone { get; set; }
         public string Email { get; set; }
-        public string Login_Cliente { get; set; }
-        public string Senha { get; set; }
         public string Endereco { get; set; }
         public string Numero { get; set; }
         public string CEP { get; set; }

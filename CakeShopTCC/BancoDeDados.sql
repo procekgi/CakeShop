@@ -12,10 +12,11 @@ create table cliente(
 	Nome_Cliente varchar(200),
 	Telefone varchar(11),
 	Email varchar(250),
-	Login_usuario varchar(50),
+	Login_Cliente varchar(50),
 	Senha varchar(8),
 	Endereco varchar(300),
 	Numero int,
+	Complemento varchar(50),
 	CEP int,
 	Cidade varchar(50),
 	Estado char(3)
@@ -23,6 +24,14 @@ create table cliente(
 
 alter table cliente 
 add Login_Cliente Varchar(50);
+
+alter table cliente
+drop column login_usuario;
+
+alter table cliente
+add Complemento varchar(50);
+
+select*from cliente
 
 
 create table Contato(
@@ -89,7 +98,14 @@ create table usuario (
 	Email varchar(200)
 );
 
+insert into usuario(id, Nome, LoginUsuario, Senha, Email)
+values
+(1, 'Giovana Machado', 'ConfeiteiraLog', 'cs_giovana', 'procekgi@gmail.com')
+	
+select*from usuario
 
-select*from contato
 
 
+
+select * from usuario
+select * from cliente

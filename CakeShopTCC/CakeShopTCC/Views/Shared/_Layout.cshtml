@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using CakeShop.Models
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="utf-8" />
@@ -76,9 +77,22 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="@Url.Action("Index", "Login")">Login</a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="@Url.Action("Cadastro", "Cliente")">Faça seu cadastro</a>
-                    </li>
+                    @if (HttpContext.Current.User.GetType().Name == typeof(Usuario).Name && ((Usuario)User) != null)
+                    {
+                        <li class="nav-item active dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@(((Usuario)User).Nome)<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link active" href="@Url.Action("MinhaConta", "Cliente")">Minha Conta</a></li>
+                                <li><a class="nav-link active" href="@Url.Action("LogOff", "Cliente")">Sair</a></li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item active">
+                            <a class="nav-link" href="@Url.Action("Cadastro", "Cliente")">Faça seu cadastro</a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>

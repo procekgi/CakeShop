@@ -18,7 +18,7 @@ namespace CakeShop.DataAccess
                 using (SqlCommand cmd = new SqlCommand(strSQL))
                 {
                     cmd.Connection = conn;
-                    cmd.Parameters.Add("@ID_CLIENTE", SqlDbType.VarChar).Value = obj.Cliente.Id_Cliente;
+                    cmd.Parameters.Add("@ID_CLIENTE", SqlDbType.VarChar).Value = obj.Cliente.Id;
                     cmd.Parameters.Add("@DATA_PEDIDO", SqlDbType.DateTime).Value = obj.DataPedido;
                     cmd.Parameters.Add("@DATA_ENTREGA", SqlDbType.DateTime).Value = obj.DataEntrega.HasValue ? obj.DataEntrega.Value : new Nullable<DateTime>();
 
@@ -53,8 +53,8 @@ namespace CakeShop.DataAccess
                             Id_Pedido = Convert.ToInt32(row["ID_PEDIDO"]),
                             Cliente = new Cliente()
                             {
-                                Id_Cliente = Convert.ToInt32(row["ID_CLIENTE"]),
-                                Nome_Cliente = row["NOME_CLIENTE"].ToString()
+                                Id = Convert.ToInt32(row["ID_CLIENTE"]),
+                                Nome = row["NOME_CLIENTE"].ToString()
                             },
                             DataPedido = Convert.ToDateTime(row["DATA_PEDIDO"]),
                             DataEntrega = row["DATA_ENTREGA"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["DATA_ENTREGA"])

@@ -9,7 +9,7 @@ namespace CakeShop.DataAccess
 {
     public class UsuarioDAO
     {
-        public void Inserir(Usuario obj)
+        public void Inserir(Confeiteira obj)
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
@@ -19,7 +19,7 @@ namespace CakeShop.DataAccess
                 {
                     cmd.Connection = conn;
                     cmd.Parameters.Add("@NOME", SqlDbType.VarChar).Value = obj.Nome;
-                    cmd.Parameters.Add("@LOGINUSUARIO", SqlDbType.VarChar).Value = obj.LoginUsuario;
+                    cmd.Parameters.Add("@LOGINUSUARIO", SqlDbType.VarChar).Value = obj.Login;
                     cmd.Parameters.Add("@SENHA", SqlDbType.VarChar).Value = obj.Senha;
                     cmd.Parameters.Add("@EMAIL", SqlDbType.VarChar).Value = obj.Email;
 
@@ -30,9 +30,9 @@ namespace CakeShop.DataAccess
             }
         }
 
-        public List<Usuario> BuscarTodos()
+        public List<Confeiteira> BuscarTodos()
         {
-            var lst = new List<Usuario>();
+            var lst = new List<Confeiteira>();
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 string strSQL = @"SELECT * FROM USUARIO;";
@@ -48,11 +48,11 @@ namespace CakeShop.DataAccess
 
                     foreach (DataRow row in dt.Rows)
                     {
-                        var usuario = new Usuario()
+                        var usuario = new Confeiteira()
                         {
-                            Id_Usuario = Convert.ToInt32(row["ID"]),
+                            Id = Convert.ToInt32(row["ID"]),
                             Nome = row["NOME"].ToString(),
-                            LoginUsuario = row["LOGINUSUARIO"].ToString(),
+                            Login = row["LOGINUSUARIO"].ToString(),
                             Senha = row["SENHA"].ToString(),
                             Email = row["EMAIL"].ToString()
                         };
@@ -63,6 +63,44 @@ namespace CakeShop.DataAccess
             }
 
             return lst;
+        }
+
+        public Confeiteira Logar(Confeiteira obj)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
+            {
+                string strSQL = @"SELECT * FROM USUARIO WHERE LOGINUSUARIO = @LOGINUSUARIO AND SENHA = @SENHA;";
+
+                using (SqlCommand cmd = new SqlCommand(strSQL))
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                    cmd.Parameters.Add("@LOGINUSUARIO", SqlDbType.VarChar).Value = obj.Login;
+                    cmd.Parameters.Add("@SENHA", SqlDbType.VarChar).Value = obj.Senha;
+                    cmd.CommandText = strSQL;
+
+                    var dataReader = cmd.ExecuteReader();
+                    var dt = new DataTable();
+                    dt.Load(dataReader);
+                    conn.Close();
+
+                    if (!(dt != null && dt.Rows.Count > 0))
+                        return null;
+
+                    var row = dt.Rows[0];
+                    var Confeiteira = new Confeiteira()
+                    {
+                        Id = Convert.ToInt32(row["ID"]),
+                        Nome = row["NOME"].ToString(),
+                        Email = row["EMAIL"].ToString(),
+                        Login = row["LOGINUSUARIO"].ToString(),
+                        Senha = row["SENHA"].ToString()
+                    };
+
+                    return Confeiteira;
+                }
+            }
+
         }
     }
 }

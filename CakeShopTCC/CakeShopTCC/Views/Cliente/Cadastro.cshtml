@@ -7,8 +7,8 @@
         <form action="@Url.Action("Entrar", "Cliente")" class="form-horizontal">
             <div class="form-group">
                 <div class="col-lg-12">
-                    @Html.LabelFor(m => m.Login_Cliente, "Usuário", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Login_Cliente, new { @class = "form-control" })
+                    @Html.LabelFor(m => m.Login, "Usuário", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Login, new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-group">
@@ -31,8 +31,8 @@
         <form action="@Url.Action("Cadastrar", "Cliente")" class="form-horizontal">
             <div class="form-group">
                 <div class="col-lg-12">
-                    @Html.LabelFor(m => m.Nome_Cliente, "Nome", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Nome_Cliente, new { @class = "form-control" })
+                    @Html.LabelFor(m => m.Nome, "Nome", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-group">
@@ -47,8 +47,8 @@
                     @Html.TextBoxFor(m => m.Telefone, new { @class = "form-control" })
                 </div>
                 <div class="col-lg-6">
-                    @Html.LabelFor(m => m.Login_Cliente, "Nome de Usuário", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Login_Cliente, new { @class = "form-control" })
+                    @Html.LabelFor(m => m.Login, "Nome de Usuário", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Login, new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-group">
@@ -56,10 +56,10 @@
                     @Html.LabelFor(m => m.Senha, "Senha", new { @class = "control-label" })
                     @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
                 </div>
-                <div class="col-lg-6">
+                @*<div class="col-lg-6">
                     @Html.LabelFor(m => m.Senha, "Confirmar senha", new { @class = "control-label" })
                     @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
-                </div>
+                </div>*@
             </div>
             <div class="form-group">
                 <div class="col-lg-12 text-right">

@@ -163,6 +163,8 @@
     <Compile Include="Controllers\SobreNosController.cs" />
     <Compile Include="Controllers\UnidadeDeMedidaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="CustomPrincipalSerializeModel.cs" />
+    <Compile Include="FormsAuthenticationUtil.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -217,6 +219,11 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.fileupload-ui-noscript.css" />
+    <Content Include="Scripts\jquery.fileupload-ui.css" />
+    <Content Include="Scripts\jquery.fileupload.css" />
+    <Content Include="Scripts\jquery.fileupload.js" />
+    <Content Include="Scripts\jquery.iframe-transport.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
