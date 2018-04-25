@@ -60,5 +60,11 @@ namespace CakeShopTCC.Controllers
 
             return RedirectToAction("Cadastro", "Cliente");
         }
+
+
+        public ActionResult MeusPedidos()
+        {
+            return View();
+        }
     }
 }
