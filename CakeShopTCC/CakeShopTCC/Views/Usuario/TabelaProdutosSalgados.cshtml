@@ -1,6 +1,6 @@
 ﻿
 @using CakeShop.Models
-@model Produto
+@model List<Produto>
 
 <div class="row>">
     <div class="col-md-12">
@@ -22,8 +22,8 @@
                     {
                         <tr>@item.Id_Produto</tr>
                         <tr>@item.Nome_Produto</tr>
-                        <tr>@item.Id_Categoria</tr>
-                        <tr>@item.Id_UnidadeDeMedida</tr>
+                        <tr>@item.Categoria.Nome_Categoria</tr>
+                        <tr>@item.UnidadeDeMedida.Nome</tr>
                         <tr>@item.Preco</tr>
                         <tr>@item.Descricao</tr>
                     }
@@ -33,7 +33,11 @@
         <div class="row">
             <div class="col-md-12">
                 <a href="@Url.Action("CadastroProduto")" class="btn btn-danger">Incluir Salgado</a>
-            </div>
+           
+            
+            
+            
+              </div>
         </div>
     </div>
 </div>

@@ -103,13 +103,14 @@ namespace CakeShop.DataAccess
                                     P.PRECO, 
                                     P.DESCRICAO 
                                   FROM PRODUTO P
-                                  INNER JOIN IN UNIDADEDEMEDIDA U ON (P.ID_UNIDADEDEMEDIDA = U.ID)
-                                  INNER JOIN IN CATEGORIA C ON (P.ID_CATEGORIA = C.ID)
+                                  INNER JOIN UNIDADEDEMEDIDA U ON (P.ID_UNIDADEDEMEDIDA = U.ID)
+                                  INNER JOIN CATEGORIA C ON (P.ID_CATEGORIA = C.ID)
                                   WHERE P.ID_CATEGORIA = @ID_CATEGORIA;";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
                 {
                     conn.Open();
+                    cmd.Connection = conn;
                     cmd.CommandText = strSQL;
                     cmd.Parameters.Add("@ID_CATEGORIA", SqlDbType.Int).Value = categoriaId;
                     var dataReader = cmd.ExecuteReader();

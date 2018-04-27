@@ -41,7 +41,22 @@ namespace CakeShopTCC.Controllers
         public ActionResult SalvarProduto(Produto obj)
         {
             new ProdutoDAO().Inserir(obj);
-            return RedirectToAction("ListaTodosOsProdutos", "Produto");
+
+            switch (obj.Categoria.Id_Categoria)
+            {
+                case 1:
+                    return RedirectToAction("TabelaProdutosDoces", "Usuario");
+                case 2:
+                    return RedirectToAction("TabelaProdutosSalgados", "Usuario");
+
+                case 3:
+                    return RedirectToAction("TabelaProdutosBolos", "Usuario");
+
+                default:
+                    return RedirectToAction("ListaTodosOsProdutos", "Produto");
+            }
+
+            
         }
     }
 }

@@ -1,39 +1,42 @@
 ﻿@using CakeShop.Models
-@model Produto
-    
-    <div class="row>">
-        <div class="col-md-12">
-          <h1>Doces</h1>
-              <div class="table-responsive">
-                <table class="table table-condensed">
-                    <thead>
+@model List<Produto>
+
+<div class="row>">
+    <div class="col-md-12">
+        <h1>Doces</h1>
+        <div class="table-responsive">
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Produto</th>
+                        <th>Categoria</th>
+                        <th>UDM</th>
+                        <th>Preço</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Produto item in Model)
+                    {
                         <tr>
-                            <th>Código</th>
-                            <th>Produto</th>
-                            <th>Categoria</th>
-                            <th>UDM</th>
-                            <th>Preço</th>
-                            <th>Descrição</th>
+                            <td>@item.Id_Produto</td>
+                            <td>@item.Nome_Produto</td>
+                            <td>@item.Categoria.Nome_Categoria</td>
+                            <td>@item.UnidadeDeMedida.Nome</td>
+                            <td>@item.Preco</td>
+                            <td>@item.Descricao</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (Produto item in Model)
-                        {
-                            <tr>@item.Id_Produto</tr>
-                            <tr>@item.Nome_Produto</tr>
-                            <tr>@item.Id_Categoria</tr>
-                            <tr>@item.Id_UnidadeDeMedida</tr>
-                            <tr>@item.Preco</tr>
-                            <tr>@item.Descricao</tr>
-                        }
-                    </tbody>
-                </table>
-                  
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <a href="@Url.Action("CadastroProduto","TabelaProdutosDoces")" class="btn btn-danger">Incluir Doce</a>
-                </div>
+
+                    }
+                </tbody>
+            </table>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <a href="@Url.Action("CadastroProduto","TabelaProdutosDoces")" class="btn btn-danger">Incluir Doce</a>
             </div>
         </div>
     </div>
+</div>
