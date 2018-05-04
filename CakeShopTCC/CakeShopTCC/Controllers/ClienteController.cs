@@ -61,10 +61,18 @@ namespace CakeShopTCC.Controllers
             return RedirectToAction("Cadastro", "Cliente");
         }
 
-
         public ActionResult MeusPedidos()
         {
             return View();
         }
+
+        //public ActionResult Perfil()
+        //{
+        //    //usuario logado no sistema (pegando o id)
+        //    var id = ((Usuario)User).Id;
+        //    //buscar no banco de dados, os todos os dados do usuario logado no sistema
+        //    var cliente = new ClienteDAO().BuscarPorId(id);
+        //    return View(cliente);
+        //}
     }
 }

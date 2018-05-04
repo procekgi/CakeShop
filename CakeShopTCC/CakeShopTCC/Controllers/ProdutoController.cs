@@ -58,5 +58,29 @@ namespace CakeShopTCC.Controllers
 
             
         }
+
+
+
+        //private readonly ModelDb db;
+        //public ProdutoController()
+        //{
+        //    db.Dispose();
+        //}
+
+
+        //[HttpGet]
+        //public ActionResult PesquisarProduto()
+        //{
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //public ActionResult PesquisarProduto(string texto)
+        //{
+        //    return View(db.)
+        //}
+             
     }
+
+   
 }
