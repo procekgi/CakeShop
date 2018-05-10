@@ -1,15 +1,13 @@
 ﻿@using CakeShop.Models
 @model Produto
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="container bar">
-            <h1>Bolos</h1>
-        </div>
-    </div>
-    <div class="col-md-12">
-        <form action="@Url.Action("PaginaBolos", "Produto")" class="horizontal">
 
-        </form>
+<div class="row">
+    <div class="form-group">
+        <div class="col-md-12">
+            <a href="@Url.Action("Produto","PaginaDoces")" class="btn btn-danger">Doces</a>
+            <a href="@Url.Action( "Produto","PaginaSalgados")" class="btn btn-danger">Salgados</a>
+            <a href="@Url.Action( "Produto","PaginaBolos")" class="btn btn-danger">Bolos</a>
+        </div>
     </div>
 </div>

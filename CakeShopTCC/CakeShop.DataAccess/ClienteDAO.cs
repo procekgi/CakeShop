@@ -79,6 +79,50 @@ namespace CakeShop.DataAccess
             return lst;
         }
 
+        public List<Cliente> BuscarPorId()
+        {
+            var lst = new List<Cliente>();
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
+            {
+                string strSQL = @"SELECT * FROM CLIENTE;";
+
+                using (SqlCommand cmd = new SqlCommand(strSQL))
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                    cmd.CommandText = strSQL;
+                    var dataReader = cmd.ExecuteReader();
+                    var dt = new DataTable();
+                    dt.Load(dataReader);
+                    conn.Close();
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        var cliente = new Cliente()
+                        {
+                            Id = Convert.ToInt32(row["ID_CLIENTE"]),
+                            Nome = row["NOME_CLIENTE"].ToString(),
+                            Telefone = row["TELEFONE"].ToString(),
+                            Email = row["EMAIL"].ToString(),
+                            Login = row["LOGIN_CLIENTE"].ToString(),
+                            Senha = row["SENHA"].ToString(),
+                            Endereco = row["ENDERECO"].ToString(),
+                            Numero = row["NUMERO"].ToString(),
+                            CEP = row["CEP"].ToString(),
+                            Cidade = row["CIDADE"].ToString(),
+                            Estado = row["ESTADO"].ToString()
+                        };
+
+                        lst.Add(cliente);
+                    }
+                }
+            }
+
+            return lst;
+        }
+
+
+
         public Cliente Logar(Cliente obj)
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))

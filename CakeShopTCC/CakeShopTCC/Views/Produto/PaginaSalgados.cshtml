@@ -1,6 +1,17 @@
 ﻿@using CakeShop.Models
 @model Produto
 
+<div class="row">
+    <div class="form-group">
+        <div class="col-md-12">
+            <a href="@Url.Action("PaginaDoces", "Produto")" class="btn btn-danger">Doces</a>
+            <a href="@Url.Action("PaginaSalgados", "Produto")" class="btn btn-danger">Salgados</a>
+            <a href="@Url.Action("PaginaBolos", "Produto")" class="btn btn-danger">Bolos</a>
+        </div>
+    </div>
+</div>
+
+
 
 
 <header>
@@ -67,4 +78,4 @@
         </li>
     </ul>
 </nav>
-</body>
+
