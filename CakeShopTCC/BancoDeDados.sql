@@ -108,8 +108,30 @@ select*from usuario
 
 
 select * from usuario
+
 select * from cliente
 
 select * from pedido;
 
+--insert into pedido (Id_cliente, DataEntrega) values (1, getdate());
+--insert into pedido (Id_cliente, DataEntrega) values (1, getdate());
+
+update pedido set datapedido = getdate();
+
 select * from Item_pedido;
+
+select * from UnidadeDeMedida
+
+select * from categoria;
+
+select * from produto;
+
+
+--insert into produto (Nome_Produto, Preco, Id_UnidadeDeMedida, Id_Categoria, Descricao)
+--values ('Bolo 1', 10, 3, 3, 'balblalalblballbalbalblba albballba balbalba');
+
+--insert into produto (Nome_Produto, Preco, Id_UnidadeDeMedida, Id_Categoria, Descricao)
+--values ('Salgado 1', 5, 2, 2, 'balblalalblballbalbalblba albballba balbalba');
+
+--insert into produto (Nome_Produto, Preco, Id_UnidadeDeMedida, Id_Categoria, Descricao)
+--values ('Doce 1', 3, 1, 1, 'balblalalblballbalbalblba albballba balbalba');
