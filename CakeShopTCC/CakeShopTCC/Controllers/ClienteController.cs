@@ -33,9 +33,8 @@ namespace CakeShopTCC.Controllers
             //usuario logado no sistema (pegando o id)
             var id = ((Usuario)User).Id;
             //buscar no banco de dados, os todos os dados do usuario logado no sistema
-            var cliente = new ClienteDAO().BuscarPorId();
+            var cliente = new ClienteDAO().BuscarPorId(id);
             return View(cliente);
-
         }
 
         public ActionResult Entrar(Cliente obj)
@@ -71,6 +70,6 @@ namespace CakeShopTCC.Controllers
             return View();
         }
 
-       
+
     }
 }

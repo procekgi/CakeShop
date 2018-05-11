@@ -1,4 +1,8 @@
-﻿@using CakeShopTCC.Controllers
+﻿@using CakeShop.Models
+@model List<Pedido>
+@{ 
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
 <div class="row">
     <div class="col-md-12">
         <div class="table-responsive">
@@ -9,9 +13,25 @@
                         <th>Nome Cliente</th>
                         <th>Data de Pedido</th>
                         <th>Data Entrega</th>
-                        <th>Quantidade de item produto</th>
+                        <th>Quantidade de Itens</th>
+                        <th>&nbsp;</th>
                     </tr>
                 </thead>
+                <tbody>
+                    @foreach (var pedido in Model)
+                    {
+                        <tr>
+                            <td>@pedido.Id_Pedido</td>
+                            <td>@pedido.Cliente.Nome</td>
+                            <td>@pedido.DataPedido</td>
+                            <td>@pedido.DataEntrega</td>
+                            <td>@pedido.QuantidadeDeItens</td>
+                            <td>
+                                <a href="@Url.Action("Detalhes", "Pedido", new { @id = pedido.Id_Pedido })">Ver detalhes</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
             </table>
         </div>
     </div>

@@ -1,20 +1,13 @@
 ﻿@using CakeShop.Models
 @model Contato
-
-
-<div class="container-fluid" style="background-image: url(~/Images/wood-3242864_1920.jpg)">
-    <div class="row">
-        <div class="col-md-12" style="padding: 0px !important;">
-         @*<img class="img-fluid" src="@Url.Content("~/Images/sobreNos.jpg")" />*@
-        </div>
-       
-    </div>
-</div>
+@{
+    Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
 <section class="py-5">
     <div class="container text-center">
         <h2 class="meuTexto">VENHA NOS VISITAR</h2>
         <h3 class="meuTexto">
-           Venha fazer uma degustação do nosso cardápio, mande uma mensagem para o Cake Shop que iremos entrar em contato com você.
+            Venha fazer uma degustação do nosso cardápio, mande uma mensagem para o Cake Shop que iremos entrar em contato com você.
         </h3>
     </div>
 </section>
@@ -24,9 +17,9 @@
             <div class="col-md-6">
                 <form action="@Url.Action("Enviar", "Contato")" class="form-horizontal">
                     @*<div class="success-modal fade in" id="dvSuccessAlert">
-                        <a href="#" class="close" data-dismiss="modal">&times;</a>
-                        <h4>Sua mensagem foi enviada com Sucesso</h4>
-                     </div>*@
+                           <a href="#" class="close" data-dismiss="modal">&times;</a>
+                           <h4>Sua mensagem foi enviada com Sucesso</h4>
+                        </div>*@
                     <div class="form-group">
                         <div class="col-md-12">
                             @Html.LabelFor(m => m.Nome, "Nome:", new { @class = "control-label" })

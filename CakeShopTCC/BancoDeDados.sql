@@ -40,13 +40,13 @@ create table Contato(
 	emailCliente varchar(200),
 	Mensagem varchar(max))
 
-select*from Contato
 
 create table pedido (
 	id_pedido int primary key identity(1,1),
 	Id_cliente int references cliente(Id_cliente),
-	QTD_Item_pedido int,
-	DataEntrega datetime
+	DataPedido datetime not null default getdate(),
+	DataEntrega datetime,
+	QTD_Item_pedido int
 );
 
 create table UnidadeDeMedida (
@@ -109,3 +109,7 @@ select*from usuario
 
 select * from usuario
 select * from cliente
+
+select * from pedido;
+
+select * from Item_pedido;

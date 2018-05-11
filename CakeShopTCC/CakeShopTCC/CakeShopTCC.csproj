@@ -172,6 +172,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BancoDeDados.sql" />
+    <Content Include="Content\bootstrap.css" />
     <Content Include="Content\full-slider.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -255,6 +256,7 @@
     </Content>
     <Content Include="Imagens\Doces\copinho com mouse de chocolate.webp" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap3.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -307,6 +309,9 @@
     <Content Include="Views\UnidadeDeMedida\Index.cshtml" />
     <Content Include="Views\Cliente\MinhaConta.cshtml" />
     <Content Include="Views\Cliente\MeusPedidos.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Pedido\Detalhes.cshtml" />
+    <Content Include="Views\Shared\_LayoutMenu.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

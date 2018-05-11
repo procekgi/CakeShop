@@ -79,49 +79,46 @@ namespace CakeShop.DataAccess
             return lst;
         }
 
-        public List<Cliente> BuscarPorId()
+        public Cliente BuscarPorId(int id)
         {
-            var lst = new List<Cliente>();
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
-                string strSQL = @"SELECT * FROM CLIENTE;";
+                string strSQL = @"SELECT * FROM CLIENTE WHERE ID_CLIENTE = @ID_CLIENTE;";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
                 {
                     conn.Open();
                     cmd.Connection = conn;
+                    cmd.Parameters.Add("ID_CLIENTE", SqlDbType.Int).Value = id;
                     cmd.CommandText = strSQL;
                     var dataReader = cmd.ExecuteReader();
                     var dt = new DataTable();
                     dt.Load(dataReader);
                     conn.Close();
 
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        var cliente = new Cliente()
-                        {
-                            Id = Convert.ToInt32(row["ID_CLIENTE"]),
-                            Nome = row["NOME_CLIENTE"].ToString(),
-                            Telefone = row["TELEFONE"].ToString(),
-                            Email = row["EMAIL"].ToString(),
-                            Login = row["LOGIN_CLIENTE"].ToString(),
-                            Senha = row["SENHA"].ToString(),
-                            Endereco = row["ENDERECO"].ToString(),
-                            Numero = row["NUMERO"].ToString(),
-                            CEP = row["CEP"].ToString(),
-                            Cidade = row["CIDADE"].ToString(),
-                            Estado = row["ESTADO"].ToString()
-                        };
+                    if (!(dt != null && dt.Rows.Count > 0))
+                        return null;
 
-                        lst.Add(cliente);
-                    }
+                    var row = dt.Rows[0];
+                    var cliente = new Cliente()
+                    {
+                        Id = Convert.ToInt32(row["ID_CLIENTE"]),
+                        Nome = row["NOME_CLIENTE"].ToString(),
+                        Telefone = row["TELEFONE"].ToString(),
+                        Email = row["EMAIL"].ToString(),
+                        Login = row["LOGIN_CLIENTE"].ToString(),
+                        Senha = row["SENHA"].ToString(),
+                        //Endereco = row["ENDERECO"].ToString(),
+                        //Numero = row["NUMERO"].ToString(),
+                        //CEP = row["CEP"].ToString(),
+                        //Cidade = row["CIDADE"].ToString(),
+                        //Estado = row["ESTADO"].ToString()
+                    };
+
+                    return cliente;
                 }
             }
-
-            return lst;
         }
-
-
 
         public Cliente Logar(Cliente obj)
         {

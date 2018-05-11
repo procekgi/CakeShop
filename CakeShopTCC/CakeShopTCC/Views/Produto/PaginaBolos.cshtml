@@ -1,13 +1,41 @@
 ﻿@using CakeShop.Models
-@model Produto
-
-
-<div class="row">
-    <div class="form-group">
-        <div class="col-md-12">
-            <a href="@Url.Action("Produto","PaginaDoces")" class="btn btn-danger">Doces</a>
-            <a href="@Url.Action( "Produto","PaginaSalgados")" class="btn btn-danger">Salgados</a>
-            <a href="@Url.Action( "Produto","PaginaBolos")" class="btn btn-danger">Bolos</a>
+@model List<Produto>
+@{
+    Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+<div class="container" style="padding-bottom: 20px;">
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <img src="~/Images/Salgados/barquete de rúcula com tomate seco e mussarela de bufala.jpg" />
+            <h3>Barquete de rúcula</h3>
+            @Html.ActionLink("Adicionar ao carrinho", "CadastroPedido", "Pedido")
+        </div>
+        <div class="col-md-4 text-center">
+            <img src="~/Images/Salgados/barquete de rúcula com tomate seco e mussarela de bufala.jpg" />
+            <h3>Barquete de rúcula</h3>
+            @Html.ActionLink("Adicionar ao carrinho", "CadastroPedido", "Pedido")
+        </div>
+        <div class="col-md-4 text-center">
+            <img src="~/Images/Salgados/barquete de rúcula com tomate seco e mussarela de bufala.jpg" />
+            <h3>Barquete de rúcula</h3>
+            @Html.ActionLink("Adicionar ao carrinho", "CadastroPedido", "Pedido")
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <img src="~/Images/Salgados/barquete de rúcula com tomate seco e mussarela de bufala.jpg" />
+            <h3>Barquete de rúcula</h3>
+            @Html.ActionLink("Adicionar ao carrinho", "CadastroPedido", "Pedido")
+        </div>
+        <div class="col-md-4 text-center">
+            <img src="~/Images/Salgados/barquete de rúcula com tomate seco e mussarela de bufala.jpg" />
+            <h3>Barquete de rúcula</h3>
+            @Html.ActionLink("Adicionar ao carrinho", "CadastroPedido", "Pedido")
+        </div>
+        <div class="col-md-4 text-center">
+            <img src="~/Images/Salgados/barquete de rúcula com tomate seco e mussarela de bufala.jpg" />
+            <h3>Barquete de rúcula</h3>
+            @Html.ActionLink("Adicionar ao carrinho", "CadastroPedido", "Pedido")
         </div>
     </div>
 </div>

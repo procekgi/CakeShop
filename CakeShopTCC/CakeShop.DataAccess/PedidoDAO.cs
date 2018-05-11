@@ -13,18 +13,57 @@ namespace CakeShop.DataAccess
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
-                string strSQL = @"INSERT INTO PEDIDO (ID_CLIENTE, DATA_PEDIDO, DATA_ENTREGA) VALUES (@ID_CLIENTE, @DATA_PEDIDO, @DATA_ENTREGA);";
+                string strSQL = @"INSERT INTO PEDIDO (ID_CLIENTE, DATAPEDIDO, DATAENTREGA) VALUES (@ID_CLIENTE, @DATAPEDIDO, @DATAENTREGA);";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
                 {
                     cmd.Connection = conn;
                     cmd.Parameters.Add("@ID_CLIENTE", SqlDbType.VarChar).Value = obj.Cliente.Id;
-                    cmd.Parameters.Add("@DATA_PEDIDO", SqlDbType.DateTime).Value = obj.DataPedido;
-                    cmd.Parameters.Add("@DATA_ENTREGA", SqlDbType.DateTime).Value = obj.DataEntrega.HasValue ? obj.DataEntrega.Value : new Nullable<DateTime>();
+                    cmd.Parameters.Add("@DATAPEDIDO", SqlDbType.DateTime).Value = obj.DataPedido;
+                    cmd.Parameters.Add("@DATAENTREGA", SqlDbType.DateTime).Value = obj.DataEntrega.HasValue ? obj.DataEntrega.Value : new Nullable<DateTime>();
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();
+                }
+            }
+        }
+
+        public Pedido BuscarPorId(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
+            {
+                string strSQL = @"SELECT P.*, C.NOME_CLIENTE FROM PEDIDO P INNER JOIN CLIENTE C ON (C.ID_CLIENTE = P.ID_CLIENTE) WHERE ID_PEDIDO = @ID_PEDIDO;";
+
+                using (SqlCommand cmd = new SqlCommand(strSQL))
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                    cmd.Parameters.Add("@ID_PEDIDO", SqlDbType.Int).Value = id;
+                    cmd.CommandText = strSQL;
+
+                    var dataReader = cmd.ExecuteReader();
+                    var dt = new DataTable();
+                    dt.Load(dataReader);
+                    conn.Close();
+
+                    if (!(dt != null && dt.Rows.Count > 0))
+                        return null;
+
+                    var row = dt.Rows[0];
+                    var pedido = new Pedido()
+                    {
+                        Id_Pedido = Convert.ToInt32(row["ID_PEDIDO"]),
+                        Cliente = new Cliente()
+                        {
+                            Id = Convert.ToInt32(row["ID_CLIENTE"]),
+                            Nome = row["NOME_CLIENTE"].ToString()
+                        },
+                        DataPedido = Convert.ToDateTime(row["DATAPEDIDO"]),
+                        DataEntrega = row["DATAENTREGA"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["DATAENTREGA"])
+                    };
+
+                    return pedido;
                 }
             }
         }
@@ -56,8 +95,8 @@ namespace CakeShop.DataAccess
                                 Id = Convert.ToInt32(row["ID_CLIENTE"]),
                                 Nome = row["NOME_CLIENTE"].ToString()
                             },
-                            DataPedido = Convert.ToDateTime(row["DATA_PEDIDO"]),
-                            DataEntrega = row["DATA_ENTREGA"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["DATA_ENTREGA"])
+                            DataPedido = Convert.ToDateTime(row["DATAPEDIDO"]),
+                            DataEntrega = row["DATAENTREGA"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["DATAENTREGA"])
                         };
 
                         lst.Add(pedido);

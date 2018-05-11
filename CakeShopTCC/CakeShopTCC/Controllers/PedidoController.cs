@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CakeShop.DataAccess;
+using CakeShop.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,15 +10,22 @@ namespace CakeShopTCC.Controllers
 {
     public class PedidoController : Controller
     {
-        // GET: Pedido
         public ActionResult Index()
         {
+            var lst = new PedidoDAO().BuscarTodos();
+            return View(lst);
+        }
+
+        public ActionResult CadastroPedido(Pedido obj)
+        {
+            new PedidoDAO().Inserir(obj);
             return View();
         }
 
-        public ActionResult CadastroPedido()
+        public ActionResult Detalhes(int id)
         {
-            return View();
+            var pedido = new PedidoDAO().BuscarPorId(id);
+            return View(pedido);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿ @using CakeShop.Models
+﻿@using CakeShop.Models
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,6 +13,7 @@
     <style type="text/css">
         body {
             font-family: 'Raleway',sans-serif !important;
+            padding-top: 70px;
         }
 
         h2.meuTexto {
@@ -118,17 +119,8 @@
     <script src="~/Scripts/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            var scroll_pos = 0;
-            $(document).scroll(function () {
-                scroll_pos = $(this).scrollTop();
-                if (scroll_pos > 657) {
-                    $("nav.navbar").attr('style', 'background-color: #252525 !important');
-                    $("ul.dropdown-menu").attr('style', 'background-color: #252525 !important');
-                } else {
-                    $("nav.navbar").attr('style', 'background-color: transparent !important');
-                    $("ul.dropdown-menu").attr('style', 'background-color: transparent !important');
-                }
-            });
+            $("nav.navbar").attr('style', 'background-color: #252525 !important');
+            $("ul.dropdown-menu").attr('style', 'background-color: #252525 !important');
             $('html, body').animate({ scrollTop: 0 }, 0);
         });
     </script>

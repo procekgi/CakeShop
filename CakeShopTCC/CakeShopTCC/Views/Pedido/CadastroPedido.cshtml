@@ -1,7 +1,6 @@
 ﻿@using CakeShop.Models
 @model Pedido
 
-
 <div class="row">
     <div class="col-md-12">
         <h1>Pedido (cod do pedido)</h1>
@@ -28,8 +27,8 @@
 
             <div class="form-group">
                 <div class="col-md-12">
-                    @Html.LabelFor(m => m.Cliente.Nome_Cliente, "Nome", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Cliente.Nome_Cliente, new { @class = "form-control" })
+                    @Html.LabelFor(m => m.Cliente.Nome, "Nome", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Cliente.Nome, new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-group">
@@ -44,53 +43,55 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <h1>Endereço</h1>
+                    <h1>Local de entrega</h1>
                     <hr />
                 </div>
             </div>
-            <div class="row">
-                
-                    
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                @Html.LabelFor(m => m.Endereco, "Rua", new { @class = "control-label" })
-                                @Html.TextBoxFor(m => m.Endereco, new { @class = "form-control" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-4">
-                                @Html.LabelFor(m => m.Numero, "Número", new { @class = "control-label" })
-                                @Html.TextBoxFor(m => m.Numero, new { @class = "form-control" })
-                            </div>
-                            <div class="col-md-8">
-                                @Html.LabelFor(m => m.CEP, "CEP", new { @class = "control-label" })
-                                @Html.TextBoxFor(m => m.CEP, new { @class = "form-control" })
-                            </div>
 
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                @Html.LabelFor(m => m.Complemento, "Complemento", new { @class = "control-label" })
-                                @Html.TextBoxFor(m => m.Complemento, new { @class = "form-control" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                @Html.LabelFor(m => m.Estado, "Estado", new { @class = "control-label" })
-                                @Html.TextBoxFor(m => m.Estado, new { @class = "form-control" })
-                            </div>
-
-
-                            <div class="col-md-6">
-                                @Html.LabelFor(m => m.Cidade, "Cidade", new { @class = "control-label" })
-                                @Html.TextBoxFor(m => m.Cidade, new { @class = "form-control" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-danger">Continuar</button>
-                                <button type="button" class="btn btn-danger">Voltar</button>
-                            </div>
-                        </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.LabelFor(m => m.Endereco, "Rua", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Endereco, new { @class = "form-control" })
+                </div>
             </div>
+
+            <div class="form-group">
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.Numero, "Número", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Numero, new { @class = "form-control" })
+                </div>
+                <div class="col-md-8">
+                    @Html.LabelFor(m => m.CEP, "CEP", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.CEP, new { @class = "form-control" })
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-md-6">
+                    @Html.LabelFor(m => m.Complemento, "Complemento", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Complemento, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-6">
+                    @Html.LabelFor(m => m.Estado, "Estado", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Estado, new { @class = "form-control" })
+                </div>
+
+
+                <div class="col-md-6">
+                    @Html.LabelFor(m => m.Cidade, "Cidade", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Cidade, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-danger">Continuar</button>
+                    <button type="button" class="btn btn-danger">Voltar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
