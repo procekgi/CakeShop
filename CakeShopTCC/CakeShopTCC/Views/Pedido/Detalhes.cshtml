@@ -4,8 +4,28 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 <div class="row">
+
     <div class="col-md-12">
-        @Html.Label("lblCliente", "Cliente: ", new { @class = "control-label" })
-        <span>@Model.Cliente.Nome</span>
+        <h1>Itens do Pedido</h1>
+        <div class="table-responsive">
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Código do pedido</th>
+                        <th>Código do Produtos</th>
+                        <th>Produtos</th>
+                        <th>Quantidade</th>
+
+
+                    </tr>
+                </thead>
+            </table>
+        </div>
     </div>
+    <tbody>
+        <div class="col-md-12">
+            @Html.Label("lblCliente", "Cliente: ", new { @class = "control-label" })
+            <span>@Model.Cliente.Nome</span>
+        </div>
+    </tbody>
 </div>
