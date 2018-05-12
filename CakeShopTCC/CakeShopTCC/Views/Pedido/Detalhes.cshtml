@@ -1,21 +1,23 @@
 ﻿@using CakeShop.Models
-@model Pedido
+@model ItemPedido
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 <div class="row">
 
     <div class="col-md-12">
-        <h1>Itens do Pedido</h1>
+        <h1>Detalhes do Pedido</h1>
+        @*<@Html.Label("lblPedido", "ItemPedido:", new { @class  = "control-label"})
+        <span>@Model.ItemPedido.IdPedido</span>*@
         <div class="table-responsive">
             <table class="table table-condensed">
                 <thead>
                     <tr>
-                        <th>Código do pedido</th>
-                        <th>Código do Produtos</th>
+                       
+                        <th>Código do Produto</th>
                         <th>Produtos</th>
                         <th>Quantidade</th>
-
+                        <th>Preco</th>
 
                     </tr>
                 </thead>
@@ -27,5 +29,35 @@
             @Html.Label("lblCliente", "Cliente: ", new { @class = "control-label" })
             <span>@Model.Cliente.Nome</span>
         </div>
+        <div class="col-md-12">
+            @Html.Label("lblCliente", "Endereço: ", new { @class = "control-label" })
+            <span>@Model.Cliente.Endereco</span>
+        </div>
+        <div class="col-md-12">
+            @Html.Label("lblCliente", "Número: ", new { @class = "control-label" })
+            <span>@Model.Cliente.Numero</span>
+        </div>
+
+        <div class="col-md-12">
+            @Html.Label("lblCliente", "Complemento: ", new { @class = "control-label" })
+            <span>@Model.Cliente.Complemento</span>
+        </div>
+
+        <div class="col-md-12">
+            @Html.Label("lblCliente", "CEP: ", new { @class = "control-label" })
+            <span>@Model.Cliente.CEP</span>
+        </div>
+
+        <div class="col-md-12">
+            @Html.Label("lblCliente", "Cidade: ", new { @class = "control-label" })
+            <span>@Model.Cliente.Cidade</span>
+        </div>
+        <div class="col-md-12">
+            @Html.Label("lblCliente", "Estado: ", new { @class = "control-label" })
+            <span>@Model.Cliente.Estado</span>
+        </div>
+
+
+
     </tbody>
 </div>
