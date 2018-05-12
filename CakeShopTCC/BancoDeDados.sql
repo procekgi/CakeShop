@@ -22,14 +22,6 @@ create table cliente(
 	Estado char(3)
 );
 
-alter table cliente 
-add Login_Cliente Varchar(50);
-
-alter table cliente
-drop column login_usuario;
-
-alter table cliente
-add Complemento varchar(50);
 
 select*from cliente
 
