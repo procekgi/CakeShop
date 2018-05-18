@@ -74,9 +74,7 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="@Url.Action("Index", "SobreNos")">Sobre</a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="@Url.Action("Index", "Login")">Login</a>
-                    </li>
+                   
                     @if (HttpContext.Current.User.GetType().Name == typeof(Usuario).Name && ((Usuario)User) != null)
                     {
                         <li class="nav-item active dropdown">
@@ -104,6 +102,9 @@
             <p class="m-0 text-center text-white">
                 CakeShop
             </p>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "Login")">Login</a>
+            </li>
             <p class="m-0 text-center text-white">
                 Endereço: Rua Padre Leonardo Nunes, 180 - Portão
             </p>
