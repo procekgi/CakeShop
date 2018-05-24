@@ -8,55 +8,51 @@
 </div>
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <form action="@Url.Action("SalvarProduto", "Produto")" class="form-horizontal">
-            <div class="form-group">
-                <div class="col-md-12">
+        <form action="@Url.Action("SalvarProduto", "Produto")">
+            <div class="form-row">
+                <div class="form-group col-md-12">
                     @Html.LabelFor(m => m.Nome_Produto, "Nome do produto", new { @class = "control-label" })
                     @Html.TextBoxFor(m => m.Nome_Produto, new { @class = "form-control" })
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-md-12">
+            <div class="form-row">
+                <div class="form-group col-md-12">
                     @Html.LabelFor(m => m.Categoria.Id_Categoria, "Categoria", new { @class = "control-label" })
                     @Html.DropDownListFor(m => m.Categoria.Id_Categoria, new SelectList(ViewBag.Categorias ?? new List<Categoria>(), "Id_Categoria", "Nome_Categoria"), "--[SELECIONE]--", new { @class = "form-control" })
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-md-8">
+            <div class="form-row">
+                <div class="form-group col-md-8">
                     @Html.LabelFor(m => m.UnidadeDeMedida.Id_UnidadeDeMedida, "Unidade de Medida", new { @class = "control-label" })
                     @Html.DropDownListFor(m => m.UnidadeDeMedida.Id_UnidadeDeMedida, new SelectList(ViewBag.Unidades ?? new List<UnidadeDeMedida>(), "Id_UnidadeDeMedida", "Nome"), "--[SELECIONE]--", new { @class = "form-control" })
                 </div>
-                <div class="col-md-4">
+                <div class="form-group col-md-4">
                     @Html.LabelFor(m => m.Preco, "Preço", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Preco, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.Preco, new { @id = "txtPreco", @class = "form-control" })
                 </div>
             </div>
-
-            <div class="form-group">
-                <div class="col-md-12">
-                    @Html.LabelFor(m => m.Foto, "Imagem do produto", new { @id = "lblNomeArquivo", @class = "control-label" })
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    @Html.LabelFor(m => m.Foto, "Foto:", new { @id = "lblFoto", @class = "control-label" })
                     <div class="input-group">
-                        @Html.TextBoxFor(m => m.Foto, new { @id = "txtNomeArquivo", @class = "form-control", @maxlength = 250, @readonly = true })
-                        <span class="input-group-btn">
-                            <span class="btn btn-default fileinput-button">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                <input id="fupArquivo" type="file" name="files[]" multiple="multiple" data-url="@Url.Action("Upload", "Avaliacao")" />
+                        @Html.TextBoxFor(m => m.Foto, new { @id = "txtFoto", @class = "form-control", @maxlength = 1000, @readonly = true })
+                        <div class="input-group-append">
+                            <span class="btn btn-danger fileinput-button">
+                                <i class="fa fa-search"></i>
+                                <input id="fupArquivo" type="file" name="files[]" multiple="multiple" data-url="@Url.Action("Upload", "Produto")" />
                             </span>
-                        </span>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="form-group">
-                <div class="col-md-12">
+            <div class="form-row">
+                <div class="form-group col-md-12">
                     @Html.LabelFor(m => m.Descricao, "Descrição", new { @class = "control-label" })
                     @Html.TextAreaFor(m => m.Descricao, new { @class = "form-control", @rows = 10 })
                 </div>
             </div>
-
-
-            <div class="form-group">
-                <div class="col-md-12 text-right">
+            <div class="form-row">
+                <div class="form-group col-md-12 text-right">
                     <button type="submit" class="btn btn-danger">Salvar</button>
                     <button type="button" class="btn btn-danger">Cancelar</button>
                 </div>
@@ -68,6 +64,7 @@
 {
     <script type="text/javascript">
         $(document).ready(function () {
+            //$("#txtPreco").setMask("decimal");
             $('#fupArquivo').change(function (e) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -89,7 +86,7 @@
                     contentType: false,
                     processData: false,
                     success: function (result) {
-                        $("#txtNomeArquivo").val(result);
+                        $("#txtFoto").val(result);
                     },
                     error: function (result) {
                         alert(result);

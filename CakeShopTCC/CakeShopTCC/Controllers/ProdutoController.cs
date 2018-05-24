@@ -1,9 +1,7 @@
 ﻿using CakeShop.DataAccess;
 using CakeShop.Models;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
@@ -65,7 +63,6 @@ namespace CakeShopTCC.Controllers
         {
             try
             {
-
                 if (!Directory.Exists(Server.MapPath("~/Uploads")))
                     Directory.CreateDirectory(Server.MapPath("~/Uploads"));
 
@@ -86,28 +83,5 @@ namespace CakeShopTCC.Controllers
                 return Json(ex);
             }
         }
-
-
-        //private readonly ModelDb db;
-        //public ProdutoController()
-        //{
-        //    db.Dispose();
-        //}
-
-
-        //[HttpGet]
-        //public ActionResult PesquisarProduto()
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public ActionResult PesquisarProduto(string texto)
-        //{
-        //    return View(db.)
-        //}
-
     }
-
-
 }

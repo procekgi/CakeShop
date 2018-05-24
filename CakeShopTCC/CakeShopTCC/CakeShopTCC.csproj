@@ -173,10 +173,13 @@
   <ItemGroup>
     <Content Include="BancoDeDados.sql" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\full-slider.css" />
     <Content Include="Content\jquery.fileupload-ui-noscript.css" />
     <Content Include="Content\jquery.fileupload-ui.css" />
     <Content Include="Content\jquery.fileupload.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Imagens\Bolos\Bolo com macarrons.jpg" />
@@ -258,6 +261,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Imagens\Doces\copinho com mouse de chocolate.webp" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap3.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -275,6 +283,8 @@
     <Content Include="Scripts\js\bootstrap.bundle.min.js" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Scripts\js\jquery.min.js" />
+    <Content Include="Scripts\meiomask.js" />
+    <Content Include="Scripts\meiomask.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />

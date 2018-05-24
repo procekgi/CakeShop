@@ -1,4 +1,4 @@
-﻿y @using CakeShop.Models
+﻿@using CakeShop.Models
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,8 +8,9 @@
     <meta name="author" content="">
     <title>CakeShop</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/full-slider.css" rel="stylesheet" />
     <link href="~/Content/jquery.fileupload.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/full-slider.css" rel="stylesheet" />
     <link href="//fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900,300italic,400italic|Raleway:100,200,300,400,500,600,700,800,900,300italic,400italic|Lato:100,200,300,400,500,600,700,800,900,300italic,400italic&amp;subset=latin,latin-ext" rel="stylesheet" />
     <style type="text/css">
         body {
@@ -75,7 +76,6 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="@Url.Action("Index", "SobreNos")">Sobre</a>
                     </li>
-
                     @if (HttpContext.Current.User.GetType().Name == typeof(Usuario).Name && ((Usuario)User) != null)
                     {
                         <li class="nav-item active dropdown">
@@ -118,6 +118,7 @@
     </footer>
     <script src="~/Scripts/js/jquery.min.js"></script>
     <script src="~/Scripts/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/meiomask.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             var scroll_pos = 0;
