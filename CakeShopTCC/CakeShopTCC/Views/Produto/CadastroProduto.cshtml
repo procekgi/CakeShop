@@ -34,13 +34,12 @@
 
             <div class="form-group">
                 <div class="col-md-12">
-                    @Html.HiddenFor(m => m.NomeArquivo, new { @id = "hdfCaminhoArquivo" })
-                    @Html.LabelFor(m => m.NomeArquivo, "Imagem do produto", new { @id = "lblNomeArquivo", @class = "control-label" })
+                    @Html.LabelFor(m => m.Foto, "Imagem do produto", new { @id = "lblNomeArquivo", @class = "control-label" })
                     <div class="input-group">
-                        @Html.TextBoxFor(m => m.NomeArquivo, new { @id = "txtNomeArquivo", @class = "form-control", @maxlength = 250, @readonly = true })
+                        @Html.TextBoxFor(m => m.Foto, new { @id = "txtNomeArquivo", @class = "form-control", @maxlength = 250, @readonly = true })
                         <span class="input-group-btn">
                             <span class="btn btn-default fileinput-button">
-                                <span class="fa fa-plus" aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                 <input id="fupArquivo" type="file" name="files[]" multiple="multiple" data-url="@Url.Action("Upload", "Avaliacao")" />
                             </span>
                         </span>
@@ -55,7 +54,7 @@
                 </div>
             </div>
 
-         
+
             <div class="form-group">
                 <div class="col-md-12 text-right">
                     <button type="submit" class="btn btn-danger">Salvar</button>
@@ -65,3 +64,38 @@
         </form>
     </div>
 </div>
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#fupArquivo').change(function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var data = new FormData();
+                var files = $(this).get(0).files;
+
+                if (files.length > 0) {
+                    for (var i = 0; i < files.length; i++) {
+                        data.append(files[i].name, files[i]);
+                    }
+                }
+
+                $.ajax({
+                    url: $("#fupArquivo").data("url"),
+                    data: data,
+                    method: "POST",
+                    dataType: "json",
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (result) {
+                        $("#txtNomeArquivo").val(result);
+                    },
+                    error: function (result) {
+                        alert(result);
+                    }
+                });
+            });
+        });
+    </script>
+}

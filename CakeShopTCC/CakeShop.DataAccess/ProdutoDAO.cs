@@ -13,8 +13,8 @@ namespace CakeShop.DataAccess
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
-                string strSQL = @"INSERT INTO PRODUTO (NOME_PRODUTO, PRECO, ID_UNIDADEDEMEDIDA, ID_CATEGORIA, DESCRICAO)
-                                  VALUES (@NOME_PRODUTO, @PRECO, @ID_UNIDADEDEMEDIDA, @ID_CATEGORIA, @DESCRICAO);";
+                string strSQL = @"INSERT INTO PRODUTO (NOME_PRODUTO, PRECO, ID_UNIDADEDEMEDIDA, ID_CATEGORIA, DESCRICAO, FOTO)
+                                  VALUES (@NOME_PRODUTO, @PRECO, @ID_UNIDADEDEMEDIDA, @ID_CATEGORIA, @DESCRICAO, @FOTO);";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
                 {
@@ -24,6 +24,7 @@ namespace CakeShop.DataAccess
                     cmd.Parameters.Add("@ID_UNIDADEDEMEDIDA", SqlDbType.Int).Value = obj.UnidadeDeMedida.Id_UnidadeDeMedida;
                     cmd.Parameters.Add("@ID_CATEGORIA", SqlDbType.Int).Value = obj.Categoria.Id_Categoria;
                     cmd.Parameters.Add("@DESCRICAO", SqlDbType.VarChar).Value = obj.Descricao;
+                    cmd.Parameters.Add("@FOTO", SqlDbType.VarChar).Value = obj.Foto;
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -45,7 +46,8 @@ namespace CakeShop.DataAccess
                                     P.ID_PRODUTO,
                                     P.NOME_PRODUTO, 
                                     P.PRECO, 
-                                    P.DESCRICAO 
+                                    P.DESCRICAO,
+                                    P.FOTO 
                                 FROM PRODUTO P
                                 INNER JOIN UNIDADEDEMEDIDA U ON (P.ID_UNIDADEDEMEDIDA = U.ID)
                                 INNER JOIN CATEGORIA C ON (P.ID_CATEGORIA = C.ID);";
@@ -77,7 +79,10 @@ namespace CakeShop.DataAccess
                                 Id_Categoria = Convert.ToInt32(row["ID_CATEGORIA"]),
                                 Nome_Categoria = row["NOME_CATEGORIA"].ToString()
                             },
-                            Descricao = row["DESCRICAO"].ToString()
+                            Descricao = row["DESCRICAO"].ToString(),
+                            Foto = row["FOTO"].ToString()
+
+
                         };
 
                         lst.Add(produto);
@@ -101,7 +106,8 @@ namespace CakeShop.DataAccess
                                     P.ID_PRODUTO,
                                     P.NOME_PRODUTO, 
                                     P.PRECO, 
-                                    P.DESCRICAO 
+                                    P.DESCRICAO, 
+                                    P.FOTO
                                   FROM PRODUTO P
                                   INNER JOIN UNIDADEDEMEDIDA U ON (P.ID_UNIDADEDEMEDIDA = U.ID)
                                   INNER JOIN CATEGORIA C ON (P.ID_CATEGORIA = C.ID)
@@ -135,7 +141,8 @@ namespace CakeShop.DataAccess
                                 Id_Categoria = Convert.ToInt32(row["ID_CATEGORIA"]),
                                 Nome_Categoria = row["NOME_CATEGORIA"].ToString()
                             },
-                            Descricao = row["DESCRICAO"].ToString()
+                            Descricao = row["DESCRICAO"].ToString(),
+                            Foto = row["FOTO"].ToString()
                         };
 
                         lst.Add(produto);

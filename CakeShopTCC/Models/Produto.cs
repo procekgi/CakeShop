@@ -12,6 +12,6 @@ namespace CakeShop.Models
         public UnidadeDeMedida UnidadeDeMedida { get; set; }
         public Categoria Categoria { get; set; }
         public string Descricao { get; set; }
-        public byte NomeArquivo { get; set; }
+        public string Foto { get; set; }
     }
 }
