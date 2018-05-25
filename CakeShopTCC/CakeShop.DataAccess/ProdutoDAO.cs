@@ -24,7 +24,7 @@ namespace CakeShop.DataAccess
                     cmd.Parameters.Add("@ID_UNIDADEDEMEDIDA", SqlDbType.Int).Value = obj.UnidadeDeMedida.Id_UnidadeDeMedida;
                     cmd.Parameters.Add("@ID_CATEGORIA", SqlDbType.Int).Value = obj.Categoria.Id_Categoria;
                     cmd.Parameters.Add("@DESCRICAO", SqlDbType.VarChar).Value = obj.Descricao;
-                    cmd.Parameters.Add("@FOTO", SqlDbType.VarChar).Value = obj.Foto;
+                    cmd.Parameters.Add("@FOTO", SqlDbType.VarChar).Value = obj.Foto ?? string.Empty;
 
                     conn.Open();
                     cmd.ExecuteNonQuery();

@@ -20,12 +20,16 @@
                 <tbody>
                     @foreach (Produto item in Model)
                     {
-                        <tr>@item.Id_Produto</tr>
-                        <tr>@item.Nome_Produto</tr>
-                            <tr>@item.Categoria.Nome_Categoria</tr>
-                            <tr>@item.UnidadeDeMedida.Nome</tr>
-                            <tr>@item.Preco</tr>
-                            <tr>@item.Descricao</tr>
+                        <tr>
+                            <td>@item.Id_Produto</td>
+                            <td>@item.Nome_Produto</td>
+                            <td>@item.Categoria.Nome_Categoria</td>
+                            <td>@item.UnidadeDeMedida.Nome</td>
+                            <td>@item.Preco</td>
+                            <td>@item.Descricao</td>
+
+                        </tr>
+
                     }
                 </tbody>
             </table>
@@ -34,7 +38,7 @@
             <div class="form-group">
                 <div class="col-md-12">
                     <a href="@Url.Action("CadastroProduto", "Produtos")" class="btn btn-danger">Incluir Bolo</a>
-                    <a href="@Url.Action("CadastroProduto", "TabelaProdutosBolos")"  class="btn btn-danger">Editar</a>
+                    <a href="@Url.Action("CadastroProduto", "TabelaProdutosBolos")" class="btn btn-danger">Editar</a>
                     <a href="@Url.Action("CadastroProduto", "TabelaProdutosBolos")" class="btn btn-danger">Excluir</a>
                 </div>
             </div>

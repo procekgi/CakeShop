@@ -24,13 +24,13 @@ namespace CakeShopTCC.Controllers
         public ActionResult TabelaProdutosSalgados()
         {
             var lst = new ProdutoDAO().BuscarPorCategoria(2);
-            return View();
+            return View(lst);
         }
 
         public ActionResult TabelaProdutosBolos()
         {
             var lst = new ProdutoDAO().BuscarPorCategoria(3);
-            return View();
+            return View(lst);
         }
 
         public ActionResult TabelaClientes()

@@ -72,7 +72,8 @@ create table produto (
 	Preco Decimal (10,2),
 	Id_UnidadeDeMedida int references UnidadeDeMedida(Id),
 	Id_Categoria int references Categoria(ID),
-	Descricao varchar(max)
+	Descricao varchar(max),
+	foto varchar(2000)
 );
 
 create table Item_pedido (
@@ -119,11 +120,11 @@ select * from categoria;
 select * from produto;
 
 
---insert into produto (Nome_Produto, Preco, Id_UnidadeDeMedida, Id_Categoria, Descricao)
---values ('Bolo 1', 10, 3, 3, 'balblalalblballbalbalblba albballba balbalba');
+insert into produto (Nome_Produto, Preco, Id_UnidadeDeMedida, Id_Categoria, Descricao)
+values ('Bolo 1', 10, 3, 3, 'balblalalblballbalbalblba albballba balbalba');
 
---insert into produto (Nome_Produto, Preco, Id_UnidadeDeMedida, Id_Categoria, Descricao)
---values ('Salgado 1', 5, 2, 2, 'balblalalblballbalbalblba albballba balbalba');
+insert into produto (Nome_Produto, Preco, Id_UnidadeDeMedida, Id_Categoria, Descricao)
+values ('Salgado 1', 5, 2, 2, 'balblalalblballbalbalblba albballba balbalba');
 
---insert into produto (Nome_Produto, Preco, Id_UnidadeDeMedida, Id_Categoria, Descricao)
---values ('Doce 1', 3, 1, 1, 'balblalalblballbalbalblba albballba balbalba');
+insert into produto (Nome_Produto, Preco, Id_UnidadeDeMedida, Id_Categoria, Descricao)
+values ('Doce 1', 3, 1, 1, 'balblalalblballbalbalblba albballba balbalba');
