@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h1>Pedido (cod do pedido)</h1>
+        <h1>Pedido @Model.Id_Pedido</h1>
         <hr />
     </div>
 </div>
@@ -13,18 +13,15 @@
             <table class="table table-condensed">
                 <thead>
                     <tr>
-
                         <th>Itens</th>
                         <th>Quantidade</th>
                         <th>Preço</th>
                     </tr>
                 </thead>
-
             </table>
         </div>
 
         <form action="@Url.Action("CadastroPedido", "Pedido")" class="form-horizontal">
-
             <div class="form-group">
                 <div class="col-md-12">
                     @Html.LabelFor(m => m.Cliente.Nome, "Nome", new { @class = "control-label" })
@@ -47,41 +44,39 @@
                     <hr />
                 </div>
             </div>
-
             <div class="form-group">
                 <div class="col-md-12">
-                    @Html.LabelFor(m => m.Endereco, "Rua", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Endereco, new { @class = "form-control" })
+                    @Html.LabelFor(m => m.Cliente.Endereco, "Rua", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Cliente.Endereco, new { @class = "form-control" })
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-4">
-                    @Html.LabelFor(m => m.Numero, "Número", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Numero, new { @class = "form-control" })
+                    @Html.LabelFor(m => m.Cliente.Numero, "Número", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Cliente.Numero, new { @class = "form-control" })
                 </div>
                 <div class="col-md-8">
-                    @Html.LabelFor(m => m.CEP, "CEP", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.CEP, new { @class = "form-control" })
+                    @Html.LabelFor(m => m.Cliente.CEP, "CEP", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Cliente.CEP, new { @class = "form-control" })
                 </div>
 
             </div>
             <div class="form-group">
                 <div class="col-md-6">
-                    @Html.LabelFor(m => m.Complemento, "Complemento", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Complemento, new { @class = "form-control" })
+                    @Html.LabelFor(m => m.Cliente.Complemento, "Complemento", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Cliente.Complemento, new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-6">
-                    @Html.LabelFor(m => m.Estado, "Estado", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Estado, new { @class = "form-control" })
+                    @Html.LabelFor(m => m.Cliente.Estado, "Estado", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Cliente.Estado, new { @class = "form-control" })
                 </div>
 
-
                 <div class="col-md-6">
-                    @Html.LabelFor(m => m.Cidade, "Cidade", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Cidade, new { @class = "form-control" })
+                    @Html.LabelFor(m => m.Cliente.Cidade, "Cidade", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Cliente.Cidade, new { @class = "form-control" })
                 </div>
             </div>
 

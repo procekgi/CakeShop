@@ -16,15 +16,21 @@ namespace CakeShopTCC.Controllers
             return View(lst);
         }
 
-        public ActionResult CadastroPedido(Pedido obj)
+        public ActionResult CadastroPedido()
+        {
+            return View();
+        }
+
+        public ActionResult SalvarPedido(Pedido obj)
         {
             new PedidoDAO().Inserir(obj);
-            return View();
+            return RedirectToAction("", "");
         }
 
         public ActionResult Detalhes(int id)
         {
             var pedido = new PedidoDAO().BuscarPorId(id);
+            pedido.Itens = new ItemPedidoDAO().BuscarPorPedido(id);
             return View(pedido);
         }
     }

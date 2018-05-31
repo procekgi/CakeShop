@@ -5,47 +5,89 @@
 }
 <div class="row">
     <div class="col-md-12">
-        <h3></h3>
+        <h3>PEDIDO @Model.Id_Pedido</h3>
+        <hr />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <form action="#" class="form-horizontal" method="post">
+            <div class="form-group">
+                <div class="col-md-8">
+                    @Html.LabelFor(m => m.Cliente.Nome, "Cliente", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Cliente.Nome, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.DataEntrega, "Data de Entrega", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.DataEntrega, "{0:dd/mm/yyyy hh:mm:ss}", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-6">
+                    @Html.LabelFor(m => m.Produto, "Itens do Pedido", new { @class = "control-label" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <br />
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Código do produto</th>
+                                    <th>Produto</th>
+                                    <th>Quantidade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (ItemPedido item in Model.Itens)
+                                {
+                                    <tr>
+                                        <td>@item.Produto.Id_Produto</td>
+                                        <td>@item.Produto.Nome_Produto</td>
+                                        <td>@item.Quantidade</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-12">
+                @Html.Label("lblCliente", "Endereço: ", new { @class = "control-label" })
+                <span>@Model.Cliente.Endereco</span>
+            </div>
+            <div class="col-md-12">
+                @Html.Label("lblCliente", "Número: ", new { @class = "control-label" })
+                <span>@Model.Cliente.Numero</span>
+            </div>
+
+            <div class="col-md-12">
+                @Html.Label("lblCliente", "Complemento: ", new { @class = "control-label" })
+                <span>@Model.Cliente.Complemento</span>
+            </div>
+
+            <div class="col-md-12">
+                @Html.Label("lblCliente", "CEP: ", new { @class = "control-label" })
+                <span>@Model.Cliente.CEP</span>
+            </div>
+
+            <div class="col-md-12">
+                @Html.Label("lblCliente", "Cidade: ", new { @class = "control-label" })
+                <span>@Model.Cliente.Cidade</span>
+            </div>
+            <div class="col-md-12">
+                @Html.Label("lblCliente", "Estado: ", new { @class = "control-label" })
+                <span>@Model.Cliente.Estado</span>
+            </div>
+
+        </form>
     </div>
 </div>
 
 
-    
-     
-    <tbody>
-        <div class="col-md-12">
-            @Html.Label("lblCliente", "Cliente: ", new { @class = "control-label" })
-            <span>@Model.Cliente.Nome</span>
-        </div>
-        <div class="col-md-12">
-            @Html.Label("lblCliente", "Endereço: ", new { @class = "control-label" })
-            <span>@Model.Cliente.Endereco</span>
-        </div>
-        <div class="col-md-12">
-            @Html.Label("lblCliente", "Número: ", new { @class = "control-label" })
-            <span>@Model.Cliente.Numero</span>
-        </div>
 
-        <div class="col-md-12">
-            @Html.Label("lblCliente", "Complemento: ", new { @class = "control-label" })
-            <span>@Model.Cliente.Complemento</span>
-        </div>
-
-        <div class="col-md-12">
-            @Html.Label("lblCliente", "CEP: ", new { @class = "control-label" })
-            <span>@Model.Cliente.CEP</span>
-        </div>
-
-        <div class="col-md-12">
-            @Html.Label("lblCliente", "Cidade: ", new { @class = "control-label" })
-            <span>@Model.Cliente.Cidade</span>
-        </div>
-        <div class="col-md-12">
-            @Html.Label("lblCliente", "Estado: ", new { @class = "control-label" })
-            <span>@Model.Cliente.Estado</span>
-        </div>
-
-
-
-    </tbody>
 

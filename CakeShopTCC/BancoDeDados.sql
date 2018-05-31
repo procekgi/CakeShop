@@ -21,6 +21,11 @@ create table cliente(
 	Cidade varchar(50),
 	Estado char(3)
 );
+insert into cliente
+(Nome_Cliente, Telefone, Email)
+values
+('Giovana', '92000-2313', 'procekgi@gmail')
+
 
 
 select*from cliente
@@ -38,8 +43,12 @@ create table pedido (
 	Id_cliente int references cliente(Id_cliente),
 	DataPedido datetime not null default getdate(),
 	DataEntrega datetime,
-	QTD_Item_pedido int
+	QTD_Item_pedido int,
+	Horario_Entrega varchar(4)
+
 );
+
+
 
 create table UnidadeDeMedida (
 	Id int primary key identity(1,1),
@@ -76,11 +85,12 @@ create table produto (
 	foto varchar(2000)
 );
 
-create table Item_pedido (
-	Id_pedido int references pedido(Id_pedido),
-	Item_produto varchar(100),
-	Id_produto int references produto(Id_produto),
-	QTD_Item_produto int
+create table ITEM_PEDIDO (
+	ID_ITEM_PEDIDO  int primary key identity(1,1),
+	ID_PEDIDO int references PEDIDO(Id_pedido),
+	ID_PRODUTO int references PRODUTO(Id_produto),
+	PRECO decimal(15,2),
+	QTD_ITEM_PRODUTO int
 );
 
 create table usuario (
@@ -128,3 +138,16 @@ values ('Salgado 1', 5, 2, 2, 'balblalalblballbalbalblba albballba balbalba');
 
 insert into produto (Nome_Produto, Preco, Id_UnidadeDeMedida, Id_Categoria, Descricao)
 values ('Doce 1', 3, 1, 1, 'balblalalblballbalbalblba albballba balbalba');
+
+insert into pedido
+(Id_cliente,DataPedido,DataEntrega,QTD_Item_pedido)
+values
+(1, '30-05-2018 20:03', '05-06-2018 15:30', 06)
+
+
+insert into Item_pedido
+(Id_pedido,Id_produto, preco, QTD_Item_produto)
+values
+(1,1, 10, 01),
+(1,2, 11, 200),
+(1,3, 12, 300);

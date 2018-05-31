@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace CakeShop.DataAccess
 {
-    public class ItemItemPedidoDAO
+    public class ItemPedidoDAO
     {
         public void Inserir(ItemPedido obj)
         {
@@ -52,8 +52,53 @@ namespace CakeShop.DataAccess
                         var item = new ItemPedido()
                         {
                             Id = Convert.ToInt32(row["ID_ITEM_PEDIDO"]),
-                            Pedido = new Pedido() { Id_Pedido = Convert.ToInt32(row["ID_CLIENTE"]) },
+                            Pedido = new Pedido() { Id_Pedido = Convert.ToInt32(row["ID_PEDIDO"]) },
                             Produto = new Produto() { Id_Produto = Convert.ToInt32(row["ID_PRODUTO"]) },
+                            Preco = Convert.ToDecimal(row["PRECO"]),
+                            Quantidade = Convert.ToInt32(row["QTD_ITEM_PRODUTO"])
+                        };
+
+                        lst.Add(item);
+                    }
+                }
+
+                return lst;
+            }
+        }
+
+        public List<ItemPedido> BuscarPorPedido(int pedido)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
+            {
+                var lst = new List<ItemPedido>();
+                string strSQL = @"SELECT 
+                                    I.*, P.NOME_PRODUTO 
+                                  FROM ITEM_PEDIDO I INNER JOIN PRODUTO P ON(I.ID_PRODUTO = P.ID_PRODUTO)
+                                                     INNER JOIN PEDIDO ON (I.ID_PEDIDO = PEDIDO.ID_PEDIDO)
+                                                     WHERE I.ID_PEDIDO = @ID_PEDIDO;";
+              
+                using (SqlCommand cmd = new SqlCommand(strSQL))
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                    cmd.Parameters.Add("@ID_PEDIDO", SqlDbType.VarChar).Value = pedido;
+                    cmd.CommandText = strSQL;
+                    var dataReader = cmd.ExecuteReader();
+                    var dt = new DataTable();
+                    dt.Load(dataReader);
+                    conn.Close();
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        var item = new ItemPedido()
+                        {
+                            Id = Convert.ToInt32(row["ID_ITEM_PEDIDO"]),
+                            Pedido = new Pedido() { Id_Pedido = Convert.ToInt32(row["ID_PEDIDO"]) },
+                            Produto = new Produto()
+                            {
+                                Id_Produto = Convert.ToInt32(row["ID_PRODUTO"]),
+                                Nome_Produto = row["NOME_PRODUTO"].ToString()
+                            },
                             Preco = Convert.ToDecimal(row["PRECO"]),
                             Quantidade = Convert.ToInt32(row["QTD_ITEM_PRODUTO"])
                         };

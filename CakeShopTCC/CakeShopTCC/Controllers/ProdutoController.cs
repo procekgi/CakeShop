@@ -1,7 +1,9 @@
 ﻿using CakeShop.DataAccess;
 using CakeShop.Models;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
@@ -18,17 +20,20 @@ namespace CakeShopTCC.Controllers
 
         public ActionResult PaginaDoces()
         {
-            return View();
+            var lst = new ProdutoDAO().BuscarTodos().Where(p => p.Categoria.Nome_Categoria == "Doces").ToList();
+            return View(lst);
         }
 
         public ActionResult PaginaSalgados()
         {
-            return View();
+            var lst = new ProdutoDAO().BuscarTodos().Where(p => p.Categoria.Nome_Categoria == "Salgados").ToList();
+            return View(lst);
         }
 
         public ActionResult PaginaBolos()
         {
-            return View();
+            var lst = new ProdutoDAO().BuscarTodos().Where(p => p.Categoria.Nome_Categoria == "Bolos").ToList();
+            return View(lst);
         }
 
         public ActionResult ListaTodosOsProdutos()
