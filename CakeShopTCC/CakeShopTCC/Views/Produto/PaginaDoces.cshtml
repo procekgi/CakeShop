@@ -3,17 +3,64 @@
 @{
     Layout = "~/Views/Shared/_LayoutMenu.cshtml";
 }
+@{
+    var colIndex = 0;
+    var size = Model.Count > 0 ? (Model.Count >= 2 ? (12 / (Model.Take(2).Count() + 1)) : (12 / (Model.Count + 1))) : 12;
+}
 <div class="container" style="padding-bottom: 20px;">
-    <div class="row">
-        @foreach (var item in Model)
-        {
-            <div class="col-md-4 text-center">
-                <img src="~/Images/Salgados/barquete de rúcula com tomate seco e mussarela de bufala.jpg" />
-                <h3>@item.Nome_Produto</h3>
-                <h5>@item.Preco</h5>
-                @Html.TextBox("txtQuantidade", (int)decimal.Zero, new { type = "number", min = "0", max = "2000" })
-                @Html.ActionLink("Adicionar ao carrinho", "CadastroPedido", "Pedido")
-            </div>
-        }
-    </div>
+    @while (Model.Skip(colIndex).Count() > 0)
+    {
+        size = Model.Skip(colIndex).Count() > 0 ? (Model.Skip(colIndex).Count() >= 3 ? (12 / Model.Skip(colIndex).Take(3).Count()) : (12 / Model.Skip(colIndex).Count())) : 12;
+        <div class="row" style="padding-bottom: 20px;">
+            @foreach (var item in Model.Skip(colIndex).Take(3).ToList())
+            {
+                <div class="col-md-@size text-center">
+                    <img src="@Url.Content(Path.Combine("~/Uploads", item.Foto))" />
+                    <h3>@item.Nome_Produto</h3>
+                    <h5>@string.Format("{0:N2}", item.Preco)</h5>
+                    @Html.TextBox(string.Format("txtQuantidade{0}", item.Id_Produto), (int)decimal.Zero, new { type = "number", min = "0", max = "2000" })
+                    <a class="lnkComprar" data-id="@item.Id_Produto" href="@Url.Action("Comprar", "Pedido", new { @id = item.Id_Produto })">
+                        Adicionar ao carrinho
+                    </a>
+                </div>
+                colIndex++;
+            }
+        </div>
+    }
 </div>
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("a.lnkComprar").each(function () {
+                var lnk = $(this);
+                lnk.click(function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log($("#txtQuantidade" + lnk.data("id")).val());
+                    $.ajax({
+                        url: lnk.attr("href"),
+                        data: {
+                            qtd: $("#txtQuantidade" + lnk.data("id")).val()
+                        },
+                        method: "GET",
+                        cache: false,
+                        beforeSend: function (result) {
+                            //defaultBegin(result);
+                        },
+                        complete: function (result) {
+                            //defaultComplete(result);
+                        },
+                        success: function (result) {
+                            //defaultSuccess(result);
+                        },
+                        error: function (result) {
+                            alert(result);
+                            //defaultFailure(result);
+                        }
+                    });
+                    return false;
+                });
+            });
+        });
+    </script>
+}

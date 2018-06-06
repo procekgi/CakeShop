@@ -23,6 +23,14 @@ namespace CakeShop.DataAccess
                     cmd.Parameters.Add("@SENHA", SqlDbType.VarChar).Value = obj.Senha;
                     cmd.Parameters.Add("@EMAIL", SqlDbType.VarChar).Value = obj.Email;
 
+                    foreach (SqlParameter parameter in cmd.Parameters)
+                    {
+                        if (parameter.Value == null)
+                        {
+                            parameter.Value = DBNull.Value;
+                        }
+                    }
+
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();

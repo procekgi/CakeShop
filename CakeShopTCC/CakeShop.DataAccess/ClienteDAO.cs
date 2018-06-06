@@ -24,11 +24,19 @@ namespace CakeShop.DataAccess
                     cmd.Parameters.Add("@EMAIL", SqlDbType.VarChar).Value = obj.Email;
                     cmd.Parameters.Add("@LOGIN_CLIENTE", SqlDbType.VarChar).Value = obj.Login;
                     cmd.Parameters.Add("@SENHA", SqlDbType.VarChar).Value = obj.Senha;
-                    cmd.Parameters.Add("@ENDERECO", SqlDbType.VarChar).Value = obj.Endereco ?? string.Empty;
-                    cmd.Parameters.Add("@NUMERO", SqlDbType.VarChar).Value = obj.Numero ?? string.Empty;
-                    cmd.Parameters.Add("@CEP", SqlDbType.VarChar).Value = obj.CEP ?? string.Empty;
-                    cmd.Parameters.Add("@CIDADE", SqlDbType.VarChar).Value = obj.Cidade ?? string.Empty;
-                    cmd.Parameters.Add("@ESTADO", SqlDbType.VarChar).Value = obj.Estado ?? string.Empty;
+                    cmd.Parameters.Add("@ENDERECO", SqlDbType.VarChar).Value = obj.Endereco;
+                    cmd.Parameters.Add("@NUMERO", SqlDbType.VarChar).Value = obj.Numero;
+                    cmd.Parameters.Add("@CEP", SqlDbType.VarChar).Value = obj.CEP;
+                    cmd.Parameters.Add("@CIDADE", SqlDbType.VarChar).Value = obj.Cidade;
+                    cmd.Parameters.Add("@ESTADO", SqlDbType.VarChar).Value = obj.Estado;
+
+                    foreach (SqlParameter parameter in cmd.Parameters)
+                    {
+                        if (parameter.Value == null)
+                        {
+                            parameter.Value = DBNull.Value;
+                        }
+                    }
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
