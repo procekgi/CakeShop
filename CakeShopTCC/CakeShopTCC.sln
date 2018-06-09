@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CakeShop.Models", "Models\C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CakeShop.DataAccess", "CakeShop.DataAccess\CakeShop.DataAccess.csproj", "{A7B93537-DC0D-442C-A9F0-1F25BAD68507}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CakeShopTest", "CakeShopTest\CakeShopTest.csproj", "{4FCDA07F-FB43-49D0-A767-E3E8FDA93D7C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A7B93537-DC0D-442C-A9F0-1F25BAD68507}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7B93537-DC0D-442C-A9F0-1F25BAD68507}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7B93537-DC0D-442C-A9F0-1F25BAD68507}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FCDA07F-FB43-49D0-A767-E3E8FDA93D7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FCDA07F-FB43-49D0-A767-E3E8FDA93D7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FCDA07F-FB43-49D0-A767-E3E8FDA93D7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FCDA07F-FB43-49D0-A767-E3E8FDA93D7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
