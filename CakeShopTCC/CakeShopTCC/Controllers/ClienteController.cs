@@ -64,7 +64,15 @@ namespace CakeShopTCC.Controllers
 
         public ActionResult MeusPedidos()
         {
-            return View();
+            if (HttpContext.User == null || HttpContext.User.GetType() != typeof(Usuario))
+                return RedirectToAction("Cliente", "Cadastro");
+
+            var pedidos = new PedidoDAO().BuscarTodosPorCliente(new Cliente() { Id = ((Usuario)User).Id });
+            pedidos.ForEach(p =>
+            {
+                p.Itens = new ItemPedidoDAO().BuscarPorPedido(p.Id_Pedido);
+            });
+            return View(pedidos);
         }
     }
 }

@@ -1,19 +1,41 @@
-﻿@using CakeShopTCC.Controllers
-<div class="row">
-    <div class="col-md-12">
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Código do Pedido</th>
-                        <th>Data de pedido</th>
-                        <th>Data Entrega</th>
-                        <th>Quantidade de item produto</th>
-                        <th>Preço total</th>
-                        <th>Situação</th>
-                    </tr>
-                </thead>
-            </table>
+﻿@using CakeShop.Models
+@model List<Pedido>
+@{
+    Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Meus pedidos</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Código do Pedido</th>
+                            <th>Data de pedido</th>
+                            <th>Data Entrega</th>
+                            <th>Quantidade de itens</th>
+                            <th>Valor Total (R$)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var pedido in Model)
+                        {
+                            <tr>
+                                <td>@pedido.Id_Pedido</td>
+                                <td>@string.Format("{0:dd/MM/yyyy}", pedido.DataPedido)</td>
+                                <td>@string.Format("{0:dd/MM/yyyy}", pedido.DataEntrega)</td>
+                                <td>@string.Format("{0:N0}", pedido.Itens.Count)</td>
+                                <td>@string.Format("{0:N2}", pedido.Itens.Sum(o => o.Preco * o.Quantidade))</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

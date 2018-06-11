@@ -34,10 +34,11 @@ namespace CakeShopTCC.Controllers
             return View(pedido);
         }
 
-        public ActionResult Comprar(int id, int qtd)
+        [HttpPost]
+        public JsonResult Comprar(int id, int qtd)
         {
             if (HttpContext.User == null || HttpContext.User.GetType() != typeof(Usuario))
-                return RedirectToAction("Cadastro", "Cliente");
+                return Json(Url.Content("~/Cliente/Cadastro"));
 
             var produto = new ProdutoDAO().BuscarPorId(id);
             if (produto != null)
@@ -72,9 +73,10 @@ namespace CakeShopTCC.Controllers
                     new ItemPedidoDAO().Inserir(item);
                 }
 
-                return RedirectToAction("Index", "Pedido", new { id = pedido.Id_Pedido });
+                return Json(Url.Content(string.Format("~/Pedido/Detalhes/{0}", pedido.Id_Pedido)));
             }
-            return RedirectToAction("Index", "Home");
+
+            return Json(Url.Content("~/Home"));
         }
     }
 }
