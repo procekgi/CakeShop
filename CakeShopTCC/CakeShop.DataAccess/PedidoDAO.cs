@@ -13,12 +13,13 @@ namespace CakeShop.DataAccess
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
-                string strSQL = @"INSERT INTO PEDIDO (ID_CLIENTE, DATAPEDIDO, DATAENTREGA) VALUES (@ID_CLIENTE, @DATAPEDIDO, @DATAENTREGA);
+                string strSQL = @"INSERT INTO PEDIDO ([STATUS], ID_CLIENTE, DATAPEDIDO, DATAENTREGA) VALUES (@STATUS, @ID_CLIENTE, @DATAPEDIDO, @DATAENTREGA);
                                   SELECT SCOPE_IDENTITY();";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
                 {
                     cmd.Connection = conn;
+                    cmd.Parameters.Add("@STATUS", SqlDbType.Int).Value = obj.Status;
                     cmd.Parameters.Add("@ID_CLIENTE", SqlDbType.Int).Value = obj.Cliente.Id;
                     cmd.Parameters.Add("@DATAPEDIDO", SqlDbType.DateTime).Value = obj.DataPedido;
                     cmd.Parameters.Add("@DATAENTREGA", SqlDbType.DateTime).Value = obj.DataEntrega.HasValue ? obj.DataEntrega.Value : new Nullable<DateTime>();
@@ -43,17 +44,17 @@ namespace CakeShop.DataAccess
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 string strSQL = @"SELECT 
-    P.*, 
-    C.NOME_CLIENTE,
-    C.ENDERECO,
-    C.NUMERO,
-    C.COMPLEMENTO,
-    C.CEP,
-    C.CIDADE,
-    C.ESTADO
-FROM PEDIDO P 
-INNER JOIN CLIENTE C ON (C.ID_CLIENTE = P.ID_CLIENTE) 
-WHERE ID_PEDIDO = @ID_PEDIDO;";
+                                    P.*, 
+                                    C.NOME_CLIENTE,
+                                    C.ENDERECO,
+                                    C.NUMERO,
+                                    C.COMPLEMENTO,
+                                    C.CEP,
+                                    C.CIDADE,
+                                    C.ESTADO
+                                FROM PEDIDO P 
+                                INNER JOIN CLIENTE C ON (C.ID_CLIENTE = P.ID_CLIENTE) 
+                                WHERE ID_PEDIDO = @ID_PEDIDO;";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
                 {
@@ -86,7 +87,8 @@ WHERE ID_PEDIDO = @ID_PEDIDO;";
                             Estado = row["ESTADO"].ToString()
                         },
                         DataPedido = Convert.ToDateTime(row["DATAPEDIDO"]),
-                        DataEntrega = row["DATAENTREGA"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["DATAENTREGA"])
+                        DataEntrega = row["DATAENTREGA"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["DATAENTREGA"]),
+                        Status = (STATUS_PEDIDO)Convert.ToInt32(row["STATUS"])
                     };
 
                     return pedido;
@@ -125,7 +127,8 @@ WHERE ID_PEDIDO = @ID_PEDIDO;";
                             Nome = row["NOME_CLIENTE"].ToString()
                         },
                         DataPedido = Convert.ToDateTime(row["DATAPEDIDO"]),
-                        DataEntrega = row["DATAENTREGA"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["DATAENTREGA"])
+                        DataEntrega = row["DATAENTREGA"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["DATAENTREGA"]),
+                        Status = (STATUS_PEDIDO)Convert.ToInt32(row["STATUS"])
                     };
 
                     return pedido;
@@ -161,7 +164,8 @@ WHERE ID_PEDIDO = @ID_PEDIDO;";
                                 Nome = row["NOME_CLIENTE"].ToString()
                             },
                             DataPedido = Convert.ToDateTime(row["DATAPEDIDO"]),
-                            DataEntrega = row["DATAENTREGA"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["DATAENTREGA"])
+                            DataEntrega = row["DATAENTREGA"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["DATAENTREGA"]),
+                            Status = (STATUS_PEDIDO)Convert.ToInt32(row["STATUS"])
                         };
 
                         lst.Add(pedido);
@@ -200,7 +204,8 @@ WHERE ID_PEDIDO = @ID_PEDIDO;";
                                 Nome = row["NOME_CLIENTE"].ToString()
                             },
                             DataPedido = Convert.ToDateTime(row["DATAPEDIDO"]),
-                            DataEntrega = row["DATAENTREGA"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["DATAENTREGA"])
+                            DataEntrega = row["DATAENTREGA"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["DATAENTREGA"]),
+                            Status = (STATUS_PEDIDO)Convert.ToInt32(row["STATUS"])
                         };
 
                         lst.Add(pedido);

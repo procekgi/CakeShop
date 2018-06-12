@@ -46,10 +46,10 @@
     <Compile Include="Contato.cs" />
     <Compile Include="ICustomPrincipal.cs" />
     <Compile Include="ItemPedido.cs" />
-    <Compile Include="Login.cs" />
     <Compile Include="Pedido.cs" />
     <Compile Include="Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="STATUS_PEDIDO.cs" />
     <Compile Include="UnidadeDeMedida.cs" />
     <Compile Include="Confeiteira.cs" />
     <Compile Include="Usuario.cs" />
