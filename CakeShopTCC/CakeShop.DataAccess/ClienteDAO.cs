@@ -13,8 +13,8 @@ namespace CakeShop.DataAccess
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
-                string strSQL = @"INSERT INTO CLIENTE (NOME_CLIENTE, TELEFONE, EMAIL, LOGIN_CLIENTE, SENHA, ENDERECO, NUMERO, CEP, CIDADE, ESTADO)
-                                  VALUES (@NOME_CLIENTE, @TELEFONE, @EMAIL, @LOGIN_CLIENTE, @SENHA, @ENDERECO, @NUMERO, @CEP, @CIDADE, @ESTADO);";
+                string strSQL = @"INSERT INTO CLIENTE (NOME_CLIENTE, TELEFONE, EMAIL, LOGIN_CLIENTE, SENHA, ENDERECO, NUMERO, COMPLEMENTO, CEP, CIDADE, ESTADO)
+                                  VALUES (@NOME_CLIENTE, @TELEFONE, @EMAIL, @LOGIN_CLIENTE, @SENHA, @ENDERECO, @NUMERO, @COMPLEMENTO, @CEP, @CIDADE, @ESTADO);";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
                 {
@@ -26,6 +26,7 @@ namespace CakeShop.DataAccess
                     cmd.Parameters.Add("@SENHA", SqlDbType.VarChar).Value = obj.Senha;
                     cmd.Parameters.Add("@ENDERECO", SqlDbType.VarChar).Value = obj.Endereco;
                     cmd.Parameters.Add("@NUMERO", SqlDbType.VarChar).Value = obj.Numero;
+                    cmd.Parameters.Add("@COMPLEMENTO", SqlDbType.VarChar).Value = obj.Complemento;
                     cmd.Parameters.Add("@CEP", SqlDbType.VarChar).Value = obj.CEP;
                     cmd.Parameters.Add("@CIDADE", SqlDbType.VarChar).Value = obj.Cidade;
                     cmd.Parameters.Add("@ESTADO", SqlDbType.VarChar).Value = obj.Estado;
@@ -74,6 +75,7 @@ namespace CakeShop.DataAccess
                             Senha = row["SENHA"].ToString(),
                             Endereco = row["ENDERECO"].ToString(),
                             Numero = row["NUMERO"].ToString(),
+                            Complemento = row["COMPLEMENTO"].ToString(),
                             CEP = row["CEP"].ToString(),
                             Cidade = row["CIDADE"].ToString(),
                             Estado = row["ESTADO"].ToString()
@@ -116,11 +118,12 @@ namespace CakeShop.DataAccess
                         Email = row["EMAIL"].ToString(),
                         Login = row["LOGIN_CLIENTE"].ToString(),
                         Senha = row["SENHA"].ToString(),
-                        //Endereco = row["ENDERECO"].ToString(),
-                        //Numero = row["NUMERO"].ToString(),
-                        //CEP = row["CEP"].ToString(),
-                        //Cidade = row["CIDADE"].ToString(),
-                        //Estado = row["ESTADO"].ToString()
+                        Endereco = row["ENDERECO"].ToString(),
+                        Numero = row["NUMERO"].ToString(),
+                        Complemento = row["COMPLEMENTO"].ToString(),
+                        CEP = row["CEP"].ToString(),
+                        Cidade = row["CIDADE"].ToString(),
+                        Estado = row["ESTADO"].ToString()
                     };
 
                     return cliente;
@@ -161,6 +164,7 @@ namespace CakeShop.DataAccess
                         Senha = row["SENHA"].ToString(),
                         Endereco = row["ENDERECO"].ToString(),
                         Numero = row["NUMERO"].ToString(),
+                        Complemento = row["COMPLEMENTO"].ToString(),
                         CEP = row["CEP"].ToString(),
                         Cidade = row["CIDADE"].ToString(),
                         Estado = row["ESTADO"].ToString()

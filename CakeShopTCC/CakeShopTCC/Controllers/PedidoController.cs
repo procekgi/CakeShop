@@ -34,6 +34,13 @@ namespace CakeShopTCC.Controllers
             return View(pedido);
         }
 
+        public ActionResult ExcluirItem(int id)
+        {
+            var item = new ItemPedidoDAO().BuscarPorId(id);
+            new ItemPedidoDAO().Excluir(item);
+            return RedirectToAction("Detalhes", "Pedido", new { id = item.Pedido.Id_Pedido });
+        }
+
         [HttpPost]
         public JsonResult Comprar(int id, int qtd)
         {

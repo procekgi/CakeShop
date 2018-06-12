@@ -20,6 +20,7 @@
                             <th>Data Entrega</th>
                             <th>Quantidade de itens</th>
                             <th>Valor Total (R$)</th>
+                            <th>&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,6 +32,11 @@
                                 <td>@string.Format("{0:dd/MM/yyyy}", pedido.DataEntrega)</td>
                                 <td>@string.Format("{0:N0}", pedido.Itens.Count)</td>
                                 <td>@string.Format("{0:N2}", pedido.Itens.Sum(o => o.Preco * o.Quantidade))</td>
+                                <td>
+                                    <a href="@Url.Action("Detalhes", "Pedido", new { @id = pedido.Id_Pedido })">
+                                        <i class="fa fa-search"></i>
+                                    </a>
+                                </td>
                             </tr>
                         }
                     </tbody>

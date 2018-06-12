@@ -36,28 +36,26 @@
                 lnk.click(function (e) {
                     e.preventDefault();
                     e.stopPropagation();
-                    console.log($("#txtQuantidade" + lnk.data("id")).val());
-                    $.ajax({
-                        url: lnk.attr("href"),
-                        data: {
-                            qtd: $("#txtQuantidade" + lnk.data("id")).val()
-                        },
-                        method: "GET",
-                        cache: false,
-                        beforeSend: function (result) {
-                            //defaultBegin(result);
-                        },
-                        complete: function (result) {
-                            //defaultComplete(result);
-                        },
-                        success: function (result) {
-                            //defaultSuccess(result);
-                        },
-                        error: function (result) {
-                            alert(result);
-                            //defaultFailure(result);
-                        }
-                    });
+                    if (parseInt($("#txtQuantidade" + lnk.data("id")).val()) > 0) {
+                        $.ajax({
+                            url: lnk.attr("href"),
+                            data: {
+                                qtd: $("#txtQuantidade" + lnk.data("id")).val()
+                            },
+                            method: "POST",
+                            cache: false,
+                            success: function (result) {
+                                document.location.href = result;
+                            },
+                            error: function (result) {
+                                alert(result);
+                            }
+                        });
+                    } else {
+                        $("#txtQuantidade" + lnk.data("id")).css("border-color", "red");
+                        alert("A quantidade deve ser maior que zero!");
+                        $("#txtQuantidade" + lnk.data("id")).focus();
+                    }
                     return false;
                 });
             });

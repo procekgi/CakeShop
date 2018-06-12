@@ -42,7 +42,18 @@ namespace CakeShop.DataAccess
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
-                string strSQL = @"SELECT P.*, C.NOME_CLIENTE FROM PEDIDO P INNER JOIN CLIENTE C ON (C.ID_CLIENTE = P.ID_CLIENTE) WHERE ID_PEDIDO = @ID_PEDIDO;";
+                string strSQL = @"SELECT 
+    P.*, 
+    C.NOME_CLIENTE,
+    C.ENDERECO,
+    C.NUMERO,
+    C.COMPLEMENTO,
+    C.CEP,
+    C.CIDADE,
+    C.ESTADO
+FROM PEDIDO P 
+INNER JOIN CLIENTE C ON (C.ID_CLIENTE = P.ID_CLIENTE) 
+WHERE ID_PEDIDO = @ID_PEDIDO;";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
                 {
@@ -66,7 +77,13 @@ namespace CakeShop.DataAccess
                         Cliente = new Cliente()
                         {
                             Id = Convert.ToInt32(row["ID_CLIENTE"]),
-                            Nome = row["NOME_CLIENTE"].ToString()
+                            Nome = row["NOME_CLIENTE"].ToString(),
+                            Endereco = row["ENDERECO"].ToString(),
+                            Numero = row["NUMERO"].ToString(),
+                            Complemento = row["COMPLEMENTO"].ToString(),
+                            CEP = row["CEP"].ToString(),
+                            Cidade = row["CIDADE"].ToString(),
+                            Estado = row["ESTADO"].ToString()
                         },
                         DataPedido = Convert.ToDateTime(row["DATAPEDIDO"]),
                         DataEntrega = row["DATAENTREGA"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["DATAENTREGA"])

@@ -34,8 +34,9 @@
                                         <th>Código do produto</th>
                                         <th>Produto</th>
                                         <th>Quantidade</th>
-                                        <th>Vlr Un.</th>
-                                        <th>Vlr Total</th>
+                                        <th>Valor Unitário</th>
+                                        <th>Valor Total</th>
+                                        <th>&nbsp;</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,6 +48,11 @@
                                             <td>@item.Quantidade</td>
                                             <td>@string.Format("{0:N2}", item.Preco)</td>
                                             <td>@string.Format("{0:N2}", item.Preco * item.Quantidade)</td>
+                                            <td>
+                                                <a href="@Url.Action("ExcluirItem", "Pedido", new { @id = item.Id })" onclick="if (!confirm('Deseja realmente excluir este item?')) return false;">
+                                                    <i class="fa fa-remove"></i>
+                                                </a>
+                                            </td>
                                         </tr>
                                     }
                                 </tbody>
