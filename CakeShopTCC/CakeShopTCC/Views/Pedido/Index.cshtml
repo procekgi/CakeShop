@@ -1,8 +1,14 @@
 ﻿@using CakeShop.Models
 @model List<Pedido>
-@{ 
+@{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<div class="row">
+    <div class="col-md-12">
+        <h3>Pedidos</h3>
+        <hr />
+    </div>
+</div>
 <div class="row">
     <div class="col-md-12">
         <div class="table-responsive">
@@ -14,6 +20,7 @@
                         <th>Data de Pedido</th>
                         <th>Data Entrega</th>
                         <th>Quantidade de Itens</th>
+                        <th>Valor Total (R$)</th>
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
@@ -25,7 +32,8 @@
                             <td>@pedido.Cliente.Nome</td>
                             <td>@pedido.DataPedido</td>
                             <td>@pedido.DataEntrega</td>
-                            <td>@pedido.QuantidadeDeItens</td>
+                            <td>@string.Format("{0:N0}", pedido.Itens.Count)</td>
+                            <td>@string.Format("{0:N2}", pedido.Itens.Sum(item => item.Preco * item.Quantidade))</td>
                             <td>
                                 <a href="@Url.Action("Detalhes", "Pedido", new { @id = pedido.Id_Pedido })">Ver detalhes</a>
                             </td>

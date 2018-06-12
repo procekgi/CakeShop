@@ -14,7 +14,6 @@ namespace CakeShop.Models
         public DateTime DataPedido { get; set; }
         public DateTime? DataEntrega { get; set; }
         public string HorarioEntrega { get; set; }
-        public int QuantidadeDeItens { get; set; }
         public List<ItemPedido> Itens { get; set; }
 
         public Pedido()

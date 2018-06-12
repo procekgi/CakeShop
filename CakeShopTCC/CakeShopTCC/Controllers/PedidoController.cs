@@ -13,6 +13,10 @@ namespace CakeShopTCC.Controllers
         public ActionResult Index()
         {
             var lst = new PedidoDAO().BuscarTodos();
+            lst.ForEach(p =>
+            {
+                p.Itens = new ItemPedidoDAO().BuscarPorPedido(p.Id_Pedido);
+            });
             return View(lst);
         }
 

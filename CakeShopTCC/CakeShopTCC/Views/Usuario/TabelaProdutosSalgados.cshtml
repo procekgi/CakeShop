@@ -1,12 +1,23 @@
-﻿
-@using CakeShop.Models
+﻿@using CakeShop.Models
 @model List<Produto>
-
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <h3>Salgados</h3>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <a href="@Url.Action("CadastroProduto", "Produtos")" class="btn btn-danger" style="margin-bottom: 20px;">Incluir Salgado</a>
+    </div>
+</div>
 <div class="row>">
     <div class="col-md-12">
-        <h1>Salgados</h1>
         <div class="table-responsive">
-            <table class="table table-condensed">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>Código</th>
@@ -27,23 +38,10 @@
                             <td>@item.UnidadeDeMedida.Nome</td>
                             <td>@item.Preco</td>
                             <td>@item.Descricao</td>
-
                         </tr>
-
                     }
                 </tbody>
             </table>
-        </div>
-        <div class="row">
-            <div class="form-group">
-                <div class="col-md-12">
-                    <a href="@Url.Action("CadastroProduto", "Produto")" class="btn btn-danger">Incluir Salgado</a>
-
-                    <a href="@Url.Action("CadastroProduto", "TabelaProdutosSalgados")" class="btn btn-danger">Editar</a>
-                    <a href="@Url.Action("CadastroProduto", "TabelaProdutosSalgados")" class="btn btn-danger">Excluir</a>
-
-                </div>
-            </div>
         </div>
     </div>
 </div>

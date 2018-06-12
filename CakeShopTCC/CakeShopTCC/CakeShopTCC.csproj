@@ -218,6 +218,8 @@
     <Content Include="Imagens\Salgados\Mini sanduiche.jpg" />
     <Content Include="Imagens\Salgados\Petisco de queijo e salame.jpg" />
     <Content Include="Imagens\Salgados\Salpicao de frango.jpg" />
+    <Content Include="Images\avatar_100px.png" />
+    <Content Include="Images\avatar_2x.png" />
     <Content Include="Images\baked-goods-1867459_640.jpg" />
     <Content Include="Images\Bolos\Bolo com macarrons.jpg" />
     <Content Include="Images\Bolos\Bolo de chocolate.jpg" />

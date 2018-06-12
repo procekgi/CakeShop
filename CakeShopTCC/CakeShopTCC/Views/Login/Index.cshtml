@@ -3,32 +3,45 @@
 @{
     Layout = "~/Views/Shared/_LayoutMenu.cshtml";
 }
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-md-4">
-        <form action="@Url.Action("Entrar", "Login")" class="form-horizontal">
-            <div class="form-group">
-                <div class="col-md-12 text-center">
-                    <h2>Login</h2>
-                </div>
+        <div class="card" style="margin-top: 5px; margin-bottom: 20px;">
+            <div class="card-body">
+                <form action="@Url.Action("Entrar", "Login")" class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-12 text-center">
+                            <img class="rounded-circle" src="@Url.Content("~/Images/avatar_2x.png")" width="140" height="140" />
+                        </div>
+                    </div>
+                    @if (!string.IsNullOrWhiteSpace(ViewBag.ErrorMsg))
+                    {
+                        <div class="form-group">
+                            <div class="col-md-12 text-center">
+                                <div class="alert alert-danger" role="alert" style="margin-bottom: 0px !important;">
+                                    @ViewBag.ErrorMsg
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.Login, "Usuário", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.Login, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.Senha, "Senha", new { @class = "control-label" })
+                            @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 text-center">
+                            <button type="submit" class="btn btn-danger btn-block">Entrar</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <div class="col-md-12">
-                    @Html.LabelFor(m => m.Login, "Usuário", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Login, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-12">
-                    @Html.LabelFor(m => m.Senha, "Senha", new { @class = "control-label" })
-                    @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-12 text-center">
-                    <button type="submit" class="btn btn-danger">Entrar</button>
-                    <button type="button" class="btn btn-danger">Cancelar</button>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
 </div>

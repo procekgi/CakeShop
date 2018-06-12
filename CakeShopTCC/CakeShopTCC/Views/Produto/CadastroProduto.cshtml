@@ -1,58 +1,60 @@
 ﻿@using CakeShop.Models
 @model Produto
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
 <div class="row">
     <div class="col-md-12">
-        <h1>Cadastro de produto</h1>
+        <h3>Cadastro de produto</h3>
         <hr />
     </div>
 </div>
 <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <form action="@Url.Action("SalvarProduto", "Produto")">
-            <div class="form-row">
-                <div class="form-group col-md-12">
+    <div class="col-md-12">
+        <form class="form-horizontal" action="@Url.Action("SalvarProduto", "Produto")">
+            <div class="form-group">
+                <div class="col-md-8">
                     @Html.LabelFor(m => m.Nome_Produto, "Nome do produto", new { @class = "control-label" })
                     @Html.TextBoxFor(m => m.Nome_Produto, new { @class = "form-control" })
                 </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-12">
+                <div class="col-md-4">
                     @Html.LabelFor(m => m.Categoria.Id_Categoria, "Categoria", new { @class = "control-label" })
                     @Html.DropDownListFor(m => m.Categoria.Id_Categoria, new SelectList(ViewBag.Categorias ?? new List<Categoria>(), "Id_Categoria", "Nome_Categoria"), "--[SELECIONE]--", new { @class = "form-control" })
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-8">
+            <div class="form-group">
+                <div class="col-md-8">
                     @Html.LabelFor(m => m.UnidadeDeMedida.Id_UnidadeDeMedida, "Unidade de Medida", new { @class = "control-label" })
                     @Html.DropDownListFor(m => m.UnidadeDeMedida.Id_UnidadeDeMedida, new SelectList(ViewBag.Unidades ?? new List<UnidadeDeMedida>(), "Id_UnidadeDeMedida", "Nome"), "--[SELECIONE]--", new { @class = "form-control" })
                 </div>
-                <div class="form-group col-md-4">
+                <div class="col-md-4">
                     @Html.LabelFor(m => m.Preco, "Preço", new { @class = "control-label" })
                     @Html.TextBoxFor(m => m.Preco, new { @id = "txtPreco", @class = "form-control" })
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-12">
+            <div class="form-group">
+                <div class="col-md-12">
                     @Html.LabelFor(m => m.Foto, "Foto:", new { @id = "lblFoto", @class = "control-label" })
+
                     <div class="input-group">
                         @Html.TextBoxFor(m => m.Foto, new { @id = "txtFoto", @class = "form-control", @maxlength = 1000, @readonly = true })
-                        <div class="input-group-append">
+                        <span class="input-group-btn">
                             <span class="btn btn-danger fileinput-button">
-                                <i class="fa fa-search"></i>
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                 <input id="fupArquivo" type="file" name="files[]" multiple="multiple" data-url="@Url.Action("Upload", "Produto")" />
                             </span>
-                        </div>
+                        </span>
                     </div>
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-12">
+            <div class="form-group">
+                <div class="col-md-12">
                     @Html.LabelFor(m => m.Descricao, "Descrição", new { @class = "control-label" })
                     @Html.TextAreaFor(m => m.Descricao, new { @class = "form-control", @rows = 10 })
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-12 text-right">
+            <div class="form-group">
+                <div class="col-md-12 text-right">
                     <button type="submit" class="btn btn-danger">Salvar</button>
                     <button type="button" class="btn btn-danger">Cancelar</button>
                 </div>

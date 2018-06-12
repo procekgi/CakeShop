@@ -1,9 +1,16 @@
-﻿
-@using CakeShop.Models
+﻿@using CakeShop.Models
 @model List<Cliente>
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <h3>Clientes</h3>
+        <hr />
+    </div>
+</div>
 <div class="row>">
     <div class="col-md-12">
-        <h1>Clientes</h1>
         <div class="table-responsive">
             <table class="table table-condensed">
                 <thead>
@@ -13,7 +20,6 @@
                         <th>Email</th>
                         <th>Telefone</th>
                         <th>Nome de usuário</th>
-
                     </tr>
                 </thead>
                 <tbody>
