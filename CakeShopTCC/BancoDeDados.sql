@@ -119,7 +119,7 @@ select * from pedido;
 --insert into pedido (Id_cliente, DataEntrega) values (1, getdate());
 --insert into pedido (Id_cliente, DataEntrega) values (1, getdate());
 
-update pedido set datapedido = getdate();
+--update pedido set datapedido = getdate();
 
 select * from Item_pedido;
 
@@ -131,13 +131,13 @@ select * from produto;
 
 
 insert into produto (Nome_Produto, Preco, Id_UnidadeDeMedida, Id_Categoria, Descricao)
-values ('Bolo 1', 10, 3, 3, 'balblalalblballbalbalblba albballba balbalba');
+values ('Bolo 1', 10, 3, 6, 'balblalalblballbalbalblba albballba balbalba');
 
 insert into produto (Nome_Produto, Preco, Id_UnidadeDeMedida, Id_Categoria, Descricao)
-values ('Salgado 1', 5, 2, 2, 'balblalalblballbalbalblba albballba balbalba');
+values ('Salgado 1', 5, 2, 5, 'balblalalblballbalbalblba albballba balbalba');
 
 insert into produto (Nome_Produto, Preco, Id_UnidadeDeMedida, Id_Categoria, Descricao)
-values ('Doce 1', 3, 1, 1, 'balblalalblballbalbalblba albballba balbalba');
+values ('Doce 1', 3, 1, 4, 'balblalalblballbalbalblba albballba balbalba');
 
 insert into pedido
 (Id_cliente,DataPedido,DataEntrega,QTD_Item_pedido)
@@ -151,3 +151,23 @@ values
 (1,1, 10, 01),
 (1,2, 11, 200),
 (1,3, 12, 300);
+
+
+
+alter table pedido drop column situacao;
+alter table cliente drop column login_usuario
+
+alter table cliente add LOGIN_CLIENTE VARCHAR(50)
+
+select * from cliente
+
+update cliente set LOGIN_CLIENTE = 'giovana', senha = '123', Endereco = 'Endereco', Numero = '4321', cep = '81123-123', Cidade = 'CWB', Estado = 'PR', Complemento = 'ASDSADaaa'
+
+alter table produto add foto varchar(2000);
+
+select * from produto
+select * from categoria
+
+
+
+--update produto set foto = 'download.jpg'
