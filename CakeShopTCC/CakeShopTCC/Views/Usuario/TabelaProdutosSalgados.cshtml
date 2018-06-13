@@ -11,7 +11,7 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        <a href="@Url.Action("CadastroProduto", "Produtos")" class="btn btn-danger" style="margin-bottom: 20px;">Incluir Salgado</a>
+        <a href="@Url.Action("CadastroProduto", "Produto")" class="btn btn-danger" style="margin-bottom: 20px;">Incluir Salgado</a>
     </div>
 </div>
 <div class="row>">
@@ -25,7 +25,6 @@
                         <th>Categoria</th>
                         <th>UDM</th>
                         <th>Preço</th>
-                        <th>Descrição</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,8 +35,7 @@
                             <td>@item.Nome_Produto</td>
                             <td>@item.Categoria.Nome_Categoria</td>
                             <td>@item.UnidadeDeMedida.Nome</td>
-                            <td>@item.Preco</td>
-                            <td>@item.Descricao</td>
+                            <td>@string.Format("{0:C2}", item.Preco)</td>
                         </tr>
                     }
                 </tbody>

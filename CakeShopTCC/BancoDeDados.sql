@@ -1,173 +1,127 @@
-use master
-go
+CREATE DATABASE CakeShop
+GO
 
-create database CakeShop
-go
+USE CakeShop
+GO
 
-use CakeShop
-go
-
-create table cliente(
-	Id_Cliente integer primary key identity(1,1),
-	Nome_Cliente varchar(200),
-	Telefone varchar(11),
-	Email varchar(250),
-	Login_Cliente varchar(50),
-	Senha varchar(8),
-	Endereco varchar(300),
-	Numero int,
-	Complemento varchar(50),
-	CEP int,
-	Cidade varchar(50),
-	Estado char(3)
-);
-insert into cliente
-(Nome_Cliente, Telefone, Email)
-values
-('Giovana', '92000-2313', 'procekgi@gmail')
-
-
-
-select*from cliente
-
-
-create table Contato(
-	Id int primary key identity(1,1),
-	NomeCliente varchar (100),
-	emailCliente varchar(200),
-	Mensagem varchar(max))
-
-
-create table pedido (
-	id_pedido int primary key identity(1,1),
-	Id_cliente int references cliente(Id_cliente),
-	DataPedido datetime not null default getdate(),
-	DataEntrega datetime,
-	QTD_Item_pedido int,
-	Horario_Entrega varchar(4)
-
+CREATE TABLE USUARIO (
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	NOME VARCHAR(100),
+	LOGINUSUARIO VARCHAR(20),
+	SENHA VARCHAR(10), 
+	EMAIL VARCHAR(200)
 );
 
+INSERT INTO USUARIO (NOME, LOGINUSUARIO, SENHA, EMAIL) VALUES ('ADMINISTRADOR', 'admin', '123', 'admin@cakeshop.com.br');
 
-
-create table UnidadeDeMedida (
-	Id int primary key identity(1,1),
-	Nome varchar(20),
-	Sigla char(3)
-) 
-
-insert into UnidadeDeMedida (Nome, Sigla)
-values
-('Quilograma', 'kg'),
-('Grama', 'g'),
-('Unitário', 'un')
-
-create table Categoria (
-	Id int primary key identity(1,1),
-	Nome varchar(10)
+CREATE TABLE CLIENTE (
+	ID_CLIENTE INTEGER PRIMARY KEY IDENTITY(1,1),
+	NOME_CLIENTE VARCHAR(200),
+	TELEFONE VARCHAR(50),
+	EMAIL VARCHAR(250),
+	LOGIN_CLIENTE VARCHAR(50),
+	SENHA VARCHAR(8),
+	ENDERECO VARCHAR(300),
+	NUMERO VARCHAR(50),
+	COMPLEMENTO VARCHAR(100),
+	CEP VARCHAR(50),
+	CIDADE VARCHAR(50),
+	ESTADO CHAR(3)
 );
 
+INSERT INTO CLIENTE (NOME_CLIENTE, TELEFONE, EMAIL, LOGIN_CLIENTE, SENHA, ENDERECO, NUMERO, COMPLEMENTO, CEP, CIDADE, ESTADO)
+VALUES ('Giovana Proceki', '(41) 3271-8450', 'procekgi@gmail.com', 'giovana', '123', 'Rua Padre Leonardo Nunes', '180', 'Portão', '80330-320', 'Curitiba', 'PR');
 
-insert into Categoria(Nome) 
-values 
-('Doces'),
-( 'Salgados'),
-( 'Bolos')
-
-
-create table produto (
-	Id_Produto int primary key identity(1,1),
-	Nome_Produto varchar(200),
-	Preco Decimal (10,2),
-	Id_UnidadeDeMedida int references UnidadeDeMedida(Id),
-	Id_Categoria int references Categoria(ID),
-	Descricao varchar(max),
-	foto varchar(2000)
+CREATE TABLE UNIDADE_MEDIDA (
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	NOME VARCHAR(200),
+	SIGLA CHAR(20)
 );
 
-create table ITEM_PEDIDO (
-	ID_ITEM_PEDIDO  int primary key identity(1,1),
-	ID_PEDIDO int references PEDIDO(Id_pedido),
-	ID_PRODUTO int references PRODUTO(Id_produto),
-	PRECO decimal(15,2),
-	QTD_ITEM_PRODUTO int
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Metro', 'm');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Centímetro', 'cm');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Milímetro', 'mm');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Quilograma', 'kg');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Grama', 'g');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Miligrama', 'mg');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Tonelada', 't');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Libra', 'lb');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Onça', 'oz');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Segundo', 's');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Minuto', 'min');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Hora', 'h');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Ampère', 'A');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Miliampère', 'mA');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Kelvin', 'K');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Grau Celsius', '°C');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Fahrenheit', '°F');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Candela', 'cd');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Mol', 'mol');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Metro Quadrado', 'm²');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Centímetro Quadrado', 'cm²');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Metro Cúbico', 'm³');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Litro', 'l');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Centímetro Cúbico', 'cm³');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Mililitro', 'ml');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Metro por Segundo', 'm/s');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Quilômetro por Hora', 'km/h');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Metro por Segundo ao Quadrado', 'm/s²');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Quilograma por Metro Cúbico', 'kg/m³');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Grama por Centímetro Cúbico', 'g/cm³');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Candela por Metro Quadrado', 'cd/m²');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Radiano', 'rad');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Grau', 'º');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Hert', 'Hz');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Newton', 'N');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Quilograma-Força', 'kgf');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Pascal', 'Pa');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Atmosfera', 'atm');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Bar', 'bar');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Joule', 'J');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Eletronvolt', 'eV');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Watt', 'W');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Quilowatt', 'kW');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Coulomb', 'C');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Volt', 'V');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Farad', 'F');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Ohm', '#(#937#)#');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Siemens', 'S');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Lúmen', 'lm');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Lux', 'lx');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Metro Cúbico por Segundo', 'm³/s');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Caixa', 'cx');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Unidade', 'un');
+INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES ('Mão de obra', 'mo');
+
+CREATE TABLE CATEGORIA (
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	NOME VARCHAR(10)
 );
 
-create table usuario (
-	id int primary key,
-	Nome varchar(100),
-	LoginUsuario varchar(20),
-	Senha varchar(10), 
-	Email varchar(200)
+INSERT INTO CATEGORIA (NOME) VALUES ('DOCES'), ( 'SALGADOS'), ( 'BOLOS');
+
+CREATE TABLE PRODUTO (
+	ID_PRODUTO INT PRIMARY KEY IDENTITY(1,1),
+	NOME_PRODUTO VARCHAR(200),
+	PRECO DECIMAL(10,2),
+	ID_UNIDADE_MEDIDA INT REFERENCES UNIDADE_MEDIDA (ID),
+	ID_CATEGORIA INT REFERENCES CATEGORIA (ID),
+	DESCRICAO VARCHAR(MAX),
+	FOTO VARCHAR(2000)
 );
 
-insert into usuario(id, Nome, LoginUsuario, Senha, Email)
-values
-(1, 'Giovana Machado', 'ConfeiteiraLog', 'cs_giovana', 'procekgi@gmail.com')
-	
-select*from usuario
+CREATE TABLE PEDIDO (
+	ID_PEDIDO INT PRIMARY KEY IDENTITY(1,1),
+	ID_CLIENTE INT REFERENCES CLIENTE (ID_CLIENTE),
+	DATAPEDIDO DATETIME NOT NULL DEFAULT GETDATE(),
+	DATAENTREGA DATETIME,
+	[STATUS] INTEGER
+);
 
-
-
-
-select * from usuario
-
-select * from cliente
-
-select * from pedido;
-
---insert into pedido (Id_cliente, DataEntrega) values (1, getdate());
---insert into pedido (Id_cliente, DataEntrega) values (1, getdate());
-
---update pedido set datapedido = getdate();
-
-select * from Item_pedido;
-
-select * from UnidadeDeMedida
-
-select * from categoria;
-
-select * from produto;
-
-
-insert into produto (Nome_Produto, Preco, Id_UnidadeDeMedida, Id_Categoria, Descricao)
-values ('Bolo 1', 10, 3, 6, 'balblalalblballbalbalblba albballba balbalba');
-
-insert into produto (Nome_Produto, Preco, Id_UnidadeDeMedida, Id_Categoria, Descricao)
-values ('Salgado 1', 5, 2, 5, 'balblalalblballbalbalblba albballba balbalba');
-
-insert into produto (Nome_Produto, Preco, Id_UnidadeDeMedida, Id_Categoria, Descricao)
-values ('Doce 1', 3, 1, 4, 'balblalalblballbalbalblba albballba balbalba');
-
-insert into pedido
-(Id_cliente,DataPedido,DataEntrega,QTD_Item_pedido)
-values
-(1, '30-05-2018 20:03', '05-06-2018 15:30', 06)
-
-
-insert into Item_pedido
-(Id_pedido,Id_produto, preco, QTD_Item_produto)
-values
-(1,1, 10, 01),
-(1,2, 11, 200),
-(1,3, 12, 300);
-
-
-
-alter table pedido drop column situacao;
-alter table cliente drop column login_usuario
-
-alter table cliente add LOGIN_CLIENTE VARCHAR(50)
-
-select * from cliente
-
-update cliente set LOGIN_CLIENTE = 'giovana', senha = '123', Endereco = 'Endereco', Numero = '4321', cep = '81123-123', Cidade = 'CWB', Estado = 'PR', Complemento = 'ASDSADaaa'
-
-alter table produto add foto varchar(2000);
-
-select * from produto
-select * from categoria
-
-
-
---update produto set foto = 'download.jpg'
+CREATE TABLE ITEM_PEDIDO (
+	ID_ITEM_PEDIDO INT PRIMARY KEY IDENTITY(1,1),
+	ID_PEDIDO INT REFERENCES PEDIDO (ID_PEDIDO),
+	ID_PRODUTO INT REFERENCES PRODUTO (ID_PRODUTO),
+	PRECO DECIMAL(10,2),
+	QTD_ITEM_PRODUTO INT
+);

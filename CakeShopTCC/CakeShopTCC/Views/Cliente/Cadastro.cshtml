@@ -9,6 +9,16 @@
             <h2>É Cadastrado?</h2>
             <hr />
             <form action="@Url.Action("Entrar", "Cliente")" class="form-horizontal">
+                @if (!string.IsNullOrWhiteSpace(ViewBag.ErrorMsg))
+                {
+                    <div class="form-row">
+                        <div class="form-group col-md-12 text-center">
+                            <div class="alert alert-danger" role="alert" style="margin-bottom: 0px !important;">
+                                @ViewBag.ErrorMsg
+                            </div>
+                        </div>
+                    </div>
+                }
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         @Html.LabelFor(m => m.Login, "Usuário", new { @class = "control-label" })

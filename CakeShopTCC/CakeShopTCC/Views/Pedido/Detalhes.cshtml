@@ -14,13 +14,17 @@
         <div class="col-md-12">
             <form action="#" class="form-horizontal" method="post">
                 <div class="form-row">
-                    <div class="form-group col-md-8">
+                    <div class="form-group col-md-6">
                         @Html.LabelFor(m => m.Cliente.Nome, "Cliente:", new { @class = "control-label" })
                         @Html.TextBoxFor(m => m.Cliente.Nome, new { @class = "form-control" })
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-3">
+                        @Html.LabelFor(m => m.DataPedido, "Data do Pedido:", new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.DataPedido, "{0:dd/MM/yyyy}", new { @class = "form-control", @readonly = true })
+                    </div>
+                    <div class="form-group col-md-3">
                         @Html.LabelFor(m => m.DataEntrega, "Data de Entrega:", new { @class = "control-label" })
-                        @Html.TextBoxFor(m => m.DataEntrega, "{0:dd/mm/yyyy hh:mm:ss}", new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.DataEntrega, "{0:dd/MM/yyyy HH:mm}", new { @class = "form-control", @type = "datetime-local" })
                     </div>
                 </div>
                 <div class="form-row">
@@ -46,8 +50,8 @@
                                             <td>@item.Produto.Id_Produto</td>
                                             <td>@item.Produto.Nome_Produto</td>
                                             <td>@item.Quantidade</td>
-                                            <td>@string.Format("{0:N2}", item.Preco)</td>
-                                            <td>@string.Format("{0:N2}", item.Preco * item.Quantidade)</td>
+                                            <td>@string.Format("{0:C2}", item.Preco)</td>
+                                            <td>@string.Format("{0:C2}", item.Preco * item.Quantidade)</td>
                                             <td>
                                                 <a href="@Url.Action("ExcluirItem", "Pedido", new { @id = item.Id })" onclick="if (!confirm('Deseja realmente excluir este item?')) return false;">
                                                     <i class="fa fa-remove"></i>
@@ -56,6 +60,16 @@
                                         </tr>
                                     }
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="4">
+                                            <b>TOTAL</b>
+                                        </td>
+                                        <td colspan="2">
+                                            <b>@string.Format("{0:C2}", Model.Itens.Sum(item => item.Preco * item.Quantidade))</b>
+                                        </td>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>
@@ -90,7 +104,9 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-12 text-right">
-                        <button type="button" class="btn btn-danger">Finalizar e ir para pagamento</button>
+                        <a href="@Url.Action("Finalizar", "Pedido", new { @id = Model.Id_Pedido })" class="btn btn-danger">
+                            Finalizar e ir para pagamento
+                        </a>
                     </div>
                 </div>
             </form>

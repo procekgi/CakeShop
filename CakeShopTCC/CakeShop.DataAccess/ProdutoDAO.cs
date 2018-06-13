@@ -13,15 +13,15 @@ namespace CakeShop.DataAccess
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
-                string strSQL = @"INSERT INTO PRODUTO (NOME_PRODUTO, PRECO, ID_UNIDADEDEMEDIDA, ID_CATEGORIA, DESCRICAO, FOTO)
-                                  VALUES (@NOME_PRODUTO, @PRECO, @ID_UNIDADEDEMEDIDA, @ID_CATEGORIA, @DESCRICAO, @FOTO);";
+                string strSQL = @"INSERT INTO PRODUTO (NOME_PRODUTO, PRECO, ID_UNIDADE_MEDIDA, ID_CATEGORIA, DESCRICAO, FOTO)
+                                  VALUES (@NOME_PRODUTO, @PRECO, @ID_UNIDADE_MEDIDA, @ID_CATEGORIA, @DESCRICAO, @FOTO);";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
                 {
                     cmd.Connection = conn;
                     cmd.Parameters.Add("@NOME_PRODUTO", SqlDbType.VarChar).Value = obj.Nome_Produto;
                     cmd.Parameters.Add("@PRECO", SqlDbType.Decimal).Value = obj.Preco;
-                    cmd.Parameters.Add("@ID_UNIDADEDEMEDIDA", SqlDbType.Int).Value = obj.UnidadeDeMedida.Id_UnidadeDeMedida;
+                    cmd.Parameters.Add("@ID_UNIDADE_MEDIDA", SqlDbType.Int).Value = obj.UnidadeDeMedida.Id_UnidadeDeMedida;
                     cmd.Parameters.Add("@ID_CATEGORIA", SqlDbType.Int).Value = obj.Categoria.Id_Categoria;
                     cmd.Parameters.Add("@DESCRICAO", SqlDbType.VarChar).Value = obj.Descricao;
                     cmd.Parameters.Add("@FOTO", SqlDbType.VarChar).Value = obj.Foto;
@@ -46,7 +46,7 @@ namespace CakeShop.DataAccess
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 string strSQL = @"SELECT 
-                                    U.ID AS ID_UNIDADEDEMEDIDA,
+                                    U.ID AS ID_UNIDADE_MEDIDA,
                                     U.NOME AS NOME_UNIDADE, 
                                     C.ID AS ID_CATEGORIA, 
                                     C.NOME AS NOME_CATEGORIA, 
@@ -56,7 +56,7 @@ namespace CakeShop.DataAccess
                                     P.DESCRICAO,
                                     P.FOTO 
                                 FROM PRODUTO P
-                                INNER JOIN UNIDADEDEMEDIDA U ON (P.ID_UNIDADEDEMEDIDA = U.ID)
+                                INNER JOIN UNIDADE_MEDIDA U ON (P.ID_UNIDADE_MEDIDA = U.ID)
                                 INNER JOIN CATEGORIA C ON (P.ID_CATEGORIA = C.ID)
                                 WHERE P.ID_PRODUTO = @ID_PRODUTO;";
 
@@ -82,7 +82,7 @@ namespace CakeShop.DataAccess
                         Preco = Convert.ToDecimal(row["PRECO"]),
                         UnidadeDeMedida = new UnidadeDeMedida
                         {
-                            Id_UnidadeDeMedida = Convert.ToInt32(row["ID_UNIDADEDEMEDIDA"]),
+                            Id_UnidadeDeMedida = Convert.ToInt32(row["ID_UNIDADE_MEDIDA"]),
                             Nome = row["NOME_UNIDADE"].ToString()
                         },
                         Categoria = new Categoria
@@ -105,7 +105,7 @@ namespace CakeShop.DataAccess
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 string strSQL = @"SELECT 
-                                    U.ID AS ID_UNIDADEDEMEDIDA,
+                                    U.ID AS ID_UNIDADE_MEDIDA,
                                     U.NOME AS NOME_UNIDADE, 
                                     C.ID AS ID_CATEGORIA, 
                                     C.NOME AS NOME_CATEGORIA, 
@@ -115,7 +115,7 @@ namespace CakeShop.DataAccess
                                     P.DESCRICAO,
                                     P.FOTO 
                                 FROM PRODUTO P
-                                INNER JOIN UNIDADEDEMEDIDA U ON (P.ID_UNIDADEDEMEDIDA = U.ID)
+                                INNER JOIN UNIDADE_MEDIDA U ON (P.ID_UNIDADE_MEDIDA = U.ID)
                                 INNER JOIN CATEGORIA C ON (P.ID_CATEGORIA = C.ID);";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
@@ -137,7 +137,7 @@ namespace CakeShop.DataAccess
                             Preco = Convert.ToDecimal(row["PRECO"]),
                             UnidadeDeMedida = new UnidadeDeMedida
                             {
-                                Id_UnidadeDeMedida = Convert.ToInt32(row["ID_UNIDADEDEMEDIDA"]),
+                                Id_UnidadeDeMedida = Convert.ToInt32(row["ID_UNIDADE_MEDIDA"]),
                                 Nome = row["NOME_UNIDADE"].ToString()
                             },
                             Categoria = new Categoria
@@ -163,7 +163,7 @@ namespace CakeShop.DataAccess
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 string strSQL = @"SELECT 
-                                    U.ID AS ID_UNIDADEDEMEDIDA,
+                                    U.ID AS ID_UNIDADE_MEDIDA,
                                     U.NOME AS NOME_UNIDADE, 
                                     C.ID AS ID_CATEGORIA, 
                                     C.NOME AS NOME_CATEGORIA, 
@@ -173,7 +173,7 @@ namespace CakeShop.DataAccess
                                     P.DESCRICAO, 
                                     P.FOTO
                                   FROM PRODUTO P
-                                  INNER JOIN UNIDADEDEMEDIDA U ON (P.ID_UNIDADEDEMEDIDA = U.ID)
+                                  INNER JOIN UNIDADE_MEDIDA U ON (P.ID_UNIDADE_MEDIDA = U.ID)
                                   INNER JOIN CATEGORIA C ON (P.ID_CATEGORIA = C.ID)
                                   WHERE P.ID_CATEGORIA = @ID_CATEGORIA;";
 
@@ -197,7 +197,7 @@ namespace CakeShop.DataAccess
                             Preco = Convert.ToDecimal(row["PRECO"]),
                             UnidadeDeMedida = new UnidadeDeMedida
                             {
-                                Id_UnidadeDeMedida = Convert.ToInt32(row["ID_UNIDADEDEMEDIDA"]),
+                                Id_UnidadeDeMedida = Convert.ToInt32(row["ID_UNIDADE_MEDIDA"]),
                                 Nome = row["NOME_UNIDADE"].ToString()
                             },
                             Categoria = new Categoria

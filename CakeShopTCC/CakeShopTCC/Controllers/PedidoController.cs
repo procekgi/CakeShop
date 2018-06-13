@@ -54,7 +54,9 @@ namespace CakeShopTCC.Controllers
             var produto = new ProdutoDAO().BuscarPorId(id);
             if (produto != null)
             {
-                var pedido = new PedidoDAO().BuscarPorCliente(new Cliente() { Id = ((Usuario)User).Id });
+                var clienteLogado = new Cliente() { Id = ((Usuario)User).Id };
+                var pedido = new PedidoDAO().Buscar(clienteLogado, STATUS_PEDIDO.EM_ANDAMENTO);
+
                 if (pedido != null)
                 {
                     var item = new ItemPedido();
@@ -69,7 +71,8 @@ namespace CakeShopTCC.Controllers
                 else
                 {
                     pedido = new Pedido();
-                    pedido.Cliente = new Cliente() { Id = ((Usuario)User).Id };
+                    pedido.Status = STATUS_PEDIDO.EM_ANDAMENTO;
+                    pedido.Cliente = clienteLogado;
                     pedido.DataPedido = DateTime.Now;
 
                     new PedidoDAO().Inserir(pedido);

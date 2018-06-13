@@ -40,7 +40,8 @@ namespace CakeShopTCC.Controllers
 
             if (usuarioLogado == null)
             {
-                return RedirectToAction("Cadastro", "Cliente");
+                ViewBag.ErrorMsg = @"Login ou senha inválido!";
+                return View("Cadastro");
             }
 
             var userData = new JavaScriptSerializer().Serialize(new Usuario()

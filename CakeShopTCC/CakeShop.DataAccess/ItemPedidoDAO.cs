@@ -23,6 +23,14 @@ namespace CakeShop.DataAccess
                     cmd.Parameters.Add("@PRECO", SqlDbType.Decimal).Value = obj.Preco;
                     cmd.Parameters.Add("@QTD_ITEM_PRODUTO", SqlDbType.Int).Value = obj.Quantidade;
 
+                    foreach (SqlParameter parameter in cmd.Parameters)
+                    {
+                        if (parameter.Value == null)
+                        {
+                            parameter.Value = DBNull.Value;
+                        }
+                    }
+
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();

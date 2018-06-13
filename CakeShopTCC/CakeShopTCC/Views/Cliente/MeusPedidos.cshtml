@@ -16,6 +16,7 @@
                     <thead>
                         <tr>
                             <th>Código do Pedido</th>
+                            <th>Status</th>
                             <th>Data de pedido</th>
                             <th>Data Entrega</th>
                             <th>Quantidade de itens</th>
@@ -28,10 +29,11 @@
                         {
                             <tr>
                                 <td>@pedido.Id_Pedido</td>
+                                <td>@ExtensionMethods.GetEnumDescription(pedido.Status)</td>
                                 <td>@string.Format("{0:dd/MM/yyyy}", pedido.DataPedido)</td>
-                                <td>@string.Format("{0:dd/MM/yyyy}", pedido.DataEntrega)</td>
+                                <td>@string.Format("{0:dd/MM/yyyy HH:mm}", pedido.DataEntrega)</td>
                                 <td>@string.Format("{0:N0}", pedido.Itens.Count)</td>
-                                <td>@string.Format("{0:N2}", pedido.Itens.Sum(o => o.Preco * o.Quantidade))</td>
+                                <td>@string.Format("{0:C2}", pedido.Itens.Sum(o => o.Preco * o.Quantidade))</td>
                                 <td>
                                     <a href="@Url.Action("Detalhes", "Pedido", new { @id = pedido.Id_Pedido })">
                                         <i class="fa fa-search"></i>

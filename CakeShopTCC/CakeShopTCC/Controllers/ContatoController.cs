@@ -12,15 +12,13 @@ namespace CakeShopTCC.Controllers
     {
         public ActionResult Index()
         {
-
             return View();
         }
 
         public ActionResult Enviar(Contato obj)
         {
-            new ContatoDAO().Inserir(obj);
+            //new ContatoDAO().Inserir(obj);
             return RedirectToAction("Index", "Contato");
         }
-
     }
 }

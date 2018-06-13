@@ -136,6 +136,53 @@ namespace CakeShop.DataAccess
             }
         }
 
+        public Pedido Buscar(Cliente cliente, STATUS_PEDIDO status)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
+            {
+                string strSQL = @"SELECT 
+                                    P.*, 
+                                    C.NOME_CLIENTE 
+                                FROM PEDIDO P 
+                                INNER JOIN CLIENTE C ON (C.ID_CLIENTE = P.ID_CLIENTE) 
+                                WHERE P.ID_CLIENTE = @ID_CLIENTE
+                                AND P.[STATUS] = @STATUS;";
+
+                using (SqlCommand cmd = new SqlCommand(strSQL))
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                    cmd.Parameters.Add("@ID_CLIENTE", SqlDbType.Int).Value = cliente.Id;
+                    cmd.Parameters.Add("@STATUS", SqlDbType.Int).Value = Convert.ToInt32(status);
+                    cmd.CommandText = strSQL;
+
+                    var dataReader = cmd.ExecuteReader();
+                    var dt = new DataTable();
+                    dt.Load(dataReader);
+                    conn.Close();
+
+                    if (!(dt != null && dt.Rows.Count > 0))
+                        return null;
+
+                    var row = dt.Rows[0];
+                    var pedido = new Pedido()
+                    {
+                        Id_Pedido = Convert.ToInt32(row["ID_PEDIDO"]),
+                        Cliente = new Cliente()
+                        {
+                            Id = Convert.ToInt32(row["ID_CLIENTE"]),
+                            Nome = row["NOME_CLIENTE"].ToString()
+                        },
+                        DataPedido = Convert.ToDateTime(row["DATAPEDIDO"]),
+                        DataEntrega = row["DATAENTREGA"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["DATAENTREGA"]),
+                        Status = (STATUS_PEDIDO)Convert.ToInt32(row["STATUS"])
+                    };
+
+                    return pedido;
+                }
+            }
+        }
+
         public List<Pedido> BuscarTodos()
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))

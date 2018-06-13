@@ -20,19 +20,19 @@ namespace CakeShopTCC.Controllers
 
         public ActionResult PaginaDoces()
         {
-            var lst = new ProdutoDAO().BuscarTodos().Where(p => p.Categoria.Nome_Categoria == "Doces").ToList();
+            var lst = new ProdutoDAO().BuscarTodos().Where(p => p.Categoria.Nome_Categoria.ToUpper() == "DOCES").ToList();
             return View(lst);
         }
 
         public ActionResult PaginaSalgados()
         {
-            var lst = new ProdutoDAO().BuscarTodos().Where(p => p.Categoria.Nome_Categoria == "Salgados").ToList();
+            var lst = new ProdutoDAO().BuscarTodos().Where(p => p.Categoria.Nome_Categoria.ToUpper() == "SALGADOS").ToList();
             return View(lst);
         }
 
         public ActionResult PaginaBolos()
         {
-            var lst = new ProdutoDAO().BuscarTodos().Where(p => p.Categoria.Nome_Categoria == "Bolos").ToList();
+            var lst = new ProdutoDAO().BuscarTodos().Where(p => p.Categoria.Nome_Categoria.ToUpper() == "BOLOS").ToList();
             return View(lst);
         }
 
@@ -59,8 +59,6 @@ namespace CakeShopTCC.Controllers
                 default:
                     return RedirectToAction("ListaTodosOsProdutos", "Produto");
             }
-
-
         }
 
         [HttpPost]
