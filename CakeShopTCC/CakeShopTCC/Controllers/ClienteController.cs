@@ -22,7 +22,7 @@ namespace CakeShopTCC.Controllers
         public ActionResult Cadastrar(Cliente obj)
         {
             new ClienteDAO().Inserir(obj);
-            return RedirectToAction("TabelaClientes", "Usuario");
+            return RedirectToAction("Cadastro", "Cliente");
         }
 
         public ActionResult MinhaConta()
@@ -32,6 +32,12 @@ namespace CakeShopTCC.Controllers
             //buscar no banco de dados, os todos os dados do usuario logado no sistema
             var cliente = new ClienteDAO().BuscarPorId(id);
             return View(cliente);
+        }
+
+        public ActionResult SalvarMeusDados(Cliente obj)
+        {
+            new ClienteDAO().Inserir(obj);
+            return RedirectToAction("MinhaConta", "Cliente");
         }
 
         public ActionResult Entrar(Cliente obj)
