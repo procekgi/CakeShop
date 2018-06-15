@@ -1,92 +1,108 @@
 ﻿@using CakeShop.Models
 @model Pedido
-
-<div class="row">
-    <div class="col-md-12">
-        <h1>Pedido @Model.Id_Pedido</h1>
-        <hr />
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6">
-        <div class="table table-responsive">
-            <table class="table table-condensed">
-                <thead>
-                    <tr>
-                        <th>Itens</th>
-                        <th>Quantidade</th>
-                        <th>Preço</th>
-                    </tr>
-                </thead>
-            </table>
+@{
+    Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>PEDIDO @Model.Id_Pedido</h3>
+            <hr />
         </div>
-
-        <form action="@Url.Action("CadastroPedido", "Pedido")" class="form-horizontal">
-            <div class="form-group">
-                <div class="col-md-12">
-                    @Html.LabelFor(m => m.Cliente.Nome, "Nome", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Cliente.Nome, new { @class = "form-control" })
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form action="#" class="form-horizontal" method="post">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        @Html.LabelFor(m => m.Cliente.Nome, "Cliente:", new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.Cliente.Nome, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.LabelFor(m => m.DataPedido, "Data do Pedido:", new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.DataPedido, "{0:dd/MM/yyyy}", new { @class = "form-control", @readonly = true })
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.LabelFor(m => m.DataEntrega, "Data de Entrega:", new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.DataEntrega, "{0:dd/MM/yyyy HH:mm}", new { @class = "form-control", @type = "datetime-local" })
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-6">
-                    @Html.LabelFor(m => m.DataEntrega, "Data de entrega", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.DataEntrega, new { @class = "form-control" })
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        @Html.LabelFor(m => m.Produto, "Itens do pedido:", new { @class = "control-label" })
+                        <br />
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Código do produto</th>
+                                        <th>Produto</th>
+                                        <th>Quantidade</th>
+                                        <th>Valor Unitário</th>
+                                        <th>Valor Total</th>
+                                        <th>&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (ItemPedido item in Model.Itens)
+                                    {
+                                        <tr>
+                                            <td>@item.Produto.Id_Produto</td>
+                                            <td>@item.Produto.Nome_Produto</td>
+                                            <td>@item.Quantidade</td>
+                                            <td>@string.Format("{0:C2}", item.Preco)</td>
+                                            <td>@string.Format("{0:C2}", item.Preco * item.Quantidade)</td>
+                                            <td>
+                                                <a href="@Url.Action("ExcluirItem", "Pedido", new { @id = item.Id })" onclick="if (!confirm('Deseja realmente excluir este item?')) return false;">
+                                                    <i class="fa fa-remove"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="4">
+                                            <b>TOTAL</b>
+                                        </td>
+                                        <td colspan="2">
+                                            <b>@string.Format("{0:C2}", Model.Itens.Sum(item => item.Preco * item.Quantidade))</b>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    @Html.LabelFor(m => m.HorarioEntrega, "Horário de entrega", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.HorarioEntrega, new { @class = "form-control" })
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        @Html.Label("lblEndereco", "Endereço: ", new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.Cliente.Endereco, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        @Html.Label("lblNumero", "Número: ", new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.Cliente.Numero, new { @class = "form-control" })
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <h1>Local de entrega</h1>
-                    <hr />
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        @Html.Label("lblComplemento", "Complemento: ", new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.Cliente.Complemento, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.Label("lblCep", "CEP: ", new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.Cliente.CEP, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        @Html.Label("lblCidade", "Cidade: ", new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.Cliente.Cidade, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.Label("lblEstado", "Estado: ", new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.Cliente.Estado, new { @class = "form-control" })
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-12">
-                    @Html.LabelFor(m => m.Cliente.Endereco, "Rua", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Cliente.Endereco, new { @class = "form-control" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-4">
-                    @Html.LabelFor(m => m.Cliente.Numero, "Número", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Cliente.Numero, new { @class = "form-control" })
-                </div>
-                <div class="col-md-8">
-                    @Html.LabelFor(m => m.Cliente.CEP, "CEP", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Cliente.CEP, new { @class = "form-control" })
-                </div>
-
-            </div>
-            <div class="form-group">
-                <div class="col-md-6">
-                    @Html.LabelFor(m => m.Cliente.Complemento, "Complemento", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Cliente.Complemento, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-6">
-                    @Html.LabelFor(m => m.Cliente.Estado, "Estado", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Cliente.Estado, new { @class = "form-control" })
-                </div>
-
-                <div class="col-md-6">
-                    @Html.LabelFor(m => m.Cliente.Cidade, "Cidade", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Cliente.Cidade, new { @class = "form-control" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-12 text-center">
-                    <button type="submit" class="btn btn-danger">Continuar</button>
-                    <button type="button" class="btn btn-danger">Voltar</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>
-

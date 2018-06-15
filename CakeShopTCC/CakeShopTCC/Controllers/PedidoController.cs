@@ -25,10 +25,15 @@ namespace CakeShopTCC.Controllers
             return View();
         }
 
-        public ActionResult SalvarPedido(Pedido obj)
+        public ActionResult Finalizar(Pedido obj)
         {
             new PedidoDAO().Inserir(obj);
-            return RedirectToAction("", "");
+            return RedirectToAction("Pagamento", "Pedido");
+        }
+
+        public ActionResult Pagamento()
+        {
+            return View();
         }
 
         public ActionResult Detalhes(int id)

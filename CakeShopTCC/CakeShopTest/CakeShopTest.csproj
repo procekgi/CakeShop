@@ -58,6 +58,10 @@
       <Project>{a7b93537-dc0d-442c-a9f0-1f25bad68507}</Project>
       <Name>CakeShop.DataAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CakeShopTCC\CakeShopTCC.csproj">
+      <Project>{0734606f-9da0-405e-b0c1-7529ee5450b6}</Project>
+      <Name>CakeShopTCC</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Models\CakeShop.Models.csproj">
       <Project>{e4a96481-e593-4cbf-8015-ed2fa638a05b}</Project>
       <Name>CakeShop.Models</Name>
