@@ -37,11 +37,10 @@
                             <td>@string.Format("{0:N0}", pedido.Itens.Count)</td>
                             <td>@string.Format("{0:C2}", pedido.Itens.Sum(item => item.Preco * item.Quantidade))</td>
                             <td>
-                                <a href="@Url.Action("Detalhes", "Pedido", new { @id = pedido.Id_Pedido })">Ver detalhes</a>
+                                <a href="@Url.Action("VisualizarItens", "Pedido", new { @id = pedido.Id_Pedido })">Ver detalhes</a>
                             </td>
                             <td>
-                               
-                                <button onclick="document.getElementById('demo')" type="button" class="btn btn-danger">Finalizar pedido</button>
+                               <button type="button" class="btn btn-danger">Finalizar pedido</button>
                             </td>
                         </tr>
                     }

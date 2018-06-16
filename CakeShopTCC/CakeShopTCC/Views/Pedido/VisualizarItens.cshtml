@@ -1,0 +1,56 @@
+﻿@using CakeShop.Models
+@model Pedido
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @*<h3>PEDIDO @Model.Id_Pedido</h3>*@
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form action="#" class="form-horizontal" method="post">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        @Html.LabelFor(m => m.Cliente.Nome, "Cliente:", new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.Cliente.Nome, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.LabelFor(m => m.DataPedido, "Data do Pedido:", new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.DataPedido, "{0:dd/MM/yyyy}", new { @class = "form-control", @readonly = true })
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.LabelFor(m => m.DataEntrega, "Data de Entrega:", new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.DataEntrega, "{0:dd/MM/yyyy HH:mm}", new { @class = "form-control", @type = "datetime-local" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        @Html.LabelFor(m => m.Produto, "Itens do pedido:", new { @class = "control-label" })
+                        <br />
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Código do produto</th>
+                                        <th>Produto</th>
+                                        <th>Quantidade</th>
+
+                                        <th>&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (ItemPedido item in Model.Itens)
+                                    {
+                                        <tr>
+                                            <td>@item.Produto.Id_Produto</td>
+                                            <td>@item.Produto.Nome_Produto</td>
+                                            <td>@item.Quantidade</td>
+
+                                        </tr>
+                                    }
+                                </tbody>

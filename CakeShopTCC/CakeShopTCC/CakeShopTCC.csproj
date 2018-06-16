@@ -330,6 +330,7 @@
     <Content Include="Views\Pedido\Detalhes.cshtml" />
     <Content Include="Views\Shared\_LayoutMenu.cshtml" />
     <Content Include="Views\Pedido\Pagamento.cshtml" />
+    <Content Include="Views\Pedido\VisualizarItens.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\" />
