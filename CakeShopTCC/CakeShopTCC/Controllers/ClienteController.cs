@@ -21,8 +21,19 @@ namespace CakeShopTCC.Controllers
 
         public ActionResult Cadastrar(Cliente obj)
         {
-            new ClienteDAO().Inserir(obj);
-            return RedirectToAction("Cadastro", "Cliente");
+            if (!string.IsNullOrWhiteSpace(ViewBag.ErrorMsg))
+            {
+                ViewBag.MessageError = @"Campo vazio. Preencha todos os campos!";
+                return View("Cadastro");
+            }
+            else
+            {
+                ViewBag.Message = @"Cadastro realizado com sucesso!";
+                new ClienteDAO().Inserir(obj);
+                return RedirectToAction("Cadastro", "Cliente");
+
+            }
+
         }
 
         public ActionResult MinhaConta()
@@ -81,5 +92,7 @@ namespace CakeShopTCC.Controllers
             });
             return View(pedidos);
         }
+
+      
     }
 }

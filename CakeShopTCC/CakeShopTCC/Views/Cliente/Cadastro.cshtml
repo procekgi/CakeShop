@@ -40,17 +40,31 @@
         </div>
         <div class="col-md-6" style="border-left: 1px solid rgba(0,0,0,.1)">
             <h2>Faça seu cadastro</h2>
+            <h4>* Obrigatório</h4>
             <hr />
             <form action="@Url.Action("Cadastrar", "Cliente")" class="form-horizontal">
+                 @if (!string.IsNullOrWhiteSpace(ViewBag.MessageError))
+                 {
+                    <div class="form-row">
+                        <div class="form-group col-md-12 text-center">
+                            <div class="alert alert-danger" role="alert" style="margin-bottom: 0px !important;">
+                                @ViewBag.MessageError
+                            </div>
+                        </div>
+                    </div>
+                 }
+
+
+
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        @Html.LabelFor(m => m.Nome, "Nome", new { @class = "control-label" })
+                        @Html.LabelFor(m => m.Nome, "Nome *", new { @class = "control-label" })
                         @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-8">
-                        @Html.LabelFor(m => m.Email, "Email", new { @class = "control-label" })
+                        @Html.LabelFor(m => m.Email, "Email *", new { @class = "control-label" })
                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                     </div>
                     <div class="form-group col-md-4">
@@ -60,11 +74,11 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        @Html.LabelFor(m => m.Login, "Nome de Usuário", new { @class = "control-label" })
+                        @Html.LabelFor(m => m.Login, "Nome de Usuário *", new { @class = "control-label" })
                         @Html.TextBoxFor(m => m.Login, new { @class = "form-control" })
                     </div>
                     <div class="col-md-6">
-                        @Html.LabelFor(m => m.Senha, "Senha", new { @class = "control-label" })
+                        @Html.LabelFor(m => m.Senha, "Senha *", new { @class = "control-label" })
                         @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
                     </div>
                 </div>

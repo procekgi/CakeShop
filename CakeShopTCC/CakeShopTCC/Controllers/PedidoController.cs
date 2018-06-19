@@ -27,10 +27,10 @@ namespace CakeShopTCC.Controllers
             return View(pedido);
         }
 
-        public ActionResult CadastroPedido()
-        {
-            return View();
-        }
+        //public ActionResult CadastroPedido()
+        //{
+        //    return View();
+        //}
 
         public ActionResult Finalizar(Pedido obj)
         {

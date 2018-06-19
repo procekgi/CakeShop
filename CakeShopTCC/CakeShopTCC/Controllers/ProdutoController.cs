@@ -13,9 +13,18 @@ namespace CakeShopTCC.Controllers
     {
         public ActionResult CadastroProduto()
         {
-            ViewBag.Unidades = new UnidadeDeMedidaDAO().BuscarTodos();
-            ViewBag.Categorias = new CategoriaDAO().BuscarTodos();
-            return View();
+
+            if(!string.IsNullOrWhiteSpace(ViewBag.Error))
+            {
+                ViewBag.Error = @"Campo vazio. Preencha todos os campos!";
+                return View();
+            }
+            else
+            {
+                ViewBag.Unidades = new UnidadeDeMedidaDAO().BuscarTodos();
+                ViewBag.Categorias = new CategoriaDAO().BuscarTodos();
+                return View();
+            }
         }
 
         public ActionResult PaginaDoces()
