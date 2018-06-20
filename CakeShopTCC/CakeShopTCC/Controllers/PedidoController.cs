@@ -10,6 +10,8 @@ namespace CakeShopTCC.Controllers
 {
     public class PedidoController : Controller
     {
+        public Cliente UsuarioLogado { get; private set; }
+
         public ActionResult Index()
         {
             var lst = new PedidoDAO().BuscarTodos();
@@ -34,7 +36,8 @@ namespace CakeShopTCC.Controllers
 
         public ActionResult Finalizar(Pedido obj)
         {
-            new PedidoDAO().Inserir(obj);
+            obj.Cliente = UsuarioLogado;
+            //new PedidoDAO().Inserir(obj);
             return RedirectToAction("Pagamento", "Pedido");
         }
 

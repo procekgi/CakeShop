@@ -20,5 +20,8 @@ namespace CakeShop.Models
         {
             this.Itens = new List<ItemPedido>();
         }
+        public int NumeroCartao { get; set; }
+        public DateTime DataValidade { get; set; }
+        public int CodigoVerificacao {get ; set;}
     }
 }

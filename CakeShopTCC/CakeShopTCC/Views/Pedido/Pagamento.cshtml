@@ -1,7 +1,33 @@
-﻿
+﻿@using CakeShop.Models
+@model Pedido
 @{
-    ViewBag.Title = "Pagamento";
+    Layout = "~/Views/Shared/_LayoutMenu.cshtml";
 }
 
-<h2>Pagamento</h2>
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>PAGAMENTO</h3>
+            <h6> * Obrigatório</h6>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            @Html.LabelFor(m => m.NumeroCartao, "Número do cartão *", new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.NumeroCartao, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.DataValidade, "Data de validade *", new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.DataValidade, "{0:MM/yyyy}", new { @class = "form-control"})
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CodigoVerificacao, "Código de Verificação *", new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CodigoVerificacao, "{0:000}", new { @class = "form-control"})
+        </div>
+        <div class="form-group col-md-12 text-right">
+            <a href="@Url.Action("Finalizar", "Pedido" )" class="btn btn-danger">
+                Finalizar
+            </a>
+        </div>
+    </div>
+</div>
