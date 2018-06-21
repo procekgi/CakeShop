@@ -144,10 +144,14 @@ namespace CakeShop.DataAccess
             {
                 var lst = new List<ItemPedido>();
                 string strSQL = @"SELECT 
-                                    I.*, P.NOME_PRODUTO 
-                                  FROM ITEM_PEDIDO I INNER JOIN PRODUTO P ON(I.ID_PRODUTO = P.ID_PRODUTO)
-                                                     INNER JOIN PEDIDO ON (I.ID_PEDIDO = PEDIDO.ID_PEDIDO)
-                                                     WHERE I.ID_PEDIDO = @ID_PEDIDO;";
+                                    I.*, 
+                                    P.NOME_PRODUTO,
+                                    UM.NOME AS UNIDADE_MEDIDA
+                                FROM ITEM_PEDIDO I 
+                                INNER JOIN PRODUTO P ON(I.ID_PRODUTO = P.ID_PRODUTO)
+                                INNER JOIN UNIDADE_MEDIDA UM ON (UM.ID = P.ID_UNIDADE_MEDIDA)
+                                INNER JOIN PEDIDO ON (I.ID_PEDIDO = PEDIDO.ID_PEDIDO)
+                                WHERE I.ID_PEDIDO = @ID_PEDIDO;";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
                 {
@@ -169,7 +173,11 @@ namespace CakeShop.DataAccess
                             Produto = new Produto()
                             {
                                 Id_Produto = Convert.ToInt32(row["ID_PRODUTO"]),
-                                Nome_Produto = row["NOME_PRODUTO"].ToString()
+                                Nome_Produto = row["NOME_PRODUTO"].ToString(),
+                                UnidadeDeMedida = new UnidadeDeMedida()
+                                {
+                                    Nome = row["UNIDADE_MEDIDA"].ToString()
+                                }
                             },
                             Preco = Convert.ToDecimal(row["PRECO"]),
                             Quantidade = Convert.ToInt32(row["QTD_ITEM_PRODUTO"])

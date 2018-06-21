@@ -12,8 +12,8 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <a href=" @Url.Action("","")" class="btn btn-danger">Continuar comprando</a>
-            <form action="#" class="form-horizontal" method="post">
+            <form action="@Url.Action("Finalizar", "Pedido")" class="form-horizontal" method="post">
+                @Html.HiddenFor(m => m.Id_Pedido)
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         @Html.LabelFor(m => m.Cliente.Nome, "Cliente:", new { @class = "control-label" })
@@ -105,9 +105,9 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-12 text-right">
-                        <a href="@Url.Action("Finalizar", "Pedido", new { @id = Model.Id_Pedido })" class="btn btn-danger">
+                        <button type="submit" class="btn btn-danger">
                             Finalizar e ir para pagamento
-                        </a>
+                        </button>
                     </div>
                 </div>
             </form>

@@ -37,9 +37,7 @@ namespace CakeShopTest
             //ip.Produto = "Brigadeiro"; //popular o produto
             ip.Quantidade = (0);
             ip.Preco = new decimal(1.50);
-            Assert.AreEqual(ip.Validar, ''); 
-
-
+            //Assert.AreEqual(ip.Validar, ''); 
             Assert.IsTrue(ip.Quantidade < 0);
         }
     }

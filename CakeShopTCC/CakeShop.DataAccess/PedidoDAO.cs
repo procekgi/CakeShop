@@ -39,6 +39,60 @@ namespace CakeShop.DataAccess
             }
         }
 
+        public void Atualizar(Pedido obj)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
+            {
+                string strSQL = @"UPDATE PEDIDO SET DATAENTREGA = @DATAENTREGA WHERE ID_PEDIDO = @ID_PEDIDO;";
+
+                using (SqlCommand cmd = new SqlCommand(strSQL))
+                {
+                    cmd.Connection = conn;
+                    cmd.Parameters.Add("@DATAENTREGA", SqlDbType.DateTime).Value = obj.DataEntrega;
+                    cmd.Parameters.Add("@ID_PEDIDO", SqlDbType.Int).Value = obj.Id_Pedido;
+
+                    foreach (SqlParameter parameter in cmd.Parameters)
+                    {
+                        if (parameter.Value == null)
+                        {
+                            parameter.Value = DBNull.Value;
+                        }
+                    }
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+        }
+
+        public void Entregar(Pedido obj)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
+            {
+                string strSQL = @"UPDATE PEDIDO SET STATUS = @STATUS WHERE ID_PEDIDO = @ID_PEDIDO;";
+
+                using (SqlCommand cmd = new SqlCommand(strSQL))
+                {
+                    cmd.Connection = conn;
+                    cmd.Parameters.Add("@STATUS", SqlDbType.Int).Value = STATUS_PEDIDO.FINALIZADO;
+                    cmd.Parameters.Add("@ID_PEDIDO", SqlDbType.Int).Value = obj.Id_Pedido;
+
+                    foreach (SqlParameter parameter in cmd.Parameters)
+                    {
+                        if (parameter.Value == null)
+                        {
+                            parameter.Value = DBNull.Value;
+                        }
+                    }
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+        }
+
         public Pedido BuscarPorId(int id)
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
