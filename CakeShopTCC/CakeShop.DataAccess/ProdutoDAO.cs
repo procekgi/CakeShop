@@ -41,6 +41,11 @@ namespace CakeShop.DataAccess
             }
         }
 
+        public object BuscarPorId(object id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Produto BuscarPorId(int id)
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
@@ -216,5 +221,24 @@ namespace CakeShop.DataAccess
 
             return lst;
         }
+
+        public void ExcluirProduto(Produto obj)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
+            {
+                string strSQL = @"DELETE FROM PRODUTO WHERE ID_PRODUTO = @ID_PRODUTO;";
+
+                using (SqlCommand cmd = new SqlCommand(strSQL))
+                {
+                    cmd.Connection = conn;
+                    cmd.Parameters.Add("@ID_PRODUTO", SqlDbType.Int).Value = obj.Id_Produto;
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+        }
+
     }
 }

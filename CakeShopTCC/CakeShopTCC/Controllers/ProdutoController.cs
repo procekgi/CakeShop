@@ -95,5 +95,12 @@ namespace CakeShopTCC.Controllers
                 return Json(ex);
             }
         }
+
+        public ActionResult ExcluirProduto(int id)
+        {
+            var produto = new ProdutoDAO().BuscarPorId(id);
+            new ProdutoDAO().ExcluirProduto(produto);
+            return RedirectToAction("Index", "Pedido", new { id = produto.Id_Produto });
+        }
     }
 }

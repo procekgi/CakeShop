@@ -36,6 +36,11 @@
                             <td>@item.Categoria.Nome_Categoria</td>
                             <td>@item.UnidadeDeMedida.Nome</td>
                             <td>@string.Format("{0:C2}", item.Preco)</td>
+                            <td>
+                                <a href="@Url.Action("ExcluirProduto", "Usuario", new { @id = item.Id_Produto })" onclick="if (!confirm('Deseja realmente excluir este produto?')) return false;">
+                                    <i class="fa fa-remove"></i>
+                                </a>
+                            </td>
                         </tr>
                     }
                 </tbody>

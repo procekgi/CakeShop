@@ -16,6 +16,10 @@
             @Html.LabelFor(m => m.NumeroCartao, "Número do cartão *", new { @class = "control-label" })
             @Html.TextBoxFor(m => m.NumeroCartao, new { @class = "form-control" })
         </div>
+        <div class="form-group col-md-6">
+            @Html.LabelFor(m => m.Nome, "Nome *", new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+        </div>
         <div class="form-group col-md-3">
             @Html.LabelFor(m => m.DataValidade, "Data de validade *", new { @class = "control-label" })
             @Html.TextBoxFor(m => m.DataValidade, "{0:MM/yyyy}", new { @class = "form-control"})

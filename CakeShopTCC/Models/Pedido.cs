@@ -23,5 +23,6 @@ namespace CakeShop.Models
         public int NumeroCartao { get; set; }
         public DateTime DataValidade { get; set; }
         public int CodigoVerificacao {get ; set;}
+        public string Nome { get; set; }
     }
 }

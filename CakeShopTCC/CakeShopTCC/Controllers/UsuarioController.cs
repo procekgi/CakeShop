@@ -38,5 +38,7 @@ namespace CakeShopTCC.Controllers
             var lstClientes = new ClienteDAO().BuscarTodos();
             return View(lstClientes);
         }
+
+       
     }
 }
