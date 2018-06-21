@@ -23,6 +23,7 @@
                         <th>Quantidade de Itens</th>
                         <th>Valor Total (R$)</th>
                         <th>&nbsp;</th>
+                        <th>&nbsp;</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,7 +41,7 @@
                                 <a href="@Url.Action("VisualizarItens", "Pedido", new { @id = pedido.Id_Pedido })">Ver detalhes</a>
                             </td>
                             <td>
-                               <button type="button" class="btn btn-danger">Finalizar pedido</button>
+                                <a href="@Url.Action("Entregar", "Pedido", new { @id = pedido.Id_Pedido })">Entregar pedido</a>
                             </td>
                         </tr>
                     }

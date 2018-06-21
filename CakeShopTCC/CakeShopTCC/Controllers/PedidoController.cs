@@ -10,11 +10,9 @@ namespace CakeShopTCC.Controllers
 {
     public class PedidoController : Controller
     {
-        public Cliente UsuarioLogado { get; private set; }
-
         public ActionResult Index()
         {
-            var lst = new PedidoDAO().BuscarTodos();
+            var lst = new PedidoDAO().BuscarTodos().Where(p => p.Status == STATUS_PEDIDO.PAGAMENTO_REALIZADO).ToList();
             lst.ForEach(p =>
             {
                 p.Itens = new ItemPedidoDAO().BuscarPorPedido(p.Id_Pedido);
@@ -24,20 +22,29 @@ namespace CakeShopTCC.Controllers
 
         public ActionResult VisualizarItens(int id)
         {
-            var pedido = new ItemPedidoDAO().BuscarPorId(id);
+            var pedido = new PedidoDAO().BuscarPorId(id);
             pedido.Itens = new ItemPedidoDAO().BuscarPorPedido(id);
             return View(pedido);
         }
 
-        //public ActionResult CadastroPedido()
-        //{
-        //    return View();
-        //}
+        public ActionResult Entregar(int id)
+        {
+            //primeiro eu busco o pedido pelo id no banco de dados
+            var pedido = new PedidoDAO().BuscarPorId(id);
+
+            //atualiza o status do pedido para finalizado
+            new PedidoDAO().Entregar(pedido);
+
+            //redirecionando para a tela de listagem de pedidos da confeiteira
+            return RedirectToAction("Index", "Pedido");
+        }
 
         public ActionResult Finalizar(Pedido obj)
         {
-            obj.Cliente = UsuarioLogado;
-            //new PedidoDAO().Inserir(obj);
+            //atualizando o campo data entrega que foi preenchido na tela de detalhes do pedido
+            new PedidoDAO().Atualizar(obj);
+
+            //redicionando para a tela de pagamento
             return RedirectToAction("Pagamento", "Pedido");
         }
 
