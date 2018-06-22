@@ -47,7 +47,7 @@ namespace CakeShopTCC.Controllers
 
         public ActionResult SalvarMeusDados(Cliente obj)
         {
-            new ClienteDAO().Inserir(obj);
+            new ClienteDAO().Atualizar(obj);
             return RedirectToAction("MinhaConta", "Cliente");
         }
 

@@ -46,6 +46,42 @@ namespace CakeShop.DataAccess
             }
         }
 
+        public void Atualizar(Cliente obj)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
+            {
+                string strSQL = @"UPDATE CLIENTE SET NOME_CLIENTE = @NOME_CLIENTE, TELEFONE = @TELEFONE, EMAIL = @EMAIL, ENDERECO = @ENDERECO, NUMERO = @NUMERO, 
+                                  COMPLEMENTO = @COMPLEMENTO, CEP = @CEP, CIDADE = @CIDADE, ESTADO = @ESTADO WHERE ID_CLIENTE = @ID_CLIENTE;";
+
+                using (SqlCommand cmd = new SqlCommand(strSQL))
+                {
+                    cmd.Connection = conn;
+                    cmd.Parameters.Add("@NOME_CLIENTE", SqlDbType.VarChar).Value = obj.Nome;
+                    cmd.Parameters.Add("@TELEFONE", SqlDbType.VarChar).Value = obj.Telefone;
+                    cmd.Parameters.Add("@EMAIL", SqlDbType.VarChar).Value = obj.Email;
+                    cmd.Parameters.Add("@ENDERECO", SqlDbType.VarChar).Value = obj.Endereco;
+                    cmd.Parameters.Add("@NUMERO", SqlDbType.VarChar).Value = obj.Numero;
+                    cmd.Parameters.Add("@COMPLEMENTO", SqlDbType.VarChar).Value = obj.Complemento;
+                    cmd.Parameters.Add("@CEP", SqlDbType.VarChar).Value = obj.CEP;
+                    cmd.Parameters.Add("@CIDADE", SqlDbType.VarChar).Value = obj.Cidade;
+                    cmd.Parameters.Add("@ESTADO", SqlDbType.VarChar).Value = obj.Estado;
+                    cmd.Parameters.Add("@ID_CLIENTE", SqlDbType.Int).Value = obj.Id;
+
+                    foreach (SqlParameter parameter in cmd.Parameters)
+                    {
+                        if (parameter.Value == null)
+                        {
+                            parameter.Value = DBNull.Value;
+                        }
+                    }
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+        }
+
         public List<Cliente> BuscarTodos()
         {
             var lst = new List<Cliente>();

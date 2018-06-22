@@ -13,8 +13,7 @@ namespace CakeShopTCC.Controllers
     {
         public ActionResult CadastroProduto()
         {
-
-            if(!string.IsNullOrWhiteSpace(ViewBag.Error))
+            if (!string.IsNullOrWhiteSpace(ViewBag.Error))
             {
                 ViewBag.Error = @"Campo vazio. Preencha todos os campos!";
                 return View();
@@ -25,6 +24,14 @@ namespace CakeShopTCC.Controllers
                 ViewBag.Categorias = new CategoriaDAO().BuscarTodos();
                 return View();
             }
+        }
+
+        public ActionResult EditarProduto(int id)
+        {
+            ViewBag.Unidades = new UnidadeDeMedidaDAO().BuscarTodos();
+            ViewBag.Categorias = new CategoriaDAO().BuscarTodos();
+            var produto = new ProdutoDAO().BuscarPorId(id);
+            return View("CadastroProduto", produto);
         }
 
         public ActionResult PaginaDoces()
@@ -53,7 +60,14 @@ namespace CakeShopTCC.Controllers
 
         public ActionResult SalvarProduto(Produto obj)
         {
-            new ProdutoDAO().Inserir(obj);
+            if (obj != null && obj.Id_Produto > 0)
+            {
+                new ProdutoDAO().Atualizar(obj);
+            }
+            else
+            {
+                new ProdutoDAO().Inserir(obj);
+            }
 
             switch (obj.Categoria.Id_Categoria)
             {
@@ -68,6 +82,15 @@ namespace CakeShopTCC.Controllers
                 default:
                     return RedirectToAction("ListaTodosOsProdutos", "Produto");
             }
+        }
+
+        public ActionResult ExcluirProduto(int id)
+        {
+            var produto = new ProdutoDAO().BuscarPorId(id);
+
+            new ProdutoDAO().ExcluirProduto(produto);
+
+            return RedirectToAction("Index", "Pedido", new { id = produto.Id_Produto });
         }
 
         [HttpPost]
@@ -94,13 +117,6 @@ namespace CakeShopTCC.Controllers
             {
                 return Json(ex);
             }
-        }
-
-        public ActionResult ExcluirProduto(int id)
-        {
-            var produto = new ProdutoDAO().BuscarPorId(id);
-            new ProdutoDAO().ExcluirProduto(produto);
-            return RedirectToAction("Index", "Pedido", new { id = produto.Id_Produto });
         }
     }
 }

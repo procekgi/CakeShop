@@ -41,6 +41,39 @@ namespace CakeShop.DataAccess
             }
         }
 
+        public void Atualizar(Produto obj)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
+            {
+                string strSQL = @"UPDATE PRODUTO SET NOME_PRODUTO = @NOME_PRODUTO, PRECO = @PRECO, ID_UNIDADE_MEDIDA = @ID_UNIDADE_MEDIDA, 
+                                  ID_CATEGORIA = @ID_CATEGORIA, DESCRICAO = @DESCRICAO, FOTO = @FOTO WHERE ID_PRODUTO = @ID_PRODUTO;";
+
+                using (SqlCommand cmd = new SqlCommand(strSQL))
+                {
+                    cmd.Connection = conn;
+                    cmd.Parameters.Add("@NOME_PRODUTO", SqlDbType.VarChar).Value = obj.Nome_Produto;
+                    cmd.Parameters.Add("@PRECO", SqlDbType.Decimal).Value = obj.Preco;
+                    cmd.Parameters.Add("@ID_UNIDADE_MEDIDA", SqlDbType.Int).Value = obj.UnidadeDeMedida.Id_UnidadeDeMedida;
+                    cmd.Parameters.Add("@ID_CATEGORIA", SqlDbType.Int).Value = obj.Categoria.Id_Categoria;
+                    cmd.Parameters.Add("@DESCRICAO", SqlDbType.VarChar).Value = obj.Descricao;
+                    cmd.Parameters.Add("@FOTO", SqlDbType.VarChar).Value = obj.Foto;
+                    cmd.Parameters.Add("@ID_PRODUTO", SqlDbType.Int).Value = obj.Id_Produto;
+
+                    foreach (SqlParameter parameter in cmd.Parameters)
+                    {
+                        if (parameter.Value == null)
+                        {
+                            parameter.Value = DBNull.Value;
+                        }
+                    }
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+        }
+
         public object BuscarPorId(object id)
         {
             throw new NotImplementedException();
@@ -239,6 +272,5 @@ namespace CakeShop.DataAccess
                 }
             }
         }
-
     }
 }
