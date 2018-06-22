@@ -1,5 +1,6 @@
 ﻿using CakeShop.DataAccess;
 using CakeShop.Models;
+using PagarMe;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +42,57 @@ namespace CakeShopTCC.Controllers
 
         public ActionResult Finalizar(Pedido obj)
         {
+            try
+            {
+                var defaultApiKey = "ak_test_RsyGsYkn141xJzJ2v1LwI8f8z9kiih";
+                var defaultEncryptionKey = "ek_test_HmftBWggaUUkQJrzuBavmhv8WkHUO7";
+
+                PagarMeService service = new PagarMeService(defaultApiKey, defaultEncryptionKey);
+
+                CardHash card = new CardHash(service);
+                card.CardNumber = "41111111111111111";
+                card.CardHolderName = "tiago Andrade";
+                card.CardExpirationDate = "1022";
+                card.CardCvv = "123";
+
+                string cardHash = card.Generate();
+
+                Transaction transaction = new Transaction(service);
+
+                transaction.Amount = (int)(199.87 * 100);
+                transaction.CardHash = cardHash;
+                transaction.PaymentMethod = PaymentMethod.CreditCard;
+
+                transaction.Item = new[]
+                {
+                    new Item()
+                    {
+                        Id = "1",
+                        Title = "Little Car",
+                        Quantity = 1,
+                        Tangible = true,
+                        UnitPrice = 100*100
+                    },
+                    new Item()
+                    {
+
+                        Id = "2",
+                        Title = "Baby Crib",
+                        Quantity = 1,
+                        Tangible = true,
+                        UnitPrice = (int)(99.87*100)
+                    }
+                };
+
+                transaction.Save();
+
+                TransactionStatus status = transaction.Status;
+            }
+            catch (PagarMeException ex)
+            {
+                throw ex;
+            }
+
             //atualizando o campo data entrega que foi preenchido na tela de detalhes do pedido
             new PedidoDAO().Atualizar(obj);
 
