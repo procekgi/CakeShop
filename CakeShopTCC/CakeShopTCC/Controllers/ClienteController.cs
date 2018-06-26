@@ -30,7 +30,7 @@ namespace CakeShopTCC.Controllers
             {
                 ViewBag.Message = @"Cadastro realizado com sucesso!";
                 new ClienteDAO().Inserir(obj);
-                return RedirectToAction("Cadastro", "Cliente");
+                return RedirectToAction("IndexMensagem", "Cliente");
 
             }
 
@@ -91,6 +91,12 @@ namespace CakeShopTCC.Controllers
                 p.Itens = new ItemPedidoDAO().BuscarPorPedido(p.Id_Pedido);
             });
             return View(pedidos);
+        }
+
+        public ActionResult IndexMensagem()
+        {
+            ViewBag.Message = "Cadastro realizado com sucesso! Faça seu login para continuar navegando na página!";
+                return View();
         }
 
       
