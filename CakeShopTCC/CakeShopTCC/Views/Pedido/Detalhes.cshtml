@@ -11,8 +11,23 @@
         </div>
     </div>
     <div class="row">
+        <div class="form-group col-md-12 text-right">
+            <a href="@Url.Action("Index", "Home" )" class="btn btn-danger">
+                Continuar comprando
+            </a>
+        </div>
         <div class="col-md-12">
             <form action="@Url.Action("Finalizar", "Pedido")" class="form-horizontal" method="post">
+                @if (!string.IsNullOrWhiteSpace(ViewBag.ErrorMsg))
+                {
+                    <div class="form-row">
+                        <div class="form-group col-md-12 text-center">
+                            <div class="alert alert-danger" role="alert" style="margin-bottom: 0px !important;">
+                                @ViewBag.ErrorMsg
+                            </div>
+                        </div>
+                    </div>
+                }
                 @Html.HiddenFor(m => m.Id_Pedido)
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -27,6 +42,7 @@
                         @Html.LabelFor(m => m.DataEntrega, "Data de Entrega:", new { @class = "control-label" })
                         @Html.TextBoxFor(m => m.DataEntrega, "{0:dd/MM/yyyy HH:mm}", new { @class = "form-control", @type = "datetime-local" })
                     </div>
+
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-12">

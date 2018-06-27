@@ -48,7 +48,7 @@ namespace CakeShopTCC.Controllers
         public ActionResult SalvarMeusDados(Cliente obj)
         {
             new ClienteDAO().Atualizar(obj);
-            return RedirectToAction("MinhaConta", "Cliente");
+            return RedirectToAction("IndexDadosSalvos", "Cliente");
         }
 
         public ActionResult Entrar(Cliente obj)
@@ -97,6 +97,12 @@ namespace CakeShopTCC.Controllers
         {
             ViewBag.Message = "Cadastro realizado com sucesso! Faça seu login para continuar navegando na página!";
                 return View();
+        }
+
+        public ActionResult IndexDadosSalvos()
+        {
+            ViewBag.Message = "Dados salvos!";
+            return View();
         }
 
       

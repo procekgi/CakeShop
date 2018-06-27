@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace CakeShopTCC.Controllers
 {
     public class PedidoController : Controller
@@ -40,31 +41,46 @@ namespace CakeShopTCC.Controllers
             return RedirectToAction("Index", "Pedido");
         }
 
+        private bool ValidarDataEntrega(DateTime? dataEntrega)
+        {
+            if (dataEntrega < DateTime.Now)
+            {
+                return true;
+            }
+            else
+            {
+
+                return false;
+            }
+        }
+
         public ActionResult Finalizar(Pedido obj)
         {
-            try
-            {
-                var defaultApiKey = "ak_test_RsyGsYkn141xJzJ2v1LwI8f8z9kiih";
-                var defaultEncryptionKey = "ek_test_HmftBWggaUUkQJrzuBavmhv8WkHUO7";
-
-                PagarMeService service = new PagarMeService(defaultApiKey, defaultEncryptionKey);
-
-                CardHash card = new CardHash(service);
-                card.CardNumber = "41111111111111111";
-                card.CardHolderName = "tiago Andrade";
-                card.CardExpirationDate = "1022";
-                card.CardCvv = "123";
-
-                string cardHash = card.Generate();
-
-                Transaction transaction = new Transaction(service);
-
-                transaction.Amount = (int)(199.87 * 100);
-                transaction.CardHash = cardHash;
-                transaction.PaymentMethod = PaymentMethod.CreditCard;
-
-                transaction.Item = new[]
+           
+            
+                try
                 {
+                    var defaultApiKey = "ak_test_RsyGsYkn141xJzJ2v1LwI8f8z9kiih";
+                    var defaultEncryptionKey = "ek_test_HmftBWggaUUkQJrzuBavmhv8WkHUO7";
+
+                    PagarMeService service = new PagarMeService(defaultApiKey, defaultEncryptionKey);
+
+                    CardHash card = new CardHash(service);
+                    card.CardNumber = "41111111111111111";
+                    card.CardHolderName = "tiago Andrade";
+                    card.CardExpirationDate = "1022";
+                    card.CardCvv = "123";
+
+                    string cardHash = card.Generate();
+
+                    Transaction transaction = new Transaction(service);
+
+                    transaction.Amount = (int)(199.87 * 100);
+                    transaction.CardHash = cardHash;
+                    transaction.PaymentMethod = PaymentMethod.CreditCard;
+
+                    transaction.Item = new[]
+                    {
                     new Item()
                     {
                         Id = "1",
@@ -84,20 +100,29 @@ namespace CakeShopTCC.Controllers
                     }
                 };
 
-                transaction.Save();
+                    transaction.Save();
 
-                TransactionStatus status = transaction.Status;
-            }
-            catch (PagarMeException ex)
+                    TransactionStatus status = transaction.Status;
+                }
+                catch (PagarMeException ex)
+                {
+                    throw ex;
+                }
+
+                //atualizando o campo data entrega que foi preenchido na tela de detalhes do pedido
+                new PedidoDAO().Atualizar(obj);
+
+            //mensagem de erro
+            if (!ValidarDataEntrega(obj.DataEntrega))
             {
-                throw ex;
+                ViewBag.ErroMsg = @"Data de entrega inválida, por favor insira uma nova data após o dia de hoje!";
+                return View("Detalhes");
             }
 
-            //atualizando o campo data entrega que foi preenchido na tela de detalhes do pedido
-            new PedidoDAO().Atualizar(obj);
 
             //redicionando para a tela de pagamento
             return RedirectToAction("Pagamento", "Pedido");
+            
         }
 
         public ActionResult Pagamento()
