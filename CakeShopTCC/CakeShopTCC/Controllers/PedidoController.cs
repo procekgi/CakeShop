@@ -22,6 +22,13 @@ namespace CakeShopTCC.Controllers
             return View(lst);
         }
 
+        public ActionResult IndexDetalhes(int id)
+        {
+            var pedido = new PedidoDAO().BuscarPorId(id);
+            pedido.Itens = new ItemPedidoDAO().BuscarPorPedido(id);
+            return View(pedido);
+        }
+
         public ActionResult VisualizarItens(int id)
         {
             var pedido = new PedidoDAO().BuscarPorId(id);

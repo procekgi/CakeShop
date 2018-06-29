@@ -6,6 +6,8 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace CakeShopTCC.Controllers
 {
@@ -26,7 +28,7 @@ namespace CakeShopTCC.Controllers
             }
         }
 
-        public ActionResult EditarProduto(int id)
+         public ActionResult EditarProduto(int id)
         {
             ViewBag.Unidades = new UnidadeDeMedidaDAO().BuscarTodos();
             ViewBag.Categorias = new CategoriaDAO().BuscarTodos();

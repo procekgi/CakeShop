@@ -1,0 +1,41 @@
+﻿@using CakeShop.Models
+@model Pedido
+@{
+    Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Código do produto</th>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Valor Unitário</th>
+            <th>Valor Total</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ItemPedido item in Model.Itens)
+        {
+            <tr>
+                <td>@item.Produto.Id_Produto</td>
+                <td>@item.Produto.Nome_Produto</td>
+                <td>@item.Quantidade</td>
+                <td>@string.Format("{0:C2}", item.Preco)</td>
+                <td>@string.Format("{0:C2}", item.Preco * item.Quantidade)</td>
+               
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4">
+                <b>TOTAL</b>
+            </td>
+            <td colspan="2">
+                <b>@string.Format("{0:C2}", Model.Itens.Sum(item => item.Preco * item.Quantidade))</b>
+            </td>
+        </tr>
+    </tfoot>
+</table>
