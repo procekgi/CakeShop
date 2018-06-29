@@ -122,7 +122,7 @@ namespace CakeShopTCC.Controllers
         [HttpPost]
         public JsonResult Comprar(int id, int qtd)
         {
-            if (HttpContext.User == null || HttpContext.User.GetType() != typeof(Usuario))
+            if (HttpContext.User == null || HttpContext.User.GetType() != typeof(Usuario)) 
                 return Json(Url.Content("~/Cliente/Cadastro"));
 
             var produto = new ProdutoDAO().BuscarPorId(id);
