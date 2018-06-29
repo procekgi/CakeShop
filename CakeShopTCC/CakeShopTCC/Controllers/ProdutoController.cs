@@ -15,20 +15,12 @@ namespace CakeShopTCC.Controllers
     {
         public ActionResult CadastroProduto()
         {
-            if (!string.IsNullOrWhiteSpace(ViewBag.Error))
-            {
-                ViewBag.Error = @"Campo vazio. Preencha todos os campos!";
-                return View();
-            }
-            else
-            {
-                ViewBag.Unidades = new UnidadeDeMedidaDAO().BuscarTodos();
-                ViewBag.Categorias = new CategoriaDAO().BuscarTodos();
-                return View();
-            }
+            ViewBag.Unidades = new UnidadeDeMedidaDAO().BuscarTodos();
+            ViewBag.Categorias = new CategoriaDAO().BuscarTodos();
+            return View();
         }
 
-         public ActionResult EditarProduto(int id)
+        public ActionResult EditarProduto(int id)
         {
             ViewBag.Unidades = new UnidadeDeMedidaDAO().BuscarTodos();
             ViewBag.Categorias = new CategoriaDAO().BuscarTodos();
@@ -62,6 +54,16 @@ namespace CakeShopTCC.Controllers
 
         public ActionResult SalvarProduto(Produto obj)
         {
+            if (string.IsNullOrWhiteSpace(obj.Nome_Produto)
+                || !(obj.UnidadeDeMedida != null && obj.UnidadeDeMedida.Id_UnidadeDeMedida > 0)
+                || !(obj.Categoria != null && obj.Categoria.Id_Categoria > 0)
+                || string.IsNullOrWhiteSpace(obj.Foto)
+                || obj.Preco <= decimal.Zero)
+            {
+                ViewBag.ErrorMsg = @"É necessário preencher os campos obrigatórios!";
+                return View("CadastroProduto");
+            }
+
             if (obj != null && obj.Id_Produto > 0)
             {
                 new ProdutoDAO().Atualizar(obj);

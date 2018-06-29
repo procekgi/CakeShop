@@ -14,13 +14,12 @@
     <div class="col-md-12">
         <form class="form-horizontal" action="@Url.Action("SalvarProduto", "Produto")">
             @Html.HiddenFor(m => m.Id_Produto)
-            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
-            @if (!string.IsNullOrWhiteSpace(ViewBag.Error))
+            @if (!string.IsNullOrWhiteSpace(ViewBag.ErrorMsg))
             {
-                <div class="form-row">
-                    <div class="form-group col-md-12 text-center">
+                <div class="form-group">
+                    <div class="col-md-12 text-center">
                         <div class="alert alert-danger" role="alert" style="margin-bottom: 0px !important;">
-                            @ViewBag.Error
+                            @ViewBag.ErrorMsg
                         </div>
                     </div>
                 </div>
@@ -28,7 +27,7 @@
             <div class="form-group">
                 <div class="col-md-8">
                     @Html.LabelFor(m => m.Nome_Produto, "Nome do produto*", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.Nome_Produto, new { @class = "form-control" } )
+                    @Html.TextBoxFor(m => m.Nome_Produto, new { @class = "form-control" })
                 </div>
                 <div class="col-md-4">
                     @Html.LabelFor(m => m.Categoria.Id_Categoria, "Categoria*", new { @class = "control-label" })
@@ -69,7 +68,7 @@
             <div class="form-group">
                 <div class="col-md-12 text-right">
                     <button type="submit" class="btn btn-danger">Salvar</button>
-                    <button onclick="document.location.href='@Url.Action("Index", "Pedido")' "type="button" class="btn btn-danger">Cancelar</button>
+                    <button onclick="document.location.href='@Url.Action("Index", "Pedido")' " type="button" class="btn btn-danger">Cancelar</button>
                 </div>
             </div>
         </form>
