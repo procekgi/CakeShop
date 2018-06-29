@@ -61,6 +61,8 @@ namespace CakeShopTCC.Controllers
                 || obj.Preco <= decimal.Zero)
             {
                 ViewBag.ErrorMsg = @"É necessário preencher os campos obrigatórios!";
+                ViewBag.Unidades = new UnidadeDeMedidaDAO().BuscarTodos();
+                ViewBag.Categorias = new CategoriaDAO().BuscarTodos();
                 return View("CadastroProduto");
             }
 
@@ -79,10 +81,8 @@ namespace CakeShopTCC.Controllers
                     return RedirectToAction("TabelaProdutosDoces", "Usuario");
                 case 2:
                     return RedirectToAction("TabelaProdutosSalgados", "Usuario");
-
                 case 3:
                     return RedirectToAction("TabelaProdutosBolos", "Usuario");
-
                 default:
                     return RedirectToAction("ListaTodosOsProdutos", "Produto");
             }
