@@ -35,7 +35,7 @@
                                 <td>@string.Format("{0:N0}", pedido.Itens.Count)</td>
                                 <td>@string.Format("{0:C2}", pedido.Itens.Sum(o => o.Preco * o.Quantidade))</td>
                                 <td>
-                                    <a href="@Url.Action("IndexDetalhes", "Pedido", new { @id = pedido.Id_Pedido })">
+                                    <a href="@Url.Action("Detalhes", "Pedido", new { @id = pedido.Id_Pedido })">
                                         <i class="fa fa-search"></i>
                                     </a>
                                 </td>

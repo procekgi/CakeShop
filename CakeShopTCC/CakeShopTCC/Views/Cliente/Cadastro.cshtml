@@ -7,27 +7,28 @@
     <div class="row" style="padding-top: 30px; padding-bottom: 30px;">
         <div class="col-md-6">
             <h2>É Cadastrado?</h2>
+            <h6>* Campos obrigatórios</h6>
             <hr />
             <form action="@Url.Action("Entrar", "Cliente")" class="form-horizontal">
-                @if (!string.IsNullOrWhiteSpace(ViewBag.ErrorMsg))
+                @if (!string.IsNullOrWhiteSpace(ViewBag.LoginMsg))
                 {
                     <div class="form-row">
                         <div class="form-group col-md-12 text-center">
                             <div class="alert alert-danger" role="alert" style="margin-bottom: 0px !important;">
-                                @ViewBag.ErrorMsg
+                                @ViewBag.LoginMsg
                             </div>
                         </div>
                     </div>
                 }
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        @Html.LabelFor(m => m.Login, "Usuário", new { @class = "control-label" })
+                        @Html.LabelFor(m => m.Login, "Usuário *", new { @class = "control-label" })
                         @Html.TextBoxFor(m => m.Login, new { @class = "form-control" })
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        @Html.LabelFor(m => m.Senha, "Senha", new { @class = "control-label" })
+                        @Html.LabelFor(m => m.Senha, "Senha *", new { @class = "control-label" })
                         @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
                     </div>
                 </div>
@@ -40,10 +41,10 @@
         </div>
         <div class="col-md-6" style="border-left: 1px solid rgba(0,0,0,.1)">
             <h2>Faça seu cadastro</h2>
-            <h4>* Obrigatório</h4>
+            <h6>* Campos obrigatórios</h6>
             <hr />
             <form action="@Url.Action("Cadastrar", "Cliente")" class="form-horizontal">
-                 @if (!string.IsNullOrWhiteSpace(ViewBag.MessageError))
+                 @if (!string.IsNullOrWhiteSpace(ViewBag.ErrorMsg))
                  {
                     <div class="form-row">
                         <div class="form-group col-md-12 text-center">
@@ -54,9 +55,6 @@
                     </div>
 
                  }
-
-
-
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         @Html.LabelFor(m => m.Nome, "Nome *", new { @class = "control-label" })

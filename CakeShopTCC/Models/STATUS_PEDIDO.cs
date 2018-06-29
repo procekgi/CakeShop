@@ -14,7 +14,10 @@ namespace CakeShop.Models
         [Description("PAGAMENTO REALIZADO")]
         PAGAMENTO_REALIZADO = 2,
 
+        [Description("PAGAMENTO RECUSADO")]
+        PAGAMENTO_RECUSADO = 3,
+
         [Description("FINALIZADO")]
-        FINALIZADO = 3
+        FINALIZADO = 4
     }
 }

@@ -17,8 +17,8 @@
                 <div class="col-md-@size text-center">
                     <img style="max-width:200px" src="@Url.Content(Path.Combine("~/Uploads", item.Foto))" />
                     <h3>@item.Nome_Produto</h3>
-                    <h5>@string.Format("{0:C2}", item.Preco)</h5>
-                    @Html.TextBox(string.Format("txtQuantidade{0} cada", item.Id_Produto), (int)decimal.Zero, new { type = "number", min = "0", max = "2000" })
+                    <h5>@string.Format("{0:C2} por {1}", item.Preco, item.UnidadeDeMedida.Sigla)</h5>
+                    @Html.TextBox(string.Format("txtQuantidade{0}", item.Id_Produto), (int)decimal.Zero, new { type = "number", min = "0", max = "2000" })
                     <a class="lnkComprar" data-id="@item.Id_Produto" href="@Url.Action("Comprar", "Pedido", new { @id = item.Id_Produto })">
                         Adicionar ao carrinho
                     </a>

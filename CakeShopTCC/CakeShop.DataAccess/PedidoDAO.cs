@@ -39,7 +39,7 @@ namespace CakeShop.DataAccess
             }
         }
 
-        public void Atualizar(Pedido obj)
+        public void AtualizarDataEntrega(Pedido obj)
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
@@ -49,6 +49,33 @@ namespace CakeShop.DataAccess
                 {
                     cmd.Connection = conn;
                     cmd.Parameters.Add("@DATAENTREGA", SqlDbType.DateTime).Value = obj.DataEntrega;
+                    cmd.Parameters.Add("@ID_PEDIDO", SqlDbType.Int).Value = obj.Id_Pedido;
+
+                    foreach (SqlParameter parameter in cmd.Parameters)
+                    {
+                        if (parameter.Value == null)
+                        {
+                            parameter.Value = DBNull.Value;
+                        }
+                    }
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+        }
+
+        public void AtualizarStatus(Pedido obj)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
+            {
+                string strSQL = @"UPDATE PEDIDO SET STATUS = @STATUS WHERE ID_PEDIDO = @ID_PEDIDO;";
+
+                using (SqlCommand cmd = new SqlCommand(strSQL))
+                {
+                    cmd.Connection = conn;
+                    cmd.Parameters.Add("@STATUS", SqlDbType.Int).Value = Convert.ToInt32(obj.Status);
                     cmd.Parameters.Add("@ID_PEDIDO", SqlDbType.Int).Value = obj.Id_Pedido;
 
                     foreach (SqlParameter parameter in cmd.Parameters)

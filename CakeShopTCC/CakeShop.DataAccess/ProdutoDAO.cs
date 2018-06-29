@@ -145,6 +145,7 @@ namespace CakeShop.DataAccess
                 string strSQL = @"SELECT 
                                     U.ID AS ID_UNIDADE_MEDIDA,
                                     U.NOME AS NOME_UNIDADE, 
+                                    U.SIGLA AS SIGLA_UNIDADE, 
                                     C.ID AS ID_CATEGORIA, 
                                     C.NOME AS NOME_CATEGORIA, 
                                     P.ID_PRODUTO,
@@ -176,7 +177,8 @@ namespace CakeShop.DataAccess
                             UnidadeDeMedida = new UnidadeDeMedida
                             {
                                 Id_UnidadeDeMedida = Convert.ToInt32(row["ID_UNIDADE_MEDIDA"]),
-                                Nome = row["NOME_UNIDADE"].ToString()
+                                Nome = row["NOME_UNIDADE"].ToString(),
+                                Sigla = row["SIGLA_UNIDADE"].ToString()
                             },
                             Categoria = new Categoria
                             {
