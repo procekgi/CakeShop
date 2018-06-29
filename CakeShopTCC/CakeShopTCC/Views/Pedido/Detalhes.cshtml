@@ -59,7 +59,10 @@
                                         <th>Quantidade</th>
                                         <th>Valor Unitário</th>
                                         <th>Valor Total</th>
-                                        <th>&nbsp;</th>
+                                        @if (Model != null && Model.Status == STATUS_PEDIDO.EM_ANDAMENTO)
+                                        {
+                                            <th>&nbsp;</th>
+                                        }
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -71,11 +74,14 @@
                                             <td>@item.Quantidade</td>
                                             <td>@string.Format("{0:C2}", item.Preco)</td>
                                             <td>@string.Format("{0:C2}", item.Preco * item.Quantidade)</td>
-                                            <td>
-                                                <a href="@Url.Action("ExcluirItem", "Pedido", new { @id = item.Id })" onclick="if (!confirm('Deseja realmente excluir este item?')) return false;">
-                                                    <i class="fa fa-remove"></i>
-                                                </a>
-                                            </td>
+                                            @if (Model != null && Model.Status == STATUS_PEDIDO.EM_ANDAMENTO)
+                                            {
+                                                <td>
+                                                    <a href="@Url.Action("ExcluirItem", "Pedido", new { @id = item.Id })" onclick="if (!confirm('Deseja realmente excluir este item?')) return false;">
+                                                        <i class="fa fa-remove"></i>
+                                                    </a>
+                                                </td>
+                                            }
                                         </tr>
                                     }
                                 </tbody>
@@ -121,16 +127,19 @@
                         @Html.TextBoxFor(m => m.Cliente.Estado, new { @class = "form-control" })
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-12 text-right">
-                        <a class="btn btn-danger" href="@Url.Action("Index", "Home" )">
-                            Continuar comprando
-                        </a>
-                        <button type="submit" class="btn btn-danger">
-                            Finalizar e ir para pagamento
-                        </button>
+                @if (Model != null && Model.Status == STATUS_PEDIDO.EM_ANDAMENTO)
+                {
+                    <div class="form-row">
+                        <div class="form-group col-md-12 text-right">
+                            <a class="btn btn-danger" href="@Url.Action("Index", "Home")">
+                                Continuar comprando
+                            </a>
+                            <button type="submit" class="btn btn-danger">
+                                Finalizar e ir para pagamento
+                            </button>
+                        </div>
                     </div>
-                </div>
+                }
             </form>
         </div>
     </div>

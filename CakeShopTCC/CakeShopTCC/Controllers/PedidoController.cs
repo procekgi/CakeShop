@@ -110,51 +110,64 @@ namespace CakeShopTCC.Controllers
                 pedido.DataValidade = obj.DataValidade;
                 pedido.CodigoVerificacao = obj.CodigoVerificacao;
 
-                PagarMeService service = new PagarMeService(defaultApiKey, defaultEncryptionKey);
+                //PagarMeService service = new PagarMeService(defaultApiKey, defaultEncryptionKey);
 
-                CardHash card = new CardHash(service);
-                card.CardNumber = obj.NumeroCartao;
-                card.CardHolderName = obj.NomeDoTitular;
-                card.CardExpirationDate = obj.DataValidade;
-                card.CardCvv = obj.CodigoVerificacao;
+                //CardHash card = new CardHash(service);
+                //card.CardNumber = obj.NumeroCartao;
+                //card.CardHolderName = obj.NomeDoTitular;
+                //card.CardExpirationDate = obj.DataValidade;
+                //card.CardCvv = obj.CodigoVerificacao;
 
-                string cardHash = card.Generate();
+                //string cardHash = card.Generate();
 
-                Transaction transaction = new Transaction(service);
+                //Transaction transaction = new Transaction(service);
 
-                transaction.Amount = (int)(pedido.ValorTotal * 100);
-                transaction.CardHash = cardHash;
-                transaction.PaymentMethod = PaymentMethod.CreditCard;
+                //transaction.Amount = (int)(pedido.ValorTotal * 100);
+                //transaction.CardHash = cardHash;
+                //transaction.PaymentMethod = PaymentMethod.CreditCard;
 
-                pedido.Itens = new ItemPedidoDAO().BuscarPorPedido(pedido.Id_Pedido);
-                var lst = new List<Item>();
+                //pedido.Itens = new ItemPedidoDAO().BuscarPorPedido(pedido.Id_Pedido);
+                //var lst = new List<Item>();
 
-                foreach (var item in pedido.Itens)
-                {
-                    lst.Add(new Item()
-                    {
-                        Id = item.Id.ToString(),
-                        Title = item.Produto.Nome_Produto,
-                        Quantity = item.Quantidade,
-                        Tangible = true,
-                        UnitPrice = Convert.ToInt32(item.Preco * 100m)
-                    });
-                }
+                //foreach (var item in pedido.Itens)
+                //{
+                //    lst.Add(new Item()
+                //    {
+                //        Id = item.Id.ToString(),
+                //        Title = item.Produto.Nome_Produto,
+                //        Quantity = item.Quantidade,
+                //        Tangible = true,
+                //        UnitPrice = Convert.ToInt32(item.Preco * 100m)
+                //    });
+                //}
 
-                transaction.Item = lst.ToArray();
-                transaction.Save();
+                //transaction.Item = lst.ToArray();
+                //transaction.Save();
 
-                TransactionStatus status = transaction.Status;
+                //TransactionStatus status = transaction.Status;
 
-                if (status == TransactionStatus.Paid)
+                //if (status == TransactionStatus.Paid)
+                //{
+                //    pedido.Status = STATUS_PEDIDO.PAGAMENTO_REALIZADO;
+                //    new PedidoDAO().AtualizarStatus(pedido);
+                //}
+                //else
+                //{
+                //    pedido.Status = STATUS_PEDIDO.PAGAMENTO_RECUSADO;
+                //    new PedidoDAO().AtualizarStatus(pedido);
+                //}
+
+                if (pedido != null && pedido.CodigoVerificacao == "123")
                 {
                     pedido.Status = STATUS_PEDIDO.PAGAMENTO_REALIZADO;
                     new PedidoDAO().AtualizarStatus(pedido);
                 }
                 else
                 {
+                    ViewBag.ErroMsg = @"PAGAMENTO NÃO AUTORIZADO!";
                     pedido.Status = STATUS_PEDIDO.PAGAMENTO_RECUSADO;
                     new PedidoDAO().AtualizarStatus(pedido);
+                    return View("Pagamento", pedido);
                 }
             }
             catch (PagarMeException ex)
@@ -185,7 +198,7 @@ namespace CakeShopTCC.Controllers
         [HttpPost]
         public JsonResult Comprar(int id, int qtd)
         {
-            if (HttpContext.User == null || HttpContext.User.GetType() != typeof(Usuario)) 
+            if (HttpContext.User == null || HttpContext.User.GetType() != typeof(Usuario))
                 return Json(Url.Content("~/Cliente/Cadastro"));
 
             var produto = new ProdutoDAO().BuscarPorId(id);
