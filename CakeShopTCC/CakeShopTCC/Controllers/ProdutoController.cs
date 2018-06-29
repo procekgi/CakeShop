@@ -6,6 +6,8 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace CakeShopTCC.Controllers
 {
@@ -13,18 +15,17 @@ namespace CakeShopTCC.Controllers
     {
         public ActionResult CadastroProduto()
         {
+            ViewBag.Unidades = new UnidadeDeMedidaDAO().BuscarTodos();
+            ViewBag.Categorias = new CategoriaDAO().BuscarTodos();
+            return View();
+        }
 
-            if(!string.IsNullOrWhiteSpace(ViewBag.Error))
-            {
-                ViewBag.Error = @"Campo vazio. Preencha todos os campos!";
-                return View();
-            }
-            else
-            {
-                ViewBag.Unidades = new UnidadeDeMedidaDAO().BuscarTodos();
-                ViewBag.Categorias = new CategoriaDAO().BuscarTodos();
-                return View();
-            }
+        public ActionResult EditarProduto(int id)
+        {
+            ViewBag.Unidades = new UnidadeDeMedidaDAO().BuscarTodos();
+            ViewBag.Categorias = new CategoriaDAO().BuscarTodos();
+            var produto = new ProdutoDAO().BuscarPorId(id);
+            return View("CadastroProduto", produto);
         }
 
         public ActionResult PaginaDoces()
@@ -53,7 +54,24 @@ namespace CakeShopTCC.Controllers
 
         public ActionResult SalvarProduto(Produto obj)
         {
-            new ProdutoDAO().Inserir(obj);
+            if (string.IsNullOrWhiteSpace(obj.Nome_Produto)
+                || !(obj.UnidadeDeMedida != null && obj.UnidadeDeMedida.Id_UnidadeDeMedida > 0)
+                || !(obj.Categoria != null && obj.Categoria.Id_Categoria > 0)
+                || string.IsNullOrWhiteSpace(obj.Foto)
+                || obj.Preco <= decimal.Zero)
+            {
+                ViewBag.ErrorMsg = @"É necessário preencher os campos obrigatórios!";
+                return View("CadastroProduto");
+            }
+
+            if (obj != null && obj.Id_Produto > 0)
+            {
+                new ProdutoDAO().Atualizar(obj);
+            }
+            else
+            {
+                new ProdutoDAO().Inserir(obj);
+            }
 
             switch (obj.Categoria.Id_Categoria)
             {
@@ -68,6 +86,15 @@ namespace CakeShopTCC.Controllers
                 default:
                     return RedirectToAction("ListaTodosOsProdutos", "Produto");
             }
+        }
+
+        public ActionResult ExcluirProduto(int id)
+        {
+            var produto = new ProdutoDAO().BuscarPorId(id);
+
+            new ProdutoDAO().ExcluirProduto(produto);
+
+            return RedirectToAction("Index", "Pedido", new { id = produto.Id_Produto });
         }
 
         [HttpPost]
@@ -94,13 +121,6 @@ namespace CakeShopTCC.Controllers
             {
                 return Json(ex);
             }
-        }
-
-        public ActionResult ExcluirProduto(int id)
-        {
-            var produto = new ProdutoDAO().BuscarPorId(id);
-            new ProdutoDAO().ExcluirProduto(produto);
-            return RedirectToAction("Index", "Pedido", new { id = produto.Id_Produto });
         }
     }
 }

@@ -25,6 +25,7 @@
                         <th>Categoria</th>
                         <th>UDM</th>
                         <th>Preço</th>
+                        <th>&nbsp;</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,8 +38,11 @@
                             <td>@item.UnidadeDeMedida.Nome</td>
                             <td>@string.Format("{0:C2}", item.Preco)</td>
                             <td>
-                                <a href="@Url.Action("ExcluirProduto", "Usuario", new { @id = item.Id_Produto })" onclick="if (!confirm('Deseja realmente excluir este produto?')) return false;">
-                                    <i class="fa fa-remove"></i>
+                                <a href="@Url.Action("EditarProduto", "Usuario", new { @id = item.Id_Produto })">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </a>
+                                <a href="@Url.Action("ExcluirBolo", "Usuario", new { @id = item.Id_Produto })" onclick="if (!confirm('Deseja realmente excluir este produto?')) return false;">
+                                    <span class="glyphicon glyphicon-remove"></span>
                                 </a>
                             </td>
                         </tr>

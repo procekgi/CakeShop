@@ -39,6 +39,20 @@ namespace CakeShopTCC.Controllers
             return View(lstClientes);
         }
 
-       
+        public ActionResult EditarProduto(int id)
+        {
+            var produto = new ProdutoDAO().BuscarPorId(id);
+
+            return RedirectToAction("EditarProduto", "Produto", new { id = produto.Id_Produto });
+        }
+
+        public ActionResult ExcluirBolo(int id)
+        {
+            var produto = new Produto() { Id_Produto = id };
+
+            new ProdutoDAO().ExcluirProduto(produto);
+
+            return RedirectToAction("TabelaProdutosBolos", "Usuario");
+        }
     }
 }

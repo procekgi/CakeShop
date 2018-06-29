@@ -13,6 +13,16 @@
     <div class="row">
         <div class="col-md-12">
             <form action="@Url.Action("Finalizar", "Pedido")" class="form-horizontal" method="post">
+                @if (!string.IsNullOrWhiteSpace(ViewBag.ErroMsg))
+                {
+                    <div class="form-row">
+                        <div class="form-group col-md-12 text-center">
+                            <div class="alert alert-danger" role="alert" style="margin-bottom: 0px !important;">
+                                @ViewBag.ErroMsg
+                            </div>
+                        </div>
+                    </div>
+                }
                 @Html.HiddenFor(m => m.Id_Pedido)
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -24,8 +34,16 @@
                         @Html.TextBoxFor(m => m.DataPedido, "{0:dd/MM/yyyy}", new { @class = "form-control", @readonly = true })
                     </div>
                     <div class="form-group col-md-3">
-                        @Html.LabelFor(m => m.DataEntrega, "Data de Entrega:", new { @class = "control-label" })
-                        @Html.TextBoxFor(m => m.DataEntrega, "{0:dd/MM/yyyy HH:mm}", new { @class = "form-control", @type = "datetime-local" })
+                        @if (Model != null && Model.DataEntrega.HasValue)
+                        {
+                            @Html.LabelFor(m => m.DataEntrega, "Data de Entrega:", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.DataEntrega, "{0:dd/MM/yyyy HH:mm}", new { @class = "form-control", @readonly = true })
+                        }
+                        else
+                        {
+                            @Html.LabelFor(m => m.DataEntrega, "Data de Entrega:", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.DataEntrega, "{0:dd/MM/yyyy HH:mm}", new { @class = "form-control", @type = "datetime-local" })
+                        }
                     </div>
                 </div>
                 <div class="form-row">
@@ -105,6 +123,9 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-12 text-right">
+                        <a class="btn btn-danger" href="@Url.Action("Index", "Home" )">
+                            Continuar comprando
+                        </a>
                         <button type="submit" class="btn btn-danger">
                             Finalizar e ir para pagamento
                         </button>

@@ -15,14 +15,24 @@ namespace CakeShop.Models
         public DateTime? DataEntrega { get; set; }
         public string HorarioEntrega { get; set; }
         public List<ItemPedido> Itens { get; set; }
+        public decimal ValorTotal
+        {
+            get
+            {
+                return this.Itens.Sum(item => item.Quantidade * item.Preco);
+            }
+        }
 
         public Pedido()
         {
             this.Itens = new List<ItemPedido>();
         }
-        public int NumeroCartao { get; set; }
-        public DateTime DataValidade { get; set; }
-        public int CodigoVerificacao {get ; set;}
-        public string Nome { get; set; }
+
+        //DADOS PARA PAGAMENTO (API PAGAR.ME), NÃO SALVA NO BANCO DE DADOS
+        //POR MOTIVOS DE SEGURANÇA
+        public string NumeroCartao { get; set; }
+        public string DataValidade { get; set; }
+        public string CodigoVerificacao { get; set; }
+        public string NomeDoTitular { get; set; }
     }
 }

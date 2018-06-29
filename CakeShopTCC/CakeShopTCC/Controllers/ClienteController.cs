@@ -21,19 +21,16 @@ namespace CakeShopTCC.Controllers
 
         public ActionResult Cadastrar(Cliente obj)
         {
-            if (!string.IsNullOrWhiteSpace(ViewBag.ErrorMsg))
+            if (string.IsNullOrWhiteSpace(obj.Nome) || string.IsNullOrWhiteSpace(obj.Email) || string.IsNullOrWhiteSpace(obj.Login) || string.IsNullOrWhiteSpace(obj.Senha))
             {
-                ViewBag.MessageError = @"Campo vazio. Preencha todos os campos!";
+                ViewBag.ErrorMsg = @"Campos vazios, por favor preencha todos os campos obrigatórios!";
                 return View("Cadastro");
             }
-            else
-            {
-                ViewBag.Message = @"Cadastro realizado com sucesso!";
-                new ClienteDAO().Inserir(obj);
-                return RedirectToAction("Cadastro", "Cliente");
 
-            }
+            ViewBag.Message = @"Cadastro realizado com sucesso!";
+            new ClienteDAO().Inserir(obj);
 
+            return RedirectToAction("IndexMensagem", "Cliente");
         }
 
         public ActionResult MinhaConta()
@@ -47,8 +44,9 @@ namespace CakeShopTCC.Controllers
 
         public ActionResult SalvarMeusDados(Cliente obj)
         {
-            new ClienteDAO().Inserir(obj);
-            return RedirectToAction("MinhaConta", "Cliente");
+            new ClienteDAO().Atualizar(obj);
+
+            return RedirectToAction("IndexDadosSalvos", "Cliente");
         }
 
         public ActionResult Entrar(Cliente obj)
@@ -57,7 +55,7 @@ namespace CakeShopTCC.Controllers
 
             if (usuarioLogado == null)
             {
-                ViewBag.ErrorMsg = @"Login ou senha inválido!";
+                ViewBag.LoginMsg = @"Login ou senha inválido!";
                 return View("Cadastro");
             }
 
@@ -93,6 +91,16 @@ namespace CakeShopTCC.Controllers
             return View(pedidos);
         }
 
-      
+        public ActionResult IndexMensagem()
+        {
+            ViewBag.Message = "Cadastro realizado com sucesso! Faça seu login para continuar navegando na página!";
+            return View();
+        }
+
+        public ActionResult IndexDadosSalvos()
+        {
+            ViewBag.Message = "Dados salvos com sucesso!";
+            return View();
+        }
     }
 }

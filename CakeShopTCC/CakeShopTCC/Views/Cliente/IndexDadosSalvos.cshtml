@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var mensagem = '@Html.Raw((string)ViewBag.Message)';
+            alert(mensagem);
+            document.location.href = '@Url.Action("MinhaConta", "Cliente")';
+        });
+    </script>
+}
