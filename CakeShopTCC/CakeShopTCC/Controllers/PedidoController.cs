@@ -11,9 +11,6 @@ namespace CakeShopTCC.Controllers
 {
     public class PedidoController : Controller
     {
-        private const string defaultApiKey = "ak_test_RsyGsYkn141xJzJ2v1LwI8f8z9kiih";
-        private const string defaultEncryptionKey = "ek_test_HmftBWggaUUkQJrzuBavmhv8WkHUO7";
-
         public ActionResult Index()
         {
             var lst = new PedidoDAO().BuscarTodos().Where(p => p.Status == STATUS_PEDIDO.PAGAMENTO_REALIZADO).ToList();
@@ -110,53 +107,7 @@ namespace CakeShopTCC.Controllers
                 pedido.DataValidade = obj.DataValidade;
                 pedido.CodigoVerificacao = obj.CodigoVerificacao;
 
-                //PagarMeService service = new PagarMeService(defaultApiKey, defaultEncryptionKey);
-
-                //CardHash card = new CardHash(service);
-                //card.CardNumber = obj.NumeroCartao;
-                //card.CardHolderName = obj.NomeDoTitular;
-                //card.CardExpirationDate = obj.DataValidade;
-                //card.CardCvv = obj.CodigoVerificacao;
-
-                //string cardHash = card.Generate();
-
-                //Transaction transaction = new Transaction(service);
-
-                //transaction.Amount = (int)(pedido.ValorTotal * 100);
-                //transaction.CardHash = cardHash;
-                //transaction.PaymentMethod = PaymentMethod.CreditCard;
-
-                //pedido.Itens = new ItemPedidoDAO().BuscarPorPedido(pedido.Id_Pedido);
-                //var lst = new List<Item>();
-
-                //foreach (var item in pedido.Itens)
-                //{
-                //    lst.Add(new Item()
-                //    {
-                //        Id = item.Id.ToString(),
-                //        Title = item.Produto.Nome_Produto,
-                //        Quantity = item.Quantidade,
-                //        Tangible = true,
-                //        UnitPrice = Convert.ToInt32(item.Preco * 100m)
-                //    });
-                //}
-
-                //transaction.Item = lst.ToArray();
-                //transaction.Save();
-
-                //TransactionStatus status = transaction.Status;
-
-                //if (status == TransactionStatus.Paid)
-                //{
-                //    pedido.Status = STATUS_PEDIDO.PAGAMENTO_REALIZADO;
-                //    new PedidoDAO().AtualizarStatus(pedido);
-                //}
-                //else
-                //{
-                //    pedido.Status = STATUS_PEDIDO.PAGAMENTO_RECUSADO;
-                //    new PedidoDAO().AtualizarStatus(pedido);
-                //}
-
+                //apenas para realizar o teste de pagamento
                 if (pedido != null && pedido.CodigoVerificacao == "123")
                 {
                     pedido.Status = STATUS_PEDIDO.PAGAMENTO_REALIZADO;
